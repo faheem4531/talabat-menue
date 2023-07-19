@@ -1,3 +1,11 @@
 export default function Home() {
-  return <div>Helloooooooooo</div>;
+  const TestingComponent = () => {
+    return <div>Testing Component</div>;
+  };
+  return (
+    <div>
+      <TestingComponent />
+    </div>
+  );
+  // return <div>hhhekjioh</div>;
 }
