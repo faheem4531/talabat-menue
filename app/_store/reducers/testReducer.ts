@@ -14,10 +14,14 @@ const testSlice = createSlice({
   name: 'test',
   initialState,
   reducers: {
+    setName: (state, action: PayloadAction<string>) => {
+      state.test.name = action.payload
+    },
   }
 });
 
 export const {
+  setName
 } = testSlice.actions;
 
 export default testSlice.reducer;

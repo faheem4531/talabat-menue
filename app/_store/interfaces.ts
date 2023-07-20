@@ -1,9 +1,15 @@
 export interface RootState {
   test: TestState;
+  menuCatageory: MenuCatageoryState
 }
 
 export interface TestState {
   test: test;
+  loading: boolean;
+  error: string | null;
+}
+export interface MenuCatageoryState {
+  data: any;
   loading: boolean;
   error: string | null;
 }

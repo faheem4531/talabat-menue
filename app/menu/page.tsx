@@ -1,3 +1,4 @@
+"use client";
 import SideNavbar from "../_components/SideNavbar/SideNavbar";
 import Image from "next/image";
 import heroImg from "../_assets/pngs/heroImg.png";
@@ -5,8 +6,18 @@ import inputHamburger from "../_assets/pngs/inputBurger.png";
 import searchIcon from "../_assets/pngs/inputSearch.png";
 import FlagIcon from "../_assets/pngs/navFlag.png";
 import CartWithItems from "./_components/CartWithItems";
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { useEffect } from 'react';
+import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
 
 export default function Test() {
+
+  const dispatch = useAppDispatch();
+  const { data } = useAppSelector(state => state.menuCatageory);
+  useEffect(() => {
+    dispatch(getMenuCatageorys())
+  }, [])
+
   return (
     <div>
       <div className="h-64">

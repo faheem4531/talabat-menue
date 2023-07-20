@@ -1,11 +1,12 @@
 import Axios from 'axios'
+import { NEXT_APP_BASE_URL, TEMP_TOKEN } from '../_lib/constants'
 
 const api = Axios.create({
-  baseURL: 'https://api.yourldnchauffeur.com/',
+  baseURL: NEXT_APP_BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer '+ (typeof window !== 'undefined' && localStorage.getItem('token'))
+    'Authorization': 'Bearer ' + TEMP_TOKEN,
   },
 })
 
