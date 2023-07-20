@@ -39,7 +39,7 @@ export default function Test() {
             className="heroImg"
           />
         </div>
-        <div className="container z-10">
+        <div className="z-10">
           <div className="relative top-[162px] flex w-[365px] m-auto">
             {/* <AiOutlineSearch className="absolute bottom-5 left-[12px] top-1/2 h-5 w-5 -translate-y-1/2 transform fill-[#57606E]" /> */}
             <Image
