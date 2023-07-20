@@ -43,7 +43,7 @@ const MenuItem = ({ itemsImg }: any) => {
             )}
           </div> */}
         </div>
-        <h4 className="my-1 line-clamp-2 text-[8px] text-[#00000070] text-gray500">
+        <h4 className="my-1 line-clamp-2 text-[8px] text-[#00000070] ">
           {/* {lang === "ar" ? menuItem?.description_ar : menuItem?.description} */}
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum amet
           reprehenderit est.
