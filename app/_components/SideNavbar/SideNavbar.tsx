@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import HamburgerIcon from "../../../public/Vector3.png";
+import HamburgerIcon from "../../_assets/pngs/hamBurger.png";
 import Image from "next/image";
 
 const SideNavbar = () => {

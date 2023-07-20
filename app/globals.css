@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,11 +23,12 @@
 }
 
 .mainApp{
-  width: 428px;
+  width: 390px;
+  margin: auto;
 }
 
 .heroImg{
-  width: 428px;
+  width: 390px;
   height: 241px;
   position: relative;
   z-index: -1;
@@ -36,4 +43,23 @@
   height: 241px;
    background-color: rgba(0, 0, 0, 0.37);
    z-index: 1;
+}
+
+/* menu slider css */
+.mainCarousal {
+  display: flex;
+  width: 365px;
+  overflow: scroll;
+  margin: auto;
+}
+
+.mainCarousal::-webkit-scrollbar {
+  display: none;
+}
+
+.carousalItems {
+  min-height: 100%;
+  width: 100%;
+  margin-right: 15px;
+  position: relative;
 }
