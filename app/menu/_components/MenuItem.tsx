@@ -7,7 +7,7 @@ import fire from "../../_assets/svgs/fire.svg";
 import emptyHeart from "../../_assets/svgs/emptyHeart.svg";
 import fillHeart from "../../_assets/svgs/filledHeart.svg";
 
-const MenuItem = () => {
+const MenuItem = ({ itemsImg }: any) => {
   const [isItemAdded, setIsItemAdded] = useState(false);
   const handleAddToWishList = () => {
     setIsItemAdded(!isItemAdded);
@@ -76,7 +76,7 @@ const MenuItem = () => {
             objectFit: "cover",
           }}
           alt="{menuItem?.name}"
-          src={heroImg}
+          src={itemsImg}
         />
         <div onClick={handleAddToWishList}>
           {!isItemAdded ? (

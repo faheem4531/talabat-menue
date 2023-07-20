@@ -5,6 +5,10 @@ import Link from "next/link";
 import img from "../../_assets/pngs/heroImg.png";
 import AnchorLink from "@/app/_components/AnchorLink";
 import MenuItem from "./MenuItem";
+import Slide1 from "../../_assets/svgs/item1.svg";
+import Slide2 from "../../_assets/svgs/item2.svg";
+import Slide3 from "../../_assets/svgs/item3.svg";
+import Slide4 from "../../_assets/svgs/item4.svg";
 
 const MenuSlider = () => {
   // const { t, lang } = useTranslation("menu");
@@ -76,7 +80,7 @@ const MenuSlider = () => {
           >
             <Image
               className="border-red"
-              src={img}
+              src={Slide1}
               alt="{category?.name}"
               width={74}
               height={71}
@@ -116,7 +120,7 @@ const MenuSlider = () => {
           >
             <Image
               className="border-red"
-              src={img}
+              src={Slide2}
               alt="{category?.name}"
               width={74}
               height={71}
@@ -155,7 +159,7 @@ const MenuSlider = () => {
           >
             <Image
               className="border-red"
-              src={img}
+              src={Slide3}
               alt="{category?.name}"
               width={74}
               height={71}
@@ -194,7 +198,7 @@ const MenuSlider = () => {
           >
             <Image
               className="border-red"
-              src={img}
+              src={Slide4}
               alt="{category?.name}"
               width={74}
               height={71}
