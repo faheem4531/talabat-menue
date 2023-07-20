@@ -7,7 +7,7 @@ import fire from "../../_assets/svgs/fire.svg";
 import emptyHeart from "../../_assets/svgs/emptyHeart.svg";
 import fillHeart from "../../_assets/svgs/filledHeart.svg";
 
-const MenuItem = ({ itemsImg }: any) => {
+const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
   const [isItemAdded, setIsItemAdded] = useState(false);
   const handleAddToWishList = () => {
     setIsItemAdded(!isItemAdded);
@@ -29,7 +29,7 @@ const MenuItem = ({ itemsImg }: any) => {
         <div className="relative flex items-center justify-between">
           <h3 className="text-[12px] font-[500] text-[#494949]">
             {/* {lang === "ar" ? menuItem?.nameAr : menuItem?.name} */}
-            Pepsi
+            {title}
           </h3>
           {/* <div
             onClick={handleAddToWishList}
@@ -45,8 +45,7 @@ const MenuItem = ({ itemsImg }: any) => {
         </div>
         <h4 className="my-1 line-clamp-2 text-[8px] text-[#00000070] ">
           {/* {lang === "ar" ? menuItem?.description_ar : menuItem?.description} */}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum amet
-          reprehenderit est.
+          {discription}
         </h4>
         <div className="flex item-center ">
           <div className="mr-[3px]">
@@ -54,13 +53,13 @@ const MenuItem = ({ itemsImg }: any) => {
           </div>
           <h4 className="font-extrabold text-darkBlue text-[8px]">
             {/* {menuItem.calories} */}
-            10 cal
+            {calerioes}
           </h4>
         </div>
         <div className="flex items-center">
           <span className="text-[11px] font-semibold text-[#C02328] ">
             {/* {menuItem?.price}  */}
-            100 SAR
+            {price}
           </span>
           <QuantityCounter />
         </div>
