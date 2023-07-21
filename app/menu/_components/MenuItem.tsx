@@ -16,8 +16,8 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
     <div
       // id={menuItem?._id}
       className="content relative flex cursor-pointer border-b-[1px] border-[#0000000f] p-[14px] pt-[9px] shadow-4 pb-4"
-      // isBorder && "border-red",
-      // isItemSoldout && "pointer-events-none cursor-not-allowed opacity-40"
+    // isBorder && "border-red",
+    // isItemSoldout && "pointer-events-none cursor-not-allowed opacity-40"
     >
       {/* {(menuItem?.soldOut || !!menuItem?.sticker) && (
         <span className="ribbon top-[3px]">
@@ -78,7 +78,10 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
             maxWidth: "84px",
             borderRadius: 10,
             objectFit: "cover",
+
           }}
+          width={400}
+          height={300}
           alt="{menuItem?.name}"
           src={itemsImg}
         />

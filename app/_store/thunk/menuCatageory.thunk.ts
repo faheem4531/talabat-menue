@@ -11,10 +11,10 @@ export const getMenuCatageorys = createAsyncThunk("menu/getCatageorys", async ()
   }
 });
 
-export const getCatageorysWithItems = createAsyncThunk("menu/getCatageorysWithItems", async (id: string) => {
+export const getCatageorysWithItems = createAsyncThunk("menu/getCatageorysWithItems", async (category: any) => {
   try {
-    const res = await api.get(`${NEXT_APP_BASE_URL}/menu-item?categoryId=${id}&pagination=false&sortBy=order&sortDirection=1&active=true`);
-    return res?.data?.data;
+    const res = await api.get(`${NEXT_APP_BASE_URL}/menu-item?categoryId=${category._id}&pagination=false&sortBy=order&sortDirection=1&active=true`);
+    return { ...res?.data?.data, ...category };
   } catch (error) {
     console.error(error);
   }

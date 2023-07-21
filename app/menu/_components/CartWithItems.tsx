@@ -1,27 +1,17 @@
-import React from "react";
-import MenuSlider from "./MenuSlider";
-import MenuItemsContainer from "./MenuItemsContainer";
+import React from 'react';
+import MenuSlider from './MenuSlider';
+import MenuItemsContainer from './MenuItemsContainer';
 
-const CartWithItems = () => {
-  const itemsCon = [
-    {
-      title: "Breakfast",
-      id: "1",
-    },
-    {
-      title: "Burgers",
-      id: "2",
-    },
-    {
-      title: "Cakes",
-      id: "3",
-    },
-  ];
+const CartWithItems = ({
+  categories,
+}: {
+  categories: any[];
+}) => {
   return (
     <div>
       <MenuSlider />
-      {itemsCon.map((element) => {
-        return <MenuItemsContainer title={element.title} id={element.id} />;
+      {categories.map((element) => {
+        return <MenuItemsContainer title={element.name} id={element._id} items={element?.docs ?? []} />;
       })}
     </div>
   );

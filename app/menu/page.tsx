@@ -27,7 +27,7 @@ export default function Test() {
     docs &&
       docs.length &&
       docs.map((category: any) =>
-        dispatch(getCatageorysWithItems(category.id))
+        dispatch(getCatageorysWithItems(category))
       );
   }, []);
 
@@ -82,7 +82,9 @@ export default function Test() {
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
-        <CartWithItems />
+        <CartWithItems
+          categories={catagories ?? []}
+        />
       </div>
     </div>
   );
