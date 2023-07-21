@@ -1,29 +1,35 @@
-"use client";
-import SideNavbar from "../_components/SideNavbar/SideNavbar";
-import Image from "next/image";
-import heroImg from "../_assets/pngs/heroImg.png";
-import inputHamburger from "../_assets/pngs/inputBurger.png";
-import searchIcon from "../_assets/pngs/inputSearch.png";
-import FlagIcon from "../_assets/pngs/navFlag.png";
-import CartWithItems from "./_components/CartWithItems";
+'use client';
+import SideNavbar from '../_components/SideNavbar/SideNavbar';
+import Image from 'next/image';
+import heroImg from '../_assets/pngs/heroImg.png';
+import inputHamburger from '../_assets/pngs/inputBurger.png';
+import searchIcon from '../_assets/pngs/inputSearch.png';
+import FlagIcon from '../_assets/pngs/navFlag.png';
+import CartWithItems from './_components/CartWithItems';
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { useEffect } from 'react';
-import { getMenuCatageorys, getCatageorysWithItems } from '../_store/thunk/menuCatageory.thunk';
+import {
+  getMenuCatageorys,
+  getCatageorysWithItems,
+} from '../_store/thunk/menuCatageory.thunk';
 import { clearCatagories } from '../_store/reducers/menuCatageory';
 
 export default function Test() {
-
   const dispatch = useAppDispatch();
-  const { data, catagories } = useAppSelector(state => state.menuCatageory);
+  const { data, catagories } = useAppSelector((state) => state.menuCatageory);
   const { docs } = data;
 
   console.log(catagories, 'catagories');
 
   useEffect(() => {
-    dispatch(getMenuCatageorys())
-    // dispatch(clearCatagories())
-    dispatch(getCatageorysWithItems('63d32ea3070c6883f8d3b836'))
-  }, [])
+    dispatch(getMenuCatageorys());
+    dispatch(clearCatagories());
+    docs &&
+      docs.length &&
+      docs.map((category: any) =>
+        dispatch(getCatageorysWithItems(category.id))
+      );
+  }, []);
 
   return (
     <div>
@@ -61,7 +67,7 @@ export default function Test() {
               // placeholder={t("lookingFor")}
               // onChange={(e) => setSearchQuery(e.target.value)}
               style={{
-                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
               }}
             />
             <Image
