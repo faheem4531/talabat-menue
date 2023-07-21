@@ -16,8 +16,8 @@ import { clearCatagories } from '../_store/reducers/menuCatageory';
 
 export default function Test() {
   const dispatch = useAppDispatch();
-  const { data, catagories } = useAppSelector((state) => state.menuCatageory);
-  const { docs } = data;
+  const { data, catagories }: { data: any, catagories: any } = useAppSelector((state) => state.menuCatageory);
+  const { docs }: { docs: any } = { ...data };
 
   console.log(catagories, 'catagories');
 
