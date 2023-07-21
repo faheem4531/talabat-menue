@@ -10,23 +10,14 @@ import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { useEffect } from 'react';
 import {
   getMenuCatageorys,
-  getCatageorysWithItems,
 } from '../_store/thunk/menuCatageory.thunk';
-import { clearCatagories } from '../_store/reducers/menuCatageory';
 
 export default function Test() {
   const dispatch = useAppDispatch();
-  const { data, catagories }: { data: any; catagories: any } = useAppSelector(
-    (state) => state.menuCatageory
-  );
-  const { docs }: { docs: any } = { ...data };
+  const { catagories }: { catagories: any } = useAppSelector((state) => state.menuCatageory);
 
   useEffect(() => {
     dispatch(getMenuCatageorys());
-    dispatch(clearCatagories());
-    docs &&
-      docs.length &&
-      docs.map((category: any) => dispatch(getCatageorysWithItems(category)));
   }, [dispatch]);
 
   return (
