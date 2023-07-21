@@ -10,6 +10,7 @@ export interface TestState {
 }
 export interface MenuCatageoryState {
   data: any;
+  catagories: any[]
   loading: boolean;
   error: string | null;
 }

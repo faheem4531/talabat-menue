@@ -8,14 +8,21 @@ import FlagIcon from "../_assets/pngs/navFlag.png";
 import CartWithItems from "./_components/CartWithItems";
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { useEffect } from 'react';
-import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
+import { getMenuCatageorys, getCatageorysWithItems } from '../_store/thunk/menuCatageory.thunk';
+import { clearCatagories } from '../_store/reducers/menuCatageory';
 
 export default function Test() {
 
   const dispatch = useAppDispatch();
-  const { data } = useAppSelector(state => state.menuCatageory);
+  const { data, catagories } = useAppSelector(state => state.menuCatageory);
+  const { docs } = data;
+
+  console.log(catagories, 'catagories');
+
   useEffect(() => {
     dispatch(getMenuCatageorys())
+    // dispatch(clearCatagories())
+    dispatch(getCatageorysWithItems('63d32ea3070c6883f8d3b836'))
   }, [])
 
   return (
