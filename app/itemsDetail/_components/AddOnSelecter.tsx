@@ -10,7 +10,7 @@ const AddOnSelecter = ({ title, price, caleries }: any) => {
           <label className="container">
             {title}
             <div>
-              <input className="check" type="checkbox" />
+              <input className="check hidden" type="checkbox" />
               <span className="checkmark"></span>
             </div>
           </label>

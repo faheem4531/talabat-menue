@@ -4,6 +4,8 @@ import heroImg from "../_assets/pngs/detailHeroImg.png";
 import FlagIcon from "../_assets/pngs/navFlag.png";
 import fire from "../_assets/svgs/fire.svg";
 import ItemCustomizer from "./_components/ItemCustomizer";
+import QuantityCounter from "../_components/QuantityCounter";
+import Addbtn from "../_components/Buttons/cartBtn";
 
 const itemsDetail = () => {
   const ItemCust = [
@@ -71,6 +73,19 @@ const itemsDetail = () => {
             form="usrform"
             placeholder="Type Your Comment"
           ></textarea>
+        </div>
+        <div className="h-9 flex justify-between items-center mt-[52px] mb-[25px]">
+          <div className="w-[180px]">
+            <QuantityCounter
+              color="text-black p-1"
+              bgColor="bg-white"
+              count={1}
+              // delIconflag={true}
+            />
+          </div>
+          <div>
+            <Addbtn />
+          </div>
         </div>
       </div>
     </div>

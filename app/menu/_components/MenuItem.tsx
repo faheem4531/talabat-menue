@@ -61,7 +61,12 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
             {/* {menuItem?.price}  */}
             {price}
           </span>
-          <QuantityCounter />
+          <QuantityCounter
+            color="text-white"
+            bgColor="bg-[#C84044]"
+            count={0}
+            delIconflag={true}
+          />
         </div>
       </div>
       <div className="mr-2.5 relative">
