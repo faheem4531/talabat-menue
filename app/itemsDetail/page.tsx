@@ -61,8 +61,8 @@ const itemsDetail = () => {
           </div>
         </div>
         <div>
-          {ItemCust.map((item) => {
-            return <ItemCustomizer title={item.title} id={item.id} />;
+          {ItemCust.map((item, index) => {
+            return <ItemCustomizer title={item.title} id={item.id} key={index} />;
           })}
         </div>
         <div>
@@ -80,7 +80,7 @@ const itemsDetail = () => {
               color="text-black p-1"
               bgColor="bg-white"
               count={1}
-              // delIconflag={true}
+            // delIconflag={true}
             />
           </div>
           <div>

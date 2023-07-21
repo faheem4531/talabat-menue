@@ -10,8 +10,8 @@ const CartWithItems = ({
   return (
     <div>
       <MenuSlider />
-      {categories.map((element) => {
-        return <MenuItemsContainer title={element.name} id={element._id} items={element?.docs ?? []} />;
+      {categories.map((element, index) => {
+        return <MenuItemsContainer key={index} title={element.name} id={element._id} items={element?.docs ?? []} />;
       })}
     </div>
   );

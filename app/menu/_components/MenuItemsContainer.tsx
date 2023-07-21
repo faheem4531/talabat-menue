@@ -8,9 +8,10 @@ const MenuItemsContainer = ({ title, id, items = [] }: any) => {
       <h5 className="text-sm text-[#494949] font-semibold mb-[11px]">
         {title}
       </h5>
-      {items.map((element: any) => {
+      {items.map((element: any, index: number) => {
         return (
           <MenuItem
+            key={index}
             itemsImg={element.image}
             title={element.name}
             discription={element.description}

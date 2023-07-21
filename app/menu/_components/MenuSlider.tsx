@@ -12,9 +12,9 @@ const MenuSlider = () => {
   return (
     <div>
       <div className="mainCarousal">
-        {docs && docs.map((item: any) => {
+        {docs && docs.map((item: any, index: number) => {
           return (
-            <div className="carousalItems">
+            <div className="carousalItems" key={index}>
               <Link
                 className={
                   "js-anchor-link flex cursor-pointer flex-col items-center"

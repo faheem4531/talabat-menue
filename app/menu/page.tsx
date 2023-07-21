@@ -29,7 +29,7 @@ export default function Test() {
       docs.map((category: any) =>
         dispatch(getCatageorysWithItems(category))
       );
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
