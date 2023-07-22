@@ -1,4 +1,5 @@
-import React from "react";
+'use client';
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import heroImg from "../_assets/pngs/detailHeroImg.png";
 import FlagIcon from "../_assets/pngs/navFlag.png";
@@ -8,8 +9,22 @@ import QuantityCounter from "../_components/QuantityCounter";
 import Addbtn from "../_components/Buttons/cartBtn";
 // import backArrow from "../_assets/svgs/arrow-back.svg";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { getItem } from '../_store/thunk/item.thunk';
 
-const itemsDetail = () => {
+const itemsDetail = ({ params: { itemsDetail } }: any) => {
+
+  const dispatch = useAppDispatch();
+  const { data } = useAppSelector(state => state.item)
+  const [itemId, setItemId] = useState<string>(itemsDetail[1] ?? '');
+
+  useEffect(() => {
+    dispatch(getItem(itemId))
+  }, [itemId])
+
+  console.log(data, 'item datadatadata');
+
+
   const ItemCust = [
     {
       title: "Topping",
@@ -37,9 +52,11 @@ const itemsDetail = () => {
       <div className="h-64">
         <div className="h-64 absolute heroImgMain">
           <Image
-            src={heroImg}
+            src={data?.image ?? heroImg}
             alt="Restaurant Placeholder"
             className="heroImg"
+            width={300}
+            height={300}
           />
         </div>
       </div>
@@ -47,12 +64,13 @@ const itemsDetail = () => {
         <div>
           <div className="border-t-[1px] border-[#0000000f] pt-2">
             <h4 className="text-[15px] font-[500] mb-[11px] tracking-wide">
-              Masala Omelette
+              {data?.name ?? ''}
             </h4>
             <div className="text-[9px] font-[500] text-[#00000070]">
-              <div>15ml (1tbsp) sunflower or vegetable oil</div>
-              <div className="mt-1">1 garlic clove, crushed</div>
-              <div className="mt-1">2 spring onions 1 medium tomato</div>
+
+              <div>{data?.description ?? ''}</div>
+              {/* <div className="mt-1">1 garlic clove, crushed</div> */}
+              {/* <div className="mt-1">2 spring onions 1 medium tomato</div> */}
             </div>
             <div className="flex item-center mt-1">
               <div className="mr-[3px]">
@@ -60,15 +78,15 @@ const itemsDetail = () => {
               </div>
               <h4 className="font-extrabold text-darkBlue text-[8px]">
                 {/* {menuItem.calories} */}
-                797 cal
+                {data?.calories ?? 0} cal
               </h4>
             </div>
           </div>
         </div>
         <div>
-          {ItemCust.map((item, index) => {
+          {(data?.additions ?? []).map((item: any, index: number) => {
             return (
-              <ItemCustomizer title={item.title} id={item.id} key={index} />
+              <ItemCustomizer title={item.name} id={item.id} key={index} options={item?.options ?? []} />
             );
           })}
         </div>

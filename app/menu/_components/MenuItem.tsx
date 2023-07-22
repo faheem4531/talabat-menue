@@ -10,7 +10,7 @@ import { useAppSelector, useAppDispatch } from '@/app/_store/hooks';
 import { updateFavorites } from '@/app/_store/reducers/favoritesReducer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import router from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const MenuItem = ({
   id,
@@ -21,6 +21,7 @@ const MenuItem = ({
   price,
 }: any) => {
 
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { data }: { data: string[] } = useAppSelector(
     (state) => state.favorites
@@ -55,10 +56,14 @@ const MenuItem = ({
       return true;
     }
   };
+
+  const navigate = () => {
+    router.push(`/itemsDetail/${id}`)
+  }
   return (
     <div
       className="content relative flex cursor-pointer border-b-[1px] border-[#0000000f] p-[14px] pt-[9px] shadow-4 pb-4"
-    // onClick={() => router.push("/itemsDetail")}
+      onClick={navigate}
     >
       <div className="flex grow flex-col justify-between">
         <div className="relative flex items-center justify-between">
