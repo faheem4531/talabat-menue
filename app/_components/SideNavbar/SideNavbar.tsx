@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import HamburgerIcon from "../../_assets/pngs/hamBurger.png";
-// import colorHamIcon from "../../_assets/svgs/colorHamIcon.svg";
+import colorHamIcon from "../../_assets/svgs/colorHamIcon.svg";
 import Image from "next/image";
 
 interface Props {
@@ -26,10 +26,10 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
           onClick={handleNavbarToggle}
         >
           {hamBurgerIcon ? (
-            // <Image src={colorHamIcon} alt="HamburgerIcon" />
+            <Image src={colorHamIcon} alt="HamburgerIcon" />
             null
           ) : (
-            <Image src={HamburgerIcon} alt="HamburgerIcon" />
+          <Image src={HamburgerIcon} alt="HamburgerIcon" />
           )}
         </button>
       </div>
