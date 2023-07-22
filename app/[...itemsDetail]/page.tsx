@@ -12,7 +12,7 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getItem } from '../_store/thunk/item.thunk';
 
-const itemsDetail = ({ params }: any) => {
+const ItemsDetail = ({ params }: any) => {
 
   const dispatch = useAppDispatch();
   const { data } = useAppSelector(state => state.item)
@@ -111,4 +111,4 @@ const itemsDetail = ({ params }: any) => {
   );
 };
 
-export default itemsDetail;
+export default ItemsDetail;
