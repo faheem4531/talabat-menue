@@ -11,12 +11,15 @@ const addCart = () => {
     {
       title: "PIZZA: 12 WOOD-FRIED",
       price: "100 SAR",
-      cartImg: require("../_assets/svgs/cartItemImg.svg"),
+      // cartImg: require("../_assets/svgs/cartItemImg.svg"),
+      cartImg: null
     },
     {
       title: "PIZZA: 12 WOOD-FRIED",
       price: "100 SAR",
-      cartImg: require("../_assets/svgs/cartItemImg.svg"),
+      // cartImg: require("../_assets/svgs/cartItemImg.svg"),
+      cartImg: null
+
     },
   ];
   return (

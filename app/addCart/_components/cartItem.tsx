@@ -6,7 +6,7 @@ import Image from "next/image";
 interface Props {
   title: string;
   price: string;
-  cartImg: string;
+  cartImg: string | null;
 }
 
 const CartItem = ({ cartImg, title, price }: Props) => {
@@ -20,7 +20,7 @@ const CartItem = ({ cartImg, title, price }: Props) => {
           }}
         >
           <div className="mr-5">
-            <Image
+            {/* <Image
               height={97}
               width={95}
               style={{
@@ -33,7 +33,7 @@ const CartItem = ({ cartImg, title, price }: Props) => {
               }}
               src={cartImg}
               alt="Food Image"
-            />
+            /> */}
           </div>
           <div className="flex grow flex-col justify-between">
             <div className="relative flex items-center justify-between text-sm font-bold">

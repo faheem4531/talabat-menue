@@ -6,7 +6,7 @@ import fire from "../_assets/svgs/fire.svg";
 import ItemCustomizer from "./_components/ItemCustomizer";
 import QuantityCounter from "../_components/QuantityCounter";
 import Addbtn from "../_components/Buttons/cartBtn";
-import backArrow from "../_assets/svgs/arrow-back.svg";
+// import backArrow from "../_assets/svgs/arrow-back.svg";
 import Link from "next/link";
 
 const itemsDetail = () => {
@@ -25,7 +25,7 @@ const itemsDetail = () => {
       <div className="flex justify-between p-4 items-center relative z-[1]">
         <Link href={"/"}>
           {/* <SideNavbar /> */}
-          <Image src={backArrow} alt="backArrow" />
+          {/* <Image src={backArrow} alt="backArrow" /> */}
         </Link>
         <div className="flex items-center">
           <div className="text-[#C84044] text-1xl">Ar</div>
@@ -87,7 +87,7 @@ const itemsDetail = () => {
               color="text-black p-1"
               bgColor="bg-white"
               count={1}
-              // delIconflag={true}
+            // delIconflag={true}
             />
           </div>
           <div>
