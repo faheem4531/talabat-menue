@@ -6,6 +6,8 @@ import fire from "../_assets/svgs/fire.svg";
 import ItemCustomizer from "./_components/ItemCustomizer";
 import QuantityCounter from "../_components/QuantityCounter";
 import Addbtn from "../_components/Buttons/cartBtn";
+import backArrow from "../_assets/svgs/arrow-back.svg";
+import Link from "next/link";
 
 const itemsDetail = () => {
   const ItemCust = [
@@ -21,7 +23,10 @@ const itemsDetail = () => {
   return (
     <div>
       <div className="flex justify-between p-4 items-center relative z-[1]">
-        <div>{/* <SideNavbar /> */}</div>
+        <Link href={"/"}>
+          {/* <SideNavbar /> */}
+          <Image src={backArrow} alt="backArrow" />
+        </Link>
         <div className="flex items-center">
           <div className="text-[#C84044] text-1xl">Ar</div>
           <div className="ml-2">
@@ -62,7 +67,9 @@ const itemsDetail = () => {
         </div>
         <div>
           {ItemCust.map((item, index) => {
-            return <ItemCustomizer title={item.title} id={item.id} key={index} />;
+            return (
+              <ItemCustomizer title={item.title} id={item.id} key={index} />
+            );
           })}
         </div>
         <div>
@@ -80,11 +87,18 @@ const itemsDetail = () => {
               color="text-black p-1"
               bgColor="bg-white"
               count={1}
-            // delIconflag={true}
+              // delIconflag={true}
             />
           </div>
           <div>
-            <Addbtn />
+            <Link href={"/addCart"}>
+              <Addbtn
+                btnText1="Add"
+                btnText2="96.00 SR"
+                btnline={true}
+                btnClasses=" justify-around rounded-lg px-4 py-2 mr-2 mb-2 bg-[#C02328] w-[152px] h-[33px] text-[12px] font-semibold"
+              />
+            </Link>
           </div>
         </div>
       </div>

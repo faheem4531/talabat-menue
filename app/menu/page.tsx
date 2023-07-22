@@ -1,18 +1,20 @@
-'use client';
-import SideNavbar from '../_components/SideNavbar/SideNavbar';
-import Image from 'next/image';
-import heroImg from '../_assets/pngs/heroImg.png';
-import inputHamburger from '../_assets/pngs/inputBurger.png';
-import searchIcon from '../_assets/pngs/inputSearch.png';
-import FlagIcon from '../_assets/pngs/navFlag.png';
-import CartWithItems from './_components/CartWithItems';
-import { useAppDispatch, useAppSelector } from '../_store/hooks';
-import { useEffect } from 'react';
+"use client";
+import SideNavbar from "../_components/SideNavbar/SideNavbar";
+import Image from "next/image";
+import heroImg from "../_assets/pngs/heroImg.png";
+import inputHamburger from "../_assets/pngs/inputBurger.png";
+import searchIcon from "../_assets/pngs/inputSearch.png";
+import FlagIcon from "../_assets/pngs/navFlag.png";
+import CartWithItems from "./_components/CartWithItems";
+import { useAppDispatch, useAppSelector } from "../_store/hooks";
+import { useEffect } from "react";
 import {
   getMenuCatageorys,
-} from '../_store/thunk/menuCatageory.thunk';
+} from "../_store/thunk/menuCatageory.thunk";
+import CartBtn from "../_components/Buttons/cartBtn";
+import Link from "next/link";
 
-export default function Test() {
+const Menu = () => {
   const dispatch = useAppDispatch();
   const { catagories }: { catagories: any } = useAppSelector((state) => state.menuCatageory);
 
@@ -57,7 +59,7 @@ export default function Test() {
               // placeholder={t("lookingFor")}
               // onChange={(e) => setSearchQuery(e.target.value)}
               style={{
-                boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
               }}
             />
             <Image
@@ -69,12 +71,22 @@ export default function Test() {
           </div>
         </div>
       </div>
-      <div className="mt-[39px] ml-[15px] font-semibold">
+      <div className="mt-[39px] ml-[15px] font-semibold pb-10">
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
         <CartWithItems categories={catagories ?? []} />
       </div>
+      <div className="px-4 fixed left-2 bottom-0 w-[362px]">
+        <Link href={"/itemsDetail"}>
+          <CartBtn
+            btnText1="Add"
+            btnText2="0.00 SR"
+            btnClasses=" justify-between items-center rounded-lg px-4 py-[8px] mr-2 mb-2 bg-[#00A559] w-full h-[37px] text-[12px] font-semibold"
+          />
+        </Link>
+      </div>
     </div>
   );
-}
+};
+export default Menu;

@@ -6,42 +6,35 @@ import QuantityCounter from "../../_components/QuantityCounter";
 import fire from "../../_assets/svgs/fire.svg";
 import emptyHeart from "../../_assets/svgs/emptyHeart.svg";
 import fillHeart from "../../_assets/svgs/filledHeart.svg";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
   const [isItemAdded, setIsItemAdded] = useState(false);
-  const handleAddToWishList = () => {
+  const router = useRouter();
+  const handleAddToWishList = (event: any) => {
     setIsItemAdded(!isItemAdded);
+    event.stopPropagation();
+  };
+
+  const handleItem = (event: any) => {
+    event.stopPropagation();
+  };
+
+  const handleItemClick = () => {
+    router.push("/itemsDetail");
   };
   return (
     <div
-      // id={menuItem?._id}
       className="content relative flex cursor-pointer border-b-[1px] border-[#0000000f] p-[14px] pt-[9px] shadow-4 pb-4"
-    // isBorder && "border-red",
-    // isItemSoldout && "pointer-events-none cursor-not-allowed opacity-40"
+      onClick={handleItemClick}
     >
-      {/* {(menuItem?.soldOut || !!menuItem?.sticker) && (
-        <span className="ribbon top-[3px]">
-          {isItemSoldout ? t("soldOut") : getSticker(menuItem?.sticker)}
-        </span>
-      )} */}
-
       <div className="flex grow flex-col justify-between">
         <div className="relative flex items-center justify-between">
           <h3 className="text-[12px] font-[500] text-[#494949]">
             {/* {lang === "ar" ? menuItem?.nameAr : menuItem?.name} */}
             {title}
           </h3>
-          {/* <div
-            onClick={handleAddToWishList}
-            className="absolute right-10 z-[1]"
-          >
-            {isStar && (
-              <ImStarFull
-                className="h-5 w-5 cursor-pointer"
-                color="rgb(255,201,14)"
-              />
-            )}
-          </div> */}
         </div>
         <h4 className="my-1 line-clamp-2 text-[8px] text-[#00000070] w-52">
           {/* {lang === "ar" ? menuItem?.description_ar : menuItem?.description} */}
@@ -61,12 +54,14 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
             {/* {menuItem?.price}  */}
             {price}
           </span>
-          <QuantityCounter
-            color="text-white"
-            bgColor="bg-[#C84044]"
-            count={0}
-            delIconflag={true}
-          />
+          <div onClick={handleItem}>
+            <QuantityCounter
+              color="text-white"
+              bgColor="bg-[#C84044]"
+              count={0}
+              delIconflag={true}
+            />
+          </div>
         </div>
       </div>
       <div className="mr-2.5 relative">
@@ -78,7 +73,6 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
             maxWidth: "84px",
             borderRadius: 10,
             objectFit: "cover",
-
           }}
           width={400}
           height={300}
