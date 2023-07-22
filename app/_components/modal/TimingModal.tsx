@@ -37,9 +37,9 @@ const TimingModal = () => {
       <h4 className="text-center mt-6 mb-10 text-xs font-[600] text-[#494949]">
         Opening Hours
       </h4>
-      {hoursItem.map((item) => {
+      {hoursItem.map((item, index) => {
         return (
-          <div className="bg-[#00000036] py-[7px] mb-[2px]">
+          <div className="bg-[#00000036] py-[7px] mb-[2px]" key={index}>
             <div className="flex justify-center text-xs font-[400] text-[#494949]">
               <div className="flex justify-between w-44">
                 <div className="text-left ">{item.day} :</div>

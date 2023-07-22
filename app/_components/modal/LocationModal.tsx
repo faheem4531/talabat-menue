@@ -23,9 +23,9 @@ const LocationModal = () => {
   ];
   return (
     <div>
-      {loc.map((item) => {
+      {loc.map((item, index) => {
         return (
-          <div className="flex items-center mb-[18px]">
+          <div className="flex items-center mb-[18px]" key={index}>
             <div>
               <Image src={locationIcon} alt="locationIcon" />
             </div>

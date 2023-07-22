@@ -33,9 +33,10 @@ const addCart = () => {
         </div>
       </div>
       <div className="mt-[30px] cartItemsMain">
-        {cartItems.map((items) => {
+        {cartItems.map((items, index) => {
           return (
             <CartItem
+              key={index}
               title={items.title}
               price={items.price}
               cartImg={items.cartImg}

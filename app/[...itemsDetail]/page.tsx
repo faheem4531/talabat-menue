@@ -12,29 +12,16 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getItem } from '../_store/thunk/item.thunk';
 
-const itemsDetail = ({ params: { itemsDetail } }: any) => {
+const itemsDetail = ({ params }: any) => {
 
   const dispatch = useAppDispatch();
   const { data } = useAppSelector(state => state.item)
-  const [itemId, setItemId] = useState<string>(itemsDetail[1] ?? '');
+  const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? '');
 
   useEffect(() => {
     dispatch(getItem(itemId))
-  }, [itemId])
+  }, [itemId, dispatch])
 
-  console.log(data, 'item datadatadata');
-
-
-  const ItemCust = [
-    {
-      title: "Topping",
-      id: "_1",
-    },
-    {
-      title: "Souces",
-      id: "_2",
-    },
-  ];
   return (
     <div>
       <div className="flex justify-between p-4 items-center relative z-[1]">
