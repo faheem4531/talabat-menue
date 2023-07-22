@@ -27,9 +27,8 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
         >
           {hamBurgerIcon ? (
             <Image src={colorHamIcon} alt="HamburgerIcon" />
-            null
           ) : (
-          <Image src={HamburgerIcon} alt="HamburgerIcon" />
+            <Image src={HamburgerIcon} alt="HamburgerIcon" />
           )}
         </button>
       </div>
