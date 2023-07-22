@@ -1,9 +1,14 @@
-'use client';
-import React, { useState } from 'react';
-import HamburgerIcon from '../../_assets/pngs/hamBurger.png';
-import Image from 'next/image';
+"use client";
+import React, { useState } from "react";
+import HamburgerIcon from "../../_assets/pngs/hamBurger.png";
+import colorHamIcon from "../../_assets/svgs/colorHamIcon.svg";
+import Image from "next/image";
 
-const SideNavbar = () => {
+interface Props {
+  hamBurgerIcon?: boolean;
+}
+
+const SideNavbar = ({ hamBurgerIcon }: Props) => {
   const [isSideNavbarOpen, setIsSideNavbarOpen] = useState(false);
 
   const handleNavbarToggle = () => {
@@ -20,14 +25,17 @@ const SideNavbar = () => {
           aria-controls="drawer-navigation"
           onClick={handleNavbarToggle}
         >
-          <Image src={HamburgerIcon} alt="HamburgerIcon" />
+          {hamBurgerIcon ? (
+            <Image src={colorHamIcon} alt="HamburgerIcon" />
+          ) : (
+            <Image src={HamburgerIcon} alt="HamburgerIcon" />
+          )}
         </button>
       </div>
       <div
         id="drawer-navigation"
-        className={`fixed top-0 left-0 z-40 w-80 h-screen p-4 overflow-y-auto rounded-r-xl transition-transform ${
-          isSideNavbarOpen ? 'translate-x-0' : '-translate-x-full'
-        } bg-white dark:bg-gray-800`}
+        className={`fixed top-0 left-0 z-40 w-80 h-screen p-4 overflow-y-auto rounded-r-xl transition-transform ${isSideNavbarOpen ? 'translate-x-0' : '-translate-x-full'
+          } bg-white dark:bg-gray-800`}
         // tabindex="-1"
         aria-labelledby="drawer-navigation-label"
       >

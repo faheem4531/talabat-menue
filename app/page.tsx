@@ -1,11 +1,11 @@
-export default function Home() {
-  const TestingComponent = () => {
-    return <div>Testing Component</div>;
-  };
+import React from "react";
+import Menu from "./menu/page";
+
+const Home = () => {
   return (
     <div>
-      <TestingComponent />
+      <Menu />
     </div>
   );
-  // return <div>hhhekjioh</div>;
-}
+};
+export default Home;
