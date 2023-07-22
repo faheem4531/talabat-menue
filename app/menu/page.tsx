@@ -16,7 +16,9 @@ import { clearCatagories } from '../_store/reducers/menuCatageory';
 
 export default function Test() {
   const dispatch = useAppDispatch();
-  const { data, catagories }: { data: any, catagories: any } = useAppSelector((state) => state.menuCatageory);
+  const { data, catagories }: { data: any; catagories: any } = useAppSelector(
+    (state) => state.menuCatageory
+  );
   const { docs }: { docs: any } = { ...data };
 
   console.log(catagories, 'catagories');
@@ -26,9 +28,7 @@ export default function Test() {
     dispatch(clearCatagories());
     docs &&
       docs.length &&
-      docs.map((category: any) =>
-        dispatch(getCatageorysWithItems(category))
-      );
+      docs.map((category: any) => dispatch(getCatageorysWithItems(category)));
   }, [dispatch]);
 
   return (
@@ -47,6 +47,7 @@ export default function Test() {
         </div>
         <div className="h-64 absolute top-0 z-[-1] heroImgMain">
           <Image
+            priority={true}
             src={heroImg}
             alt="Restaurant Placeholder"
             className="heroImg"
@@ -74,6 +75,7 @@ export default function Test() {
               src={inputHamburger}
               alt="hamburger-menu-icon"
               className="absolute bottom-5 right-[12px] top-2.5 h-3 w-3 "
+              style={{ width: 'auto', height: 'auto' }}
             />
           </div>
         </div>
@@ -82,9 +84,7 @@ export default function Test() {
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
-        <CartWithItems
-          categories={catagories ?? []}
-        />
+        <CartWithItems categories={catagories ?? []} />
       </div>
     </div>
   );

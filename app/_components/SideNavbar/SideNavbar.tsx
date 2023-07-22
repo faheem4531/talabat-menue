@@ -1,7 +1,7 @@
-"use client";
-import React, { useState } from "react";
-import HamburgerIcon from "../../_assets/pngs/hamBurger.png";
-import Image from "next/image";
+'use client';
+import React, { useState } from 'react';
+import HamburgerIcon from '../../_assets/pngs/hamBurger.png';
+import Image from 'next/image';
 
 const SideNavbar = () => {
   const [isSideNavbarOpen, setIsSideNavbarOpen] = useState(false);
@@ -26,7 +26,7 @@ const SideNavbar = () => {
       <div
         id="drawer-navigation"
         className={`fixed top-0 left-0 z-40 w-80 h-screen p-4 overflow-y-auto rounded-r-xl transition-transform ${
-          isSideNavbarOpen ? "translate-x-0" : "-translate-x-full"
+          isSideNavbarOpen ? 'translate-x-0' : '-translate-x-full'
         } bg-white dark:bg-gray-800`}
         // tabindex="-1"
         aria-labelledby="drawer-navigation-label"
@@ -52,9 +52,9 @@ const SideNavbar = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
           <span className="sr-only">Close menu</span>
@@ -173,9 +173,9 @@ const SideNavbar = () => {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
                   />
                 </svg>
