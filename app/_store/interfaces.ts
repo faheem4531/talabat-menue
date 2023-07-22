@@ -15,6 +15,12 @@ export interface MenuCatageoryState {
   error: string | null;
 }
 
+export interface CartState {
+  data: any;
+  loading: boolean;
+  error: string | null;
+}
+
 export interface test {
   id: string;
   name: string;
