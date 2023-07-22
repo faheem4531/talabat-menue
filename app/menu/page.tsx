@@ -21,8 +21,6 @@ export default function Test() {
   );
   const { docs }: { docs: any } = { ...data };
 
-  console.log(catagories, 'catagories');
-
   useEffect(() => {
     dispatch(getMenuCatageorys());
     dispatch(clearCatagories());
