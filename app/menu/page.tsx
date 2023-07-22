@@ -77,7 +77,7 @@ const Menu = () => {
         </h5>
         <CartWithItems categories={catagories ?? []} />
       </div>
-      <div className="px-4 fixed left-2 bottom-0 w-[362px]">
+      {/* <div className="px-4 fixed left-2 bottom-0 w-[362px]">
         <Link href={"/itemsDetail"}>
           <CartBtn
             btnText1="Add"
@@ -85,7 +85,7 @@ const Menu = () => {
             btnClasses=" justify-between items-center rounded-lg px-4 py-[8px] mr-2 mb-2 bg-[#00A559] w-full h-[37px] text-[12px] font-semibold"
           />
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

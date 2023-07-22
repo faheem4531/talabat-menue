@@ -3,6 +3,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import manuCatageoryReducer from './reducers/menuCatageory';
 import cartReducer from './reducers/cartReducer';
+import favoritesReducer from './reducers/favoritesReducer';
 
 const persistConfig = {
   key: 'root',
@@ -11,7 +12,8 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   menuCatageory: manuCatageoryReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  favorites: favoritesReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

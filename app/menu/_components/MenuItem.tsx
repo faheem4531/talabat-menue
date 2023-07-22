@@ -1,33 +1,64 @@
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import heroImg from "../../_assets/pngs/heroImg.png";
-import QuantityCounter from "../../_components/QuantityCounter";
-import fire from "../../_assets/svgs/fire.svg";
-import emptyHeart from "../../_assets/svgs/emptyHeart.svg";
-import fillHeart from "../../_assets/svgs/filledHeart.svg";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+'use client';
+import React, { useState } from 'react';
+import Image from 'next/image';
+import heroImg from '../../_assets/pngs/heroImg.png';
+import QuantityCounter from '../../_components/QuantityCounter';
+import fire from '../../_assets/svgs/fire.svg';
+import emptyHeart from '../../_assets/svgs/emptyHeart.svg';
+import fillHeart from '../../_assets/svgs/filledHeart.svg';
+import { useAppSelector, useAppDispatch } from '@/app/_store/hooks';
+import { updateFavorites } from '@/app/_store/reducers/favoritesReducer';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import router from 'next/router';
 
-const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
-  const [isItemAdded, setIsItemAdded] = useState(false);
-  const router = useRouter();
-  const handleAddToWishList = (event: any) => {
-    setIsItemAdded(!isItemAdded);
-    event.stopPropagation();
+const MenuItem = ({
+  id,
+  itemsImg,
+  title,
+  discription,
+  calerioes,
+  price,
+}: any) => {
+
+  const dispatch = useAppDispatch();
+  const { data }: { data: string[] } = useAppSelector(
+    (state) => state.favorites
+  );
+
+  const showToastMessage = (id: string) => {
+    const result = data.find((item) => item === id);
+    if (result === undefined) {
+      toast.success('Added to Favorites!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    } else {
+      toast.error('Removed from Favorites!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+  };
+
+  const updatingFavorites = () => {
+    dispatch(updateFavorites(id));
   };
 
   const handleItem = (event: any) => {
     event.stopPropagation();
   };
 
-  const handleItemClick = () => {
-    router.push("/itemsDetail");
+  const checkItemInFavorites = (id: string) => {
+    const result = data.find((item) => item === id);
+    if (result !== undefined) {
+      return false;
+    } else {
+      return true;
+    }
   };
   return (
     <div
       className="content relative flex cursor-pointer border-b-[1px] border-[#0000000f] p-[14px] pt-[9px] shadow-4 pb-4"
-      onClick={handleItemClick}
+    // onClick={() => router.push("/itemsDetail")}
     >
       <div className="flex grow flex-col justify-between">
         <div className="relative flex items-center justify-between">
@@ -67,10 +98,10 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
       <div className="mr-2.5 relative">
         <Image
           style={{
-            minHeight: "84px",
-            maxHeight: "84px",
-            minWidth: "84px",
-            maxWidth: "84px",
+            minHeight: '84px',
+            maxHeight: '84px',
+            minWidth: '84px',
+            maxWidth: '84px',
             borderRadius: 10,
             objectFit: "cover",
           }}
@@ -79,13 +110,21 @@ const MenuItem = ({ itemsImg, title, discription, calerioes, price }: any) => {
           alt="{menuItem?.name}"
           src={itemsImg}
         />
-        <div onClick={handleAddToWishList}>
-          {!isItemAdded ? (
-            <Image
-              src={emptyHeart}
-              alt="emptyHeartIcon"
-              className="absolute bottom-[-18px] right-[-12px]"
-            />
+        <div
+          onClick={() => {
+            updatingFavorites();
+            showToastMessage(id);
+          }}
+        >
+          {!checkItemInFavorites(id) ? (
+            <>
+              <Image
+                src={emptyHeart}
+                alt="emptyHeartIcon"
+                className="absolute bottom-[-18px] right-[-12px]"
+              />
+              <ToastContainer autoClose={2000} theme="colored" />
+            </>
           ) : (
             <Image
               src={fillHeart}
