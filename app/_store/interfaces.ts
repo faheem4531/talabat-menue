@@ -1,12 +1,6 @@
 export interface RootState {
-  test: TestState;
   menuCatageory: MenuCatageoryState
-}
-
-export interface TestState {
-  test: test;
-  loading: boolean;
-  error: string | null;
+  cart: CartState
 }
 export interface MenuCatageoryState {
   data: any;
