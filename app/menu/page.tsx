@@ -2,17 +2,21 @@
 import SideNavbar from "../_components/SideNavbar/SideNavbar";
 import Image from "next/image";
 import heroImg from "../_assets/pngs/heroImg.png";
-import inputHamburger from "../_assets/pngs/inputBurger.png";
+import logo from "../_assets/svgs/logo.svg";
 import searchIcon from "../_assets/pngs/inputSearch.png";
 import FlagIcon from "../_assets/pngs/navFlag.png";
+import locationIcon from "../_assets/svgs/location.svg";
+import clock from "../_assets/svgs/clock.svg";
 import CartWithItems from "./_components/CartWithItems";
+import Modal from "../_components/modal/Modal";
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   getMenuCatageorys,
 } from "../_store/thunk/menuCatageory.thunk";
-import CartBtn from "../_components/Buttons/cartBtn";
-import Link from "next/link";
+import LocationModal from "../_components/modal/LocationModal";
+import TimingModal from "../_components/modal/TimingModal";
+import InputModal from "../_components/modal/InputModal";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
@@ -21,6 +25,10 @@ const Menu = () => {
   useEffect(() => {
     dispatch(getMenuCatageorys());
   }, [dispatch]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hourModalOpen, setHourModalOpen] = useState(false);
+  const [locModalOpen, setLocModalOpen] = useState(false);
 
   return (
     <div>
@@ -45,28 +53,64 @@ const Menu = () => {
           />
         </div>
         <div className="z-10">
-          <div className="relative top-[162px] flex w-[365px] m-auto">
+          <div className="relative top-[130px] flex w-[365px] m-auto">
             {/* <AiOutlineSearch className="absolute bottom-5 left-[12px] top-1/2 h-5 w-5 -translate-y-1/2 transform fill-[#57606E]" /> */}
-            <Image
-              src={searchIcon}
-              alt="hamburger-menu-icon"
-              className="absolute bottom-5 left-[17px] top-1/2 h-3 w-3 -translate-y-1/2 transform "
-            />
-            <input
-              // ref={searchRef}
-              className=" h-[33px] w-full rounded-5px border border-transparent px-10  text-xs font-sm shadow-10 transition-all duration-300 ease-in-out focus:border-red focus:outline-none rounded-[3px] shadow-lg text-black placeholder-black"
-              placeholder="What are you looking for"
-              // placeholder={t("lookingFor")}
-              // onChange={(e) => setSearchQuery(e.target.value)}
+
+            <div
+              className="bg-white flex h-[71px] w-full rounded-5px border border-transparent px-2 py-[10px] text-xs font-sm shadow-10 transition-all duration-300 ease-in-out focus:border-red focus:outline-none rounded-[3px] shadow-lg text-black placeholder-black"
               style={{
                 boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
               }}
-            />
+            >
+              <Image
+                src={logo}
+                alt="hamburger-menu-icon"
+                className=" h-[51px] w-12 mr-[14px]"
+                width={400}
+                height={300}
+              />
+              <div>
+                <div className="flex mt-1">
+                  <h4 className="text-xs font-[400]">Gulf Madina </h4>
+                  <div className="ml-[32px] text-[9px] font-[400] ">
+                    Today : Open 24 Hours
+                  </div>
+                </div>
+                <div className="flex mt-[14px]">
+                  <div
+                    className="flex gap-3 cursor-pointer"
+                    onClick={() => setHourModalOpen(true)}
+                  >
+                    <h4 className="text-[9px] font-[400] text-black ">
+                      Opening Hours
+                    </h4>
+                    <Image
+                      src={clock}
+                      alt="hamburger-menu-icon"
+                      className="cursor-pointer  w-3 h-[14px] "
+                    />
+                  </div>
+                  <div
+                    className="flex gap-3 cursor-pointer"
+                    onClick={() => setLocModalOpen(true)}
+                  >
+                    <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
+                      Branches
+                    </div>
+                    <Image
+                      src={locationIcon}
+                      alt="hamburger-menu-icon"
+                      className="cursor-pointer  w-3 h-[14px]"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
             <Image
-              src={inputHamburger}
+              src={searchIcon}
               alt="hamburger-menu-icon"
-              className="absolute bottom-5 right-[12px] top-2.5 h-3 w-3 "
-              style={{ width: 'auto', height: 'auto' }}
+              className="cursor-pointer absolute bottom-5 right-[17px] top-1/2 h-3 w-3 -translate-y-1/2 transform "
+              onClick={() => setIsModalOpen(true)}
             />
           </div>
         </div>
@@ -77,15 +121,42 @@ const Menu = () => {
         </h5>
         <CartWithItems categories={catagories ?? []} />
       </div>
-      {/* <div className="px-4 fixed left-2 bottom-0 w-[362px]">
-        <Link href={"/itemsDetail"}>
-          <CartBtn
-            btnText1="Add"
-            btnText2="0.00 SR"
-            btnClasses=" justify-between items-center rounded-lg px-4 py-[8px] mr-2 mb-2 bg-[#00A559] w-full h-[37px] text-[12px] font-semibold"
-          />
-        </Link>
-      </div> */}
+
+      <Modal
+        modalCSS="items-start"
+        cancelCSS="right-0"
+        modalPosition="items-start"
+        isModalOpen={isModalOpen}
+        handleModalToggle={() => setIsModalOpen(!isModalOpen)}
+      >
+        <InputModal />
+      </Modal>
+
+      {/* Hours Modal */}
+      <Modal
+        isModalOpen={hourModalOpen}
+        handleModalToggle={() => setHourModalOpen(!hourModalOpen)}
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6"
+      >
+        <div>
+          <TimingModal />
+        </div>
+      </Modal>
+
+      {/* location modal */}
+      <Modal
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        isModalOpen={locModalOpen}
+        handleModalToggle={() => setLocModalOpen(!locModalOpen)}
+      >
+        <div className="mt-[59px]">
+          <LocationModal />
+        </div>
+      </Modal>
     </div>
   );
 };

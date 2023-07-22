@@ -116,7 +116,8 @@ const MenuItem = ({
           src={itemsImg}
         />
         <div
-          onClick={() => {
+          onClick={(event) => {
+            event.stopPropagation();
             updatingFavorites();
             showToastMessage(id);
           }}
