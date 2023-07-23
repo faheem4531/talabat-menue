@@ -12,9 +12,11 @@ export interface MenuCatageoryState {
 }
 
 export interface CartState {
-  data: any;
-  loading: boolean;
-  error: string | null;
+  cart: any,
+  items: any[],
+  discount: string,
+  userMustAuth: boolean,
+  loading: boolean
 }
 
 export interface itemState {
@@ -24,9 +26,4 @@ export interface itemState {
 }
 export interface FavoriteState {
   data: string[]
-}
-
-export interface test {
-  id: string;
-  name: string;
 }

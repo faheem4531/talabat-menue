@@ -11,6 +11,7 @@ import { updateFavorites } from '@/app/_store/reducers/favoritesReducer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
+import { addItem, removeItem } from '@/app/_store/reducers/cartReducer';
 
 const MenuItem = ({
   id,
@@ -26,6 +27,10 @@ const MenuItem = ({
   const { data }: { data: string[] } = useAppSelector(
     (state) => state.favorites
   );
+  const { items } = useAppSelector(
+    (state) => state.cart
+  );
+
 
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
@@ -117,6 +122,15 @@ const MenuItem = ({
         />
         <div
           onClick={(event) => {
+            // dispatch(addItem({
+            //   additions: [],
+            //   notes: '',
+            //   quantity: 1,
+            //   menuItem: {
+            //     menuItemId: id
+            //   }
+            // }))
+            // dispatch(removeItem({ id }))
             event.stopPropagation();
             updatingFavorites();
             showToastMessage(id);
