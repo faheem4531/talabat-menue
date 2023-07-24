@@ -244,7 +244,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
             </svg> */}
 
             <a
-              href="www.instagram.com/sweetworldpastries"
+              href="https://www.instagram.com/sweetworldpastries"
               target="_blank"
               rel="noopener noreferrer"
             ><svg className="cursor-pointer" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -253,7 +253,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
             </a>
             
             <a
-            href="aalmuwallad@gmail.com"
+            href="https://aalmuwallad@gmail.com"
             target="_blank"
             rel="noopener noreferrer"
             ><svg className="cursor-pointer" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -266,7 +266,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
             </svg> */}
 
             <a
-            href="twitter.com/remal_alkhararh"
+            href="https://twitter.com/remal_alkhararh"
             target="_blank"
             rel="noopener noreferrer"
             ><svg className="cursor-pointer" width="22" height="18" viewBox="0 0 22 18" fill="none" xmlns="http://www.w3.org/2000/svg">
