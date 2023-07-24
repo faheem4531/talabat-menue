@@ -3,6 +3,13 @@ import React, { useState } from "react";
 import HamburgerIcon from "../../_assets/pngs/hamBurger.png";
 import colorHamIcon from "../../_assets/svgs/colorHamIcon.svg";
 import Image from "next/image";
+import Modal from "../modal/Modal";
+import Link from "next/link";
+import LoginModal from "../modal/LoginModal";
+import LocationModal from "../modal/LocationModal";
+import TimingModal from "../modal/TimingModal";
+import AboutModal from "../modal/AboutModal";
+import OurGoalsModal from "../modal/OurGoalsModal";
 
 interface Props {
   hamBurgerIcon?: boolean;
@@ -10,6 +17,11 @@ interface Props {
 
 const SideNavbar = ({ hamBurgerIcon }: Props) => {
   const [isSideNavbarOpen, setIsSideNavbarOpen] = useState(false);
+  const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
+  const [locModalOpen, setLocModalOpen] = useState(false);
+  const [hourModalOpen, setHourModalOpen] = useState(false);
+  const [aboutModalOpen, setaboutModalOpen] = useState(false);
+  const [ourGoasModalOpen, setourGoasModalOpen] = useState(false);
 
   const handleNavbarToggle = () => {
     setIsSideNavbarOpen(!isSideNavbarOpen);
@@ -34,8 +46,9 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
       </div>
       <div
         id="drawer-navigation"
-        className={`fixed top-0 left-0 z-40 w-80 h-screen p-4 overflow-y-auto rounded-r-xl transition-transform ${isSideNavbarOpen ? 'translate-x-0' : '-translate-x-full'
-          } bg-white dark:bg-gray-800`}
+        className={`fixed top-0 left-0 z-40 w-80 h-screen p-4 overflow-y-auto rounded-r-xl transition-transform ${
+          isSideNavbarOpen ? "translate-x-0" : "-translate-x-full"
+        } bg-white dark:bg-gray-800`}
         // tabindex="-1"
         aria-labelledby="drawer-navigation-label"
       >
@@ -69,10 +82,10 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
         </button>
         <div className="py-4 overflow-y-auto">
           <ul className="space-y-2 font-medium">
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <li onClick={() => setisLoginModalOpen(true)}>
+              <div
+                className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -85,12 +98,13 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
                 <span className="ml-4">Login</span>
-              </a>
+              </div>
             </li>
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              <Link
+                href="/"
+                className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -104,16 +118,10 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                 <span className="flex-1 ml-4 whitespace-nowrap">
                   See The Menu
                 </span>
-                <span className="inline-flex items-center justify-center px-2 ml-4 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                  Pro
-                </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
+              <div className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                   aria-hidden="true"
@@ -126,16 +134,13 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                 <span className="flex-1 ml-4 whitespace-nowrap">
                   Pickup Orders
                 </span>
-                <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-4 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-4 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
-                </span>
-              </a>
+                </span> */}
+              </div>
             </li>
             <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
+              <div className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                   aria-hidden="true"
@@ -148,12 +153,12 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                 <span className="flex-1 ml-4 whitespace-nowrap">
                   Deliver Order
                 </span>
-              </a>
+              </div>
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <li onClick={() => setLocModalOpen(true)}>
+              <div
+                className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -165,12 +170,12 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                   <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z" />
                 </svg>
                 <span className="flex-1 ml-4 whitespace-nowrap">Branches</span>
-              </a>
+              </div>
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <li onClick={() => setHourModalOpen(true)}>
+              <div
+                className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -190,12 +195,12 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                 <span className="flex-1 ml-4 whitespace-nowrap">
                   Opening Hours
                 </span>
-              </a>
+              </div>
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <li onClick={() => setaboutModalOpen(true)}>
+              <div
+                className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -209,12 +214,12 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                   <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
                 </svg>
                 <span className="flex-1 ml-4 whitespace-nowrap">About Us</span>
-              </a>
+              </div>
             </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center p-2 py-4 text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+            <li onClick={() => setourGoasModalOpen(true)}>
+              <div
+                className="flex items-center p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -228,11 +233,71 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                   <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .49-.263l6.118-6.117a2.884 2.884 0 0 0-4.079-4.078l-6.117 6.117a.96.96 0 0 0-.263.491l-.679 3.4A.961.961 0 0 0 8.961 16Zm7.477-9.8a.958.958 0 0 1 .68-.281.961.961 0 0 1 .682 1.644l-.315.315-1.36-1.36.313-.318Zm-5.911 5.911 4.236-4.236 1.359 1.359-4.236 4.237-1.7.339.341-1.699Z" />
                 </svg>
                 <span className="flex-1 ml-4 whitespace-nowrap">Our Goals</span>
-              </a>
+              </div>
             </li>
           </ul>
         </div>
       </div>
+
+      <Modal
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        isModalOpen={isLoginModalOpen}
+        handleModalToggle={() => setisLoginModalOpen(!isLoginModalOpen)}
+      >
+        <div className="mt-[59px]">
+          <LoginModal />
+        </div>
+      </Modal>
+
+      <Modal
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        isModalOpen={locModalOpen}
+        handleModalToggle={() => setLocModalOpen(!locModalOpen)}
+      >
+        <div className="mt-[59px]">
+          <LocationModal />
+        </div>
+      </Modal>
+
+      <Modal
+        isModalOpen={hourModalOpen}
+        handleModalToggle={() => setHourModalOpen(!hourModalOpen)}
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6"
+      >
+        <div className="mt-[59px]">
+          <TimingModal />
+        </div>
+      </Modal>
+
+      <Modal
+        isModalOpen={aboutModalOpen}
+        handleModalToggle={() => setaboutModalOpen(!aboutModalOpen)}
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6"
+      >
+        <div className="mt-[59px]">
+          <AboutModal />
+        </div>
+      </Modal>
+
+      <Modal
+        isModalOpen={ourGoasModalOpen}
+        handleModalToggle={() => setourGoasModalOpen(!ourGoasModalOpen)}
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6"
+      >
+        <div className="mt-[59px]">
+          <OurGoalsModal />
+        </div>
+      </Modal>
     </div>
   );
 };
