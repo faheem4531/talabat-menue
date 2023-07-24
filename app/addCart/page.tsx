@@ -26,7 +26,7 @@ const addCart = () => {
           <SideNavbar hamBurgerIcon={true} />
         </div>
         <div className="flex items-center">
-          <div className="text-[#C84044] text-1xl">Ar</div>
+          <div className="text-[#C84044] font-semibold text-1xl">AR</div>
           <div className="ml-2">
             <Image src={FlagIcon} alt="FlagIcon" />
           </div>
@@ -75,7 +75,7 @@ const addCart = () => {
           <div className="text-[15px] font-[400] pr-1 text-white">20 SAR</div>
         </div>
       </div>
-      <div className="px-4 mt-[53px] mb-6">
+      <div className="px-2 mt-[53px] mb-6">
         <CartBtn
           btnText1="Confirm Order"
           btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"

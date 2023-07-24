@@ -11,16 +11,16 @@ import CartWithItems from "./_components/CartWithItems";
 import Modal from "../_components/modal/Modal";
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { useEffect, useState } from "react";
-import {
-  getMenuCatageorys,
-} from "../_store/thunk/menuCatageory.thunk";
+import { getMenuCatageorys } from "../_store/thunk/menuCatageory.thunk";
 import LocationModal from "../_components/modal/LocationModal";
 import TimingModal from "../_components/modal/TimingModal";
 import InputModal from "../_components/modal/InputModal";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
-  const { catagories }: { catagories: any } = useAppSelector((state) => state.menuCatageory);
+  const { catagories }: { catagories: any } = useAppSelector(
+    (state) => state.menuCatageory
+  );
 
   useEffect(() => {
     dispatch(getMenuCatageorys());
@@ -38,7 +38,7 @@ const Menu = () => {
             <SideNavbar />
           </div>
           <div className="flex items-center">
-            <div className="text-white text-1xl">Ar</div>
+            <div className="text-white font-semibold text-1xl">AR</div>
             <div className="ml-2">
               <Image src={FlagIcon} alt="FlagIcon" />
             </div>
