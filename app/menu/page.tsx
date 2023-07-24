@@ -18,6 +18,7 @@ import TimingModal from "../_components/modal/TimingModal";
 import InputModal from "../_components/modal/InputModal";
 import { setSelectedRestaurant } from "../_store/reducers/restaurantReducer";
 import { useTranslation } from "react-i18next";
+import OTPModal from "../_components/modal/OTPModal";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
@@ -37,6 +38,7 @@ const Menu = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hourModalOpen, setHourModalOpen] = useState(false);
   const [locModalOpen, setLocModalOpen] = useState(false);
+  const [otpModalOpen, setOtpModalOpen] = useState(false);
 
   useEffect(() => {
     dispatch(getMenuCatageorys());
@@ -137,6 +139,7 @@ const Menu = () => {
         </h5>
         <CartWithItems categories={catagories ?? []} />
       </div>
+      <button onClick={() => setOtpModalOpen(true)}>hello</button>
 
       <Modal
         modalCSS="items-start"
@@ -171,6 +174,17 @@ const Menu = () => {
       >
         <div className="mt-[59px]">
           <LocationModal restaurants={restaurants} />
+        </div>
+      </Modal>
+      <Modal
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        isModalOpen={otpModalOpen}
+        handleModalToggle={() => setOtpModalOpen(!otpModalOpen)}
+      >
+        <div className="mt-[59px]">
+          <OTPModal />
         </div>
       </Modal>
     </div>
