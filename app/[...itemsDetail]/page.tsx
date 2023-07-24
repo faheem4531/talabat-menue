@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import heroImg from "../_assets/pngs/detailHeroImg.png";
@@ -9,18 +9,17 @@ import QuantityCounter from "../_components/QuantityCounter";
 import Addbtn from "../_components/Buttons/cartBtn";
 import backArrow from "../_assets/svgs/arrow-back.svg";
 import Link from "next/link";
-import { useAppDispatch, useAppSelector } from '../_store/hooks';
-import { getItem } from '../_store/thunk/item.thunk';
+import { useAppDispatch, useAppSelector } from "../_store/hooks";
+import { getItem } from "../_store/thunk/item.thunk";
 
 const ItemsDetail = ({ params }: any) => {
-
   const dispatch = useAppDispatch();
-  const { data } = useAppSelector(state => state.item)
-  const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? '');
+  const { data } = useAppSelector((state) => state.item);
+  const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? "");
 
   useEffect(() => {
-    dispatch(getItem(itemId))
-  }, [itemId, dispatch])
+    dispatch(getItem(itemId));
+  }, [itemId, dispatch]);
 
   return (
     <div>
@@ -30,7 +29,7 @@ const ItemsDetail = ({ params }: any) => {
           <Image src={backArrow} alt="backArrow" />
         </Link>
         <div className="flex items-center">
-          <div className="text-[#C84044] text-1xl">Ar</div>
+          <div className="text-[#C84044] font-semibold text-1xl">AR</div>
           <div className="ml-2">
             <Image src={FlagIcon} alt="FlagIcon" />
           </div>
@@ -51,11 +50,10 @@ const ItemsDetail = ({ params }: any) => {
         <div>
           <div className="border-t-[1px] border-[#0000000f] pt-2">
             <h4 className="text-[15px] font-[500] mb-[11px] tracking-wide">
-              {data?.name ?? ''}
+              {data?.name ?? ""}
             </h4>
             <div className="text-[9px] font-[500] text-[#00000070]">
-
-              <div>{data?.description ?? ''}</div>
+              <div>{data?.description ?? ""}</div>
               {/* <div className="mt-1">1 garlic clove, crushed</div> */}
               {/* <div className="mt-1">2 spring onions 1 medium tomato</div> */}
             </div>
@@ -73,7 +71,12 @@ const ItemsDetail = ({ params }: any) => {
         <div>
           {(data?.additions ?? []).map((item: any, index: number) => {
             return (
-              <ItemCustomizer title={item.name} id={item.id} key={index} options={item?.options ?? []} />
+              <ItemCustomizer
+                title={item.name}
+                id={item.id}
+                key={index}
+                options={item?.options ?? []}
+              />
             );
           })}
         </div>
@@ -92,7 +95,7 @@ const ItemsDetail = ({ params }: any) => {
               color="text-black p-1"
               bgColor="bg-white"
               count={1}
-            // delIconflag={true}
+              // delIconflag={true}
             />
           </div>
           <div>

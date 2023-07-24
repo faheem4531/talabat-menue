@@ -48,7 +48,7 @@ const Menu = () => {
             <SideNavbar />
           </div>
           <div className="flex items-center">
-            <div className="text-white text-1xl">Ar</div>
+            <div className="text-white font-semibold text-1xl">AR</div>
             <div className="ml-2">
               <Image src={FlagIcon} alt="FlagIcon" />
             </div>
