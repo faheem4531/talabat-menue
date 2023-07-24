@@ -2,7 +2,8 @@ export interface RootState {
   menuCatageory: MenuCatageoryState,
   cart: CartState,
   favorites: FavoriteState;
-  item: itemState
+  item: itemState;
+  restaurant: RestaurantState
 }
 export interface MenuCatageoryState {
   data: any;
@@ -26,4 +27,10 @@ export interface itemState {
 }
 export interface FavoriteState {
   data: string[]
+}
+export interface RestaurantState{
+  data: any[];
+  loading: boolean;
+  error: string | null;
+  selectedId: string
 }

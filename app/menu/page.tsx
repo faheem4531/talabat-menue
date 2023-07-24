@@ -1,34 +1,44 @@
-"use client";
-import SideNavbar from "../_components/SideNavbar/SideNavbar";
-import Image from "next/image";
-import heroImg from "../_assets/pngs/heroImg.png";
-import logo from "../_assets/svgs/logo.svg";
-import searchIcon from "../_assets/pngs/inputSearch.png";
-import FlagIcon from "../_assets/pngs/navFlag.png";
-import locationIcon from "../_assets/svgs/location.svg";
-import clock from "../_assets/svgs/clock.svg";
-import CartWithItems from "./_components/CartWithItems";
-import Modal from "../_components/modal/Modal";
-import { useAppDispatch, useAppSelector } from "../_store/hooks";
-import { useEffect, useState } from "react";
-import {
-  getMenuCatageorys,
-} from "../_store/thunk/menuCatageory.thunk";
-import LocationModal from "../_components/modal/LocationModal";
-import TimingModal from "../_components/modal/TimingModal";
-import InputModal from "../_components/modal/InputModal";
+'use client';
+import SideNavbar from '../_components/SideNavbar/SideNavbar';
+import Image from 'next/image';
+import heroImg from '../_assets/pngs/heroImg.png';
+import logo from '../_assets/svgs/logo.svg';
+import searchIcon from '../_assets/pngs/inputSearch.png';
+import FlagIcon from '../_assets/pngs/navFlag.png';
+import locationIcon from '../_assets/svgs/location.svg';
+import clock from '../_assets/svgs/clock.svg';
+import CartWithItems from './_components/CartWithItems';
+import Modal from '../_components/modal/Modal';
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { useEffect, useState } from 'react';
+import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
+import { getRestaurants } from '../_store/thunk/restaurant.thunk';
+import LocationModal from '../_components/modal/LocationModal';
+import TimingModal from '../_components/modal/TimingModal';
+import InputModal from '../_components/modal/InputModal';
+import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
 
 const Menu = () => {
   const dispatch = useAppDispatch();
-  const { catagories }: { catagories: any } = useAppSelector((state) => state.menuCatageory);
+  const { catagories }: { catagories: any } = useAppSelector(
+    (state) => state.menuCatageory
+  );
+  const restaurants = useAppSelector(
+    (state: any) => state.restaurant.data?.docs
+  );
 
   useEffect(() => {
     dispatch(getMenuCatageorys());
+    dispatch(getRestaurants());
+    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
   }, [dispatch]);
-
+  const selectedRestaurant = useAppSelector(
+    (state) => state.restaurant.selectedId
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hourModalOpen, setHourModalOpen] = useState(false);
   const [locModalOpen, setLocModalOpen] = useState(false);
+  console.log('ID', selectedRestaurant);
 
   return (
     <div>
@@ -59,7 +69,7 @@ const Menu = () => {
             <div
               className="bg-white flex h-[71px] w-full rounded-5px border border-transparent px-2 py-[10px] text-xs font-sm shadow-10 transition-all duration-300 ease-in-out focus:border-red focus:outline-none rounded-[3px] shadow-lg text-black placeholder-black"
               style={{
-                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
               }}
             >
               <Image
@@ -154,10 +164,13 @@ const Menu = () => {
         handleModalToggle={() => setLocModalOpen(!locModalOpen)}
       >
         <div className="mt-[59px]">
-          <LocationModal />
+          <LocationModal restaurants={restaurants} />
         </div>
       </Modal>
     </div>
   );
 };
 export default Menu;
+function typeOf(restaurants: any): any {
+  throw new Error('Function not implemented.');
+}

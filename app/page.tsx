@@ -1,5 +1,5 @@
-import React from "react";
-import Menu from "./menu/page";
+import React from 'react';
+import Menu from './menu/page';
 
 const Home = () => {
   return (
