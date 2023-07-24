@@ -6,8 +6,6 @@ const LocationModal = (restaurants: any) => {
   return (
     <div>
       {restaurants?.restaurants?.map((item: any) => {
-        console.log(item, 'restaurantsrestaurants');
-
         return (
           <div
             className="flex justify-between items-center mb-[18px]"

@@ -8,6 +8,7 @@ const MenuItemsContainer = ({ title, id, items = [] }: any) => {
         {title}
       </h5>
       {items.map((element: any, index: number) => {
+
         return (
           <MenuItem
             key={index}
@@ -17,6 +18,7 @@ const MenuItemsContainer = ({ title, id, items = [] }: any) => {
             discription={element.description}
             calerioes={element.calories}
             price={element.price}
+            additions={element.additions}
           />
         );
       })}

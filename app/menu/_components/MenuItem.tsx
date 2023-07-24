@@ -20,6 +20,7 @@ const MenuItem = ({
   discription,
   calerioes,
   price,
+  additions
 }: any) => {
 
   const router = useRouter();
@@ -62,9 +63,34 @@ const MenuItem = ({
     }
   };
 
+  const getQuantity = (id: string) => {
+    const product = items.find(item => item?.menuItem?.menuItemId == id);
+    if (product) {
+      return product.quantity
+    } else {
+      return 0
+    }
+  }
+
+  const incrementCounter = (id: string) => {
+    dispatch(addItem({
+      additions: [],
+      notes: '',
+      quantity: 1,
+      menuItem: {
+        menuItemId: id
+      }
+    }))
+  };
+
+  const decrementCounter = (id: string) => {
+    dispatch(removeItem({ id }))
+  };
+
   const navigate = () => {
     router.push(`/itemsDetail/${id}`)
   }
+
   return (
     <div
       className="content relative flex cursor-pointer border-b-[1px] border-[#0000000f] p-[14px] pt-[9px] shadow-4 pb-4"
@@ -96,12 +122,17 @@ const MenuItem = ({
             {price}
           </span>
           <div onClick={handleItem}>
-            <QuantityCounter
-              color="text-white"
-              bgColor="bg-[#C84044]"
-              count={0}
-              delIconflag={true}
-            />
+            {
+              additions.length == 0 &&
+              <QuantityCounter
+                color="text-white"
+                bgColor="bg-[#C84044]"
+                count={getQuantity(id)}
+                delIconflag={true}
+                incrementCounter={() => incrementCounter(id)}
+                decrementCounter={() => decrementCounter(id)}
+              />
+            }
           </div>
         </div>
       </div>
@@ -122,15 +153,6 @@ const MenuItem = ({
         />
         <div
           onClick={(event) => {
-            // dispatch(addItem({
-            //   additions: [],
-            //   notes: '',
-            //   quantity: 1,
-            //   menuItem: {
-            //     menuItemId: id
-            //   }
-            // }))
-            // dispatch(removeItem({ id }))
             event.stopPropagation();
             updatingFavorites();
             showToastMessage(id);

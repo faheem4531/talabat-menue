@@ -8,21 +8,20 @@ interface Props {
   delIconflag?: boolean;
   color: string;
   bgColor?: string;
-  count: number;
+  count?: number;
+  incrementCounter?: () => void,
+  decrementCounter?: () => void
 }
 
-const QuantityCounter = ({ delIconflag, color, bgColor, count }: Props) => {
-  const [quantity, setQuantity] = useState(count);
+const QuantityCounter = ({
+  delIconflag,
+  color,
+  bgColor,
+  count = 0,
+  incrementCounter = () => { },
+  decrementCounter = () => { }
+}: Props) => {
 
-  function incrementCounter() {
-    setQuantity((prevQuantity) => prevQuantity + 1);
-  }
-
-  function decrementCounter() {
-    if (quantity > count) {
-      setQuantity((prevQuantity) => prevQuantity - 1);
-    }
-  }
   return (
     <div>
       <div
@@ -30,8 +29,8 @@ const QuantityCounter = ({ delIconflag, color, bgColor, count }: Props) => {
         style={
           delIconflag
             ? {
-                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-              }
+              boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+            }
             : {}
         }
       >
@@ -44,12 +43,12 @@ const QuantityCounter = ({ delIconflag, color, bgColor, count }: Props) => {
         </div>
         <span
           className={
-            quantity === 0 ? "hidden" : `text-[11px] font-bold ${color}`
+            count === 0 ? "hidden" : `text-[11px] font-bold ${color}`
           }
         >
-          {quantity}
+          {count}
         </span>
-        <div className={quantity === 0 ? "hidden" : ""}>
+        <div className={count === 0 ? "hidden" : ""}>
           <div
             className={`flex h-[24px] w-[24px] cursor-pointer rounded-3xl items-center justify-center text-white`}
             onClick={decrementCounter}
@@ -58,9 +57,8 @@ const QuantityCounter = ({ delIconflag, color, bgColor, count }: Props) => {
               <Image src={delIcon} alt="delIcon" />
             ) : (
               <p
-                className={`text-center h-[24px] w-[24px] rounded-3xl ${
-                  quantity === 1 ? " bg-[#D9D9D9] " : " bg-[#C84044] "
-                }`}
+                className={`text-center h-[24px] w-[24px] rounded-3xl ${count === 1 ? " bg-[#D9D9D9] " : " bg-[#C84044] "
+                  }`}
               >
                 -
               </p>

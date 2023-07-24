@@ -22,6 +22,7 @@ import { useTranslation } from "react-i18next";
 const Menu = () => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation()
+
   const { catagories }: { catagories: any } = useAppSelector(
     (state) => state.menuCatageory
   );
@@ -29,18 +30,21 @@ const Menu = () => {
     (state: any) => state.restaurant.data?.docs
   );
 
+  const selectedRestaurant = useAppSelector(
+    (state) => state.restaurant.selectedId
+  );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hourModalOpen, setHourModalOpen] = useState(false);
+  const [locModalOpen, setLocModalOpen] = useState(false);
+
   useEffect(() => {
     dispatch(getMenuCatageorys());
     dispatch(getRestaurants());
     dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
   }, [dispatch]);
-  const selectedRestaurant = useAppSelector(
-    (state) => state.restaurant.selectedId
-  );
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hourModalOpen, setHourModalOpen] = useState(false);
-  const [locModalOpen, setLocModalOpen] = useState(false);
-  console.log('ID', selectedRestaurant);
+
+
 
   return (
     <div>
