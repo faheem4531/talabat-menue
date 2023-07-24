@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import OtpInput from "react-otp-input";
 
-const OTPModal = () => {
-  const [otp, setOtp] = useState("");
+interface Props {
+  verifyOtp: (otp: string | null) => void
+}
+
+const OTPModal = ({ verifyOtp }: Props) => {
+  const [otp, setOtp] = useState<string>("");
 
 //   const handleOtpChange = (otpValue : any) => {
 //     setOtp(otpValue);
 //   };
 
   const handleVerify = () => {
-    // Implement your verification logic here
-    console.log("Verifying OTP:", otp);
+    verifyOtp(otp)
   };
 
   const handleResend = () => {
-    // Implement your resend OTP logic here
     console.log("Resending OTP...");
   };
 
@@ -26,7 +28,7 @@ const OTPModal = () => {
         Confirmation Code
       </h4>
         <OtpInput
-      value={otp}
+      value={otp || ""}
       onChange={setOtp}
       numInputs={4}
     //   renderSeparator={<span></span>}
@@ -38,7 +40,7 @@ const OTPModal = () => {
     </div>
     <div className="text-center mt-5 gap-3">
       <button className="bg-gray-400 border text-gray-600 p-2" onClick={handleVerify}>Cancel</button>
-      <button  className="bg-red-400 border text-white p-2"  onClick={handleResend}>Confirm</button>
+      <button  className="bg-red-400 border text-white p-2"  onClick={handleVerify}>Confirm</button>
     </div>
     </div>
   );
