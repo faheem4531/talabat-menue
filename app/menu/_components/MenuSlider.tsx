@@ -15,12 +15,20 @@ const MenuSlider = () => {
         {data?.docs &&
           data?.docs.map((item: any, index: number) => {
             return (
-              <div className="carousalItems" key={index}>
-                <Link
+              <div className="carousalItems" key={index}
+                onClick={() => {
+                  const menuItemElement = document.getElementById(item._id);
+                  if (menuItemElement) {
+                    menuItemElement.scrollIntoView({
+                      behavior: "smooth",
+                      block: "nearest",
+                    });
+                  }
+                }}>
+                <div
                   className={
                     "js-anchor-link flex cursor-pointer flex-col items-center"
                   }
-                  href={item._id}
                 >
                   <Image
                     className="border-red"
@@ -41,7 +49,7 @@ const MenuSlider = () => {
                   <span className="whitespace-pre text-[11px] mt-1 font-medium text-[#6D6A75]">
                     {item.name}
                   </span>
-                </Link>
+                </div>
               </div>
             );
           })}
