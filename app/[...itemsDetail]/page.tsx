@@ -11,15 +11,56 @@ import backArrow from "../_assets/svgs/arrow-back.svg";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { getItem } from "../_store/thunk/item.thunk";
+import { addItem, removeItem } from '../_store/reducers/cartReducer';
 
 const ItemsDetail = ({ params }: any) => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.item);
   const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? "");
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const [price, setPrice] = useState<number>(data?.price ?? 0);
+  const [addOns, setAddOns] = useState<any[]>([]);
+  const [notes, setNotes] = useState('');
+
+  const getQuantity = (id: string) => {
+    const product = cartItems.find(item => item?.menuItem?.menuItemId == id);
+    if (product) {
+      return product.quantity
+    } else {
+      return 0
+    }
+  }
+  const [quantity, setQuantity] = useState(getQuantity(data?._id) ?? 0);
 
   useEffect(() => {
     dispatch(getItem(itemId));
   }, [itemId, dispatch]);
+
+  const incrementCounter = () => {
+    setQuantity((prev: number) => {
+      return prev + 1
+    })
+  }
+
+  const decrementCounter = () => {
+    setQuantity((prev: number) => --prev)
+  }
+
+  const updateOptions = (menuAdditionId: string, options: any[]) => {
+    setAddOns(prev => [...prev, { menuAdditionId, options }])
+  }
+
+  const addItemToCart = () => {
+
+    dispatch(addItem({
+      additions: addOns,
+      notes,
+      quantity,
+      menuItem: {
+        menuItemId: data?._id
+      }
+    }))
+  }
 
   return (
     <div>
@@ -87,6 +128,8 @@ const ItemsDetail = ({ params }: any) => {
             name="comment"
             form="usrform"
             placeholder="Type Your Comment"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
           ></textarea>
         </div>
         <div className="h-9 flex justify-between items-center mt-[52px] mb-[25px]">
@@ -94,15 +137,17 @@ const ItemsDetail = ({ params }: any) => {
             <QuantityCounter
               color="text-black p-1"
               bgColor="bg-white"
-              count={1}
-              // delIconflag={true}
+              count={quantity}
+              incrementCounter={incrementCounter}
+              decrementCounter={decrementCounter}
+            // delIconflag={true}
             />
           </div>
           <div>
-            <Link href={"/addCart"}>
+            <Link href={'/addCart'} onClick={addItemToCart}>
               <Addbtn
                 btnText1="Add"
-                btnText2="96.00 SR"
+                btnText2={`${price} SAR`}
                 btnline={true}
                 btnClasses=" justify-around rounded-lg px-4 py-2 mr-2 mb-2 bg-[#C02328] w-[152px] h-[33px] text-[12px] font-semibold"
               />

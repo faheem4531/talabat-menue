@@ -35,10 +35,17 @@ const menuCatageorySlice = createSlice({
       if (itemExists !== -1) {
         state.items[itemExists].quantity += quantity;
       }
-      if (itemExists === -1) {
+      if (itemExists === -1 && quantity > 0) {
         state.items = [...state.items, payload];
       }
 
+    },
+
+    addNewItem: (state, { payload }) => {
+      const { quantity } = payload;
+      if (quantity > 0) {
+        state.items = [...state.items, payload];
+      }
     },
 
     removeItem: (state, { payload }) => {
@@ -77,7 +84,8 @@ const menuCatageorySlice = createSlice({
 export const {
   clearCart,
   addItem,
-  removeItem
+  removeItem,
+  addNewItem
 } = menuCatageorySlice.actions;
 
 export default menuCatageorySlice.reducer;

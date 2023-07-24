@@ -1,24 +1,83 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import SideNavbar from "../_components/SideNavbar/SideNavbar";
 import Image from "next/image";
 import FlagIcon from "../_assets/pngs/navFlag.png";
 import CartItem from "./_components/cartItem";
 import CartBtn from "../_components/Buttons/cartBtn";
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { getCartItems } from '../_store/thunk/cart.thunk';
+import { addItem, removeItem } from '../_store/reducers/cartReducer';
 
 const addCart = () => {
-  const cartItems = [
-    {
-      title: "PIZZA: 12 WOOD-FRIED",
-      price: "100 SAR",
-      cartImg: require("../_assets/svgs/cartItemImg.svg"),
-    },
-    {
-      title: "PIZZA: 12 WOOD-FRIED",
-      price: "100 SAR",
-      cartImg: require("../_assets/svgs/cartItemImg.svg"),
-    },
-  ];
+
+  const dispatch = useAppDispatch();
+  const { items, cart } = useAppSelector((state) => state.cart);
+  const allItems = useAppSelector((state) => state.menuCatageory.catagories).flatMap((obj) => obj.docs);
+  const selectedRestaurant = useAppSelector(
+    (state) => state.restaurant.selectedId
+  );
+
+  useEffect(() => {
+    dispatch(getCartItems({
+      items,
+      couponCode: '',
+      orderType: 'Pickup',
+      restaurantId: selectedRestaurant,
+      source: 'Website',
+      deliveryAddress: {}
+    }))
+  }, [dispatch])
+
+  const getItemData = (id: string) => {
+    const item = allItems.find(item => item._id == id);
+    return {
+      image: item?.image,
+      price: item?.price,
+      name: item?.name,
+    }
+  }
+
+  const incrementCounter = (id: string) => {
+    dispatch(addItem({
+      additions: [],
+      notes: '',
+      quantity: 1,
+      menuItem: {
+        menuItemId: id
+      }
+    }))
+  };
+
+  const decrementCounter = (id: string) => {
+    dispatch(removeItem({ id }))
+  };
+
+  const getQuantity = (id: string) => {
+    const product = items.find(item => item?.menuItem?.menuItemId == id);
+    if (product) {
+      return product.quantity
+    } else {
+      return 0
+    }
+  }
+
+  const calculatePrice = () => {
+    let price = 0;
+
+    items?.forEach(item => {
+      price = (price + getItemData(item?.menuItem?.menuItemId)?.price) * item?.quantity;
+    })
+
+    return price;
+  }
+
+  const calculateTax = () => {
+    const taxRate = cart?.taxRate ?? 0;
+    let tax = calculatePrice() * taxRate / 100
+    return tax
+  }
+
   return (
     <div>
       <div className="flex justify-between p-4 items-center relative z-[1]">
@@ -33,13 +92,16 @@ const addCart = () => {
         </div>
       </div>
       <div className="mt-[30px] cartItemsMain">
-        {cartItems.map((items, index) => {
+        {items.map((item, index) => {
           return (
             <CartItem
               key={index}
-              title={items.title}
-              price={items.price}
-              cartImg={items.cartImg}
+              title={getItemData(item.menuItem.menuItemId)?.name}
+              price={getItemData(item.menuItem.menuItemId)?.price}
+              cartImg={getItemData(item.menuItem.menuItemId)?.image}
+              incrementCounter={() => incrementCounter(item.menuItem.menuItemId)}
+              decrementCounter={() => decrementCounter(item.menuItem.menuItemId)}
+              count={getQuantity(item.menuItem.menuItemId)}
             />
           );
         })}
@@ -66,13 +128,13 @@ const addCart = () => {
           </div>
 
           <div className="text-[15px] font-[400] pr-3 text-white">
-            <div>17.39 SAR</div>
-            <div className="mt-[9px]">2.61 SAR</div>
+            <div>{calculatePrice() - calculateTax()} SAR</div>
+            <div className="mt-[9px]">{calculateTax()} SAR</div>
           </div>
         </div>
         <div className="flex justify-between mt-[35.5px]">
           <div className="text-[15px] font-[400] text-white">Total</div>
-          <div className="text-[15px] font-[400] pr-1 text-white">20 SAR</div>
+          <div className="text-[15px] font-[400] pr-1 text-white">{calculatePrice()} SAR</div>
         </div>
       </div>
       <div className="px-2 mt-[53px] mb-6">

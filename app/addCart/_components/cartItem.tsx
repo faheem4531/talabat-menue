@@ -7,9 +7,12 @@ interface Props {
   title: string;
   price: string;
   cartImg: string;
+  incrementCounter?: () => void,
+  decrementCounter?: () => void,
+  count?: number
 }
 
-const CartItem = ({ cartImg, title, price }: Props) => {
+const CartItem = ({ cartImg, title, price, incrementCounter = () => { }, decrementCounter = () => { }, count = 0 }: Props) => {
   return (
     <div>
       <div className="px-4 mb-3">
@@ -42,15 +45,17 @@ const CartItem = ({ cartImg, title, price }: Props) => {
             {/* <h4 className="my-1 line-clamp-2 text-xs text-gray500">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </h4> */}
-            <span className="text-[16px] font-bold ">{price}</span>
+            <span className="text-[16px] font-bold ">{price} SAR</span>
 
             <div className="flex items-center justify-between">
               <div></div>
               <QuantityCounter
                 color="text-white"
                 bgColor="bg-[#C84044]"
-                count={1}
+                count={count}
                 delIconflag={true}
+                incrementCounter={incrementCounter}
+                decrementCounter={decrementCounter}
               />
             </div>
           </div>
