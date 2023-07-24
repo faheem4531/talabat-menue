@@ -23,7 +23,7 @@ const TimingModal = () => {
       hours: "Open 24 Hours",
     },
     {
-      day: "Thirsday",
+      day: "Thursday",
       hours: "Open 24 Hours",
     },
     {

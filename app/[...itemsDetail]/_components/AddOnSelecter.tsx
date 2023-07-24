@@ -15,7 +15,7 @@ const AddOnSelecter = ({ title, price, caleries }: any) => {
             </div>
           </label>
         </div>
-        <div className="text-[#494949 ] text-[8px] w-[43px]">
+        <div className="text-[#494949 ] text-[8px] w-[60px]">
           <div className="text-right">{price}</div>
           <div className="flex items-baseline">
             <div className="mr-[2px]">
