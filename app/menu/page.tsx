@@ -1,27 +1,27 @@
-'use client';
-import SideNavbar from '../_components/SideNavbar/SideNavbar';
-import Image from 'next/image';
-import heroImg from '../_assets/pngs/heroImg.png';
-import logo from '../_assets/svgs/logo.svg';
-import searchIcon from '../_assets/pngs/inputSearch.png';
-import FlagIcon from '../_assets/pngs/navFlag.png';
-import locationIcon from '../_assets/svgs/location.svg';
-import clock from '../_assets/svgs/clock.svg';
-import CartWithItems from './_components/CartWithItems';
-import Modal from '../_components/modal/Modal';
-import { useAppDispatch, useAppSelector } from '../_store/hooks';
-import { useEffect, useState } from 'react';
-import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
-import { getRestaurants } from '../_store/thunk/restaurant.thunk';
-import LocationModal from '../_components/modal/LocationModal';
-import TimingModal from '../_components/modal/TimingModal';
-import InputModal from '../_components/modal/InputModal';
-import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
+"use client";
+import SideNavbar from "../_components/SideNavbar/SideNavbar";
+import Image from "next/image";
+import heroImg from "../_assets/pngs/heroImg.png";
+import logo from "../_assets/svgs/logo.svg";
+import searchIcon from "../_assets/pngs/inputSearch.png";
+import FlagIcon from "../_assets/pngs/navFlag.png";
+import locationIcon from "../_assets/svgs/location.svg";
+import clock from "../_assets/svgs/clock.svg";
+import CartWithItems from "./_components/CartWithItems";
+import Modal from "../_components/modal/Modal";
+import { useAppDispatch, useAppSelector } from "../_store/hooks";
+import { useEffect, useState } from "react";
+import { getMenuCatageorys } from "../_store/thunk/menuCatageory.thunk";
+import { getRestaurants } from "../_store/thunk/restaurant.thunk";
+import LocationModal from "../_components/modal/LocationModal";
+import TimingModal from "../_components/modal/TimingModal";
+import InputModal from "../_components/modal/InputModal";
+import { setSelectedRestaurant } from "../_store/reducers/restaurantReducer";
 import { useTranslation } from "react-i18next";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const { catagories }: { catagories: any } = useAppSelector(
     (state) => state.menuCatageory
@@ -41,10 +41,8 @@ const Menu = () => {
   useEffect(() => {
     dispatch(getMenuCatageorys());
     dispatch(getRestaurants());
-    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
+    dispatch(setSelectedRestaurant("63f3021acafc472f2238e4c6"));
   }, [dispatch]);
-
-
 
   return (
     <div>
@@ -75,7 +73,7 @@ const Menu = () => {
             <div
               className="bg-white flex h-[71px] w-full rounded-5px border border-transparent px-2 py-[10px] text-xs font-sm shadow-10 transition-all duration-300 ease-in-out focus:border-red focus:outline-none rounded-[3px] shadow-lg text-black placeholder-black"
               style={{
-                boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
               }}
             >
               <Image
@@ -87,9 +85,11 @@ const Menu = () => {
               />
               <div>
                 <div className="flex mt-1">
-                  <h4 className="text-xs font-[400]">Gulf Madina </h4>
+                  <h4 className="text-xs font-[400]">
+                    {t("menu.gulf-madina")}
+                  </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
-                    Today : Open 24 Hours
+                    {t("menu.today-open-24-hours")}
                   </div>
                 </div>
                 <div className="flex mt-[14px]">
@@ -98,7 +98,7 @@ const Menu = () => {
                     onClick={() => setHourModalOpen(true)}
                   >
                     <h4 className="text-[9px] font-[400] text-black ">
-                      {t('menu.opening-hours')}
+                      {t("menu.opening-hours")}
                     </h4>
                     <Image
                       src={clock}
@@ -111,7 +111,7 @@ const Menu = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                      Branches
+                      {t("menu.Branches")}
                     </div>
                     <Image
                       src={locationIcon}
@@ -178,5 +178,5 @@ const Menu = () => {
 };
 export default Menu;
 function typeOf(restaurants: any): any {
-  throw new Error('Function not implemented.');
+  throw new Error("Function not implemented.");
 }

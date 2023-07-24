@@ -1,5 +1,22 @@
 {
     "menu": {
-        "opening-hours" : "Opening Hours"
+        "opening-hours" : "Opening Hours",
+        "Branches":  "Branches",
+        "gulf-madina": "Gulf Madina",
+        "today-open-24-hours": "Today : Open 24 Hours"
+
+    },
+        "sideBar": {
+        "MENU": "MENU",
+        "login": "Login",
+        "see-the-menu": "See The Menu",
+        "pickup-orders": "Pickup Orders",
+        "deliver-order":  "Deliver Orders",
+        "branches": "Branches",
+        "opening-hours": "Opening Hours",
+        "about-us": "About Us",
+        "goals": "Our Goals"
+        
+        
     }
 }

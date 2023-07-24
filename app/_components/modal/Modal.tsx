@@ -34,7 +34,7 @@ const Modal = ({
           className={`fixed top-0 left-0 right-0 ${modalPosition} right-0 z-50 w-full h-screen p-4 flex justify-center bg-opacity-50 bg-gray-900`}
         >
           <div
-            className={`relative bg-white shadow ${modalCSS}`}
+            className={`relative bg-white shadow ${modalCSS} w-80`}
             onClick={handleModalOpen}
           >
             <button

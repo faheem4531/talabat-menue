@@ -42,7 +42,10 @@ const TimingModal = () => {
           <div className="bg-[#00000036] py-[7px] mb-[2px]" key={index}>
             <div className="flex justify-center text-xs font-[400] text-[#494949]">
               <div className="flex justify-between w-44">
-                <div className="text-left ">{item.day} :</div>
+                <div className="flex justify-between w-20">
+                  <div className="text-left ">{item.day} </div>
+                  <div>:</div>
+                </div>
                 <div className="">{item.hours}</div>
               </div>
             </div>

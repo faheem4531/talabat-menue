@@ -1,5 +1,21 @@
 {
     "menu": {
-        "opening-hours" : "ساعات العمل"
+        "opening-hours" : "ساعات العمل",
+        "Branches":  "الفروع",
+        "gulf-madina": "خليج المدينة المنورة",
+        "today-open-24-hours": "اليوم: مفتوح 24 ساعة"
+    },
+    "sideBar": {
+        "MENU": "قائمة طعام",
+        "login": "تسجيل الدخول",
+        "see-the-menu": "انظر القائمة",
+        "pickup-orders": "أوامر الاستلام",
+        "deliver-order":  "تسليم الطلب",
+        "branches": "الفروع",
+        "opening-hours": "ساعات العمل",
+        "about-us": "معلومات عنا",
+        "goals": "أهدافنا"
+
+
     }
 }
