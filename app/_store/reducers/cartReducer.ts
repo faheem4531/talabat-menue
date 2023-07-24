@@ -7,6 +7,7 @@ const initialState: CartState = {
   items: [],
   discount: '',
   userMustAuth: false,
+
   loading: false,
 };
 

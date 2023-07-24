@@ -17,9 +17,11 @@ import LocationModal from '../_components/modal/LocationModal';
 import TimingModal from '../_components/modal/TimingModal';
 import InputModal from '../_components/modal/InputModal';
 import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
+import { useTranslation } from "react-i18next";
 
 const Menu = () => {
   const dispatch = useAppDispatch();
+  const { t } = useTranslation()
   const { catagories }: { catagories: any } = useAppSelector(
     (state) => state.menuCatageory
   );
@@ -92,7 +94,7 @@ const Menu = () => {
                     onClick={() => setHourModalOpen(true)}
                   >
                     <h4 className="text-[9px] font-[400] text-black ">
-                      Opening Hours
+                      {t('menu.opening-hours')}
                     </h4>
                     <Image
                       src={clock}
