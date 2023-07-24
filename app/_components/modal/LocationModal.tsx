@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 import Image from 'next/image';
 import locationIcon from '../../_assets/svgs/location.svg';
 
@@ -19,10 +20,12 @@ const LocationModal = (restaurants: any) => {
                 {item.name}
               </h4>
             </div>
-
-            <div className="cursor-pointer ml-9 text-[10px] font-[400] text-[#494949]">
-              View Location in Map
-            </div>
+            <Link className="cursor-pointer ml-9 text-[10px] font-[400] text-[#494949]" href={{
+              pathname: '/branchLocation',
+              query: { lat: item?.location?.latitude, lng: item?.location?.longitude }
+              }}>
+                View Location in Map
+            </Link>
           </div>
         );
       })}
