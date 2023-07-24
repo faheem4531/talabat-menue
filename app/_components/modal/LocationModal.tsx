@@ -6,6 +6,8 @@ const LocationModal = (restaurants: any) => {
   return (
     <div>
       {restaurants?.restaurants?.map((item: any) => {
+        console.log(item, 'restaurantsrestaurants');
+
         return (
           <div
             className="flex justify-between items-center mb-[18px]"
@@ -16,7 +18,7 @@ const LocationModal = (restaurants: any) => {
                 <Image src={locationIcon} alt="locationIcon" />
               </div>
               <h4 className="text-[12px] font-[600] text-[#494949] ml-[13px]">
-                {item.title}
+                {item.name}
               </h4>
             </div>
 
