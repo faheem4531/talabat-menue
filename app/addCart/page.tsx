@@ -11,7 +11,7 @@ import { addItem, removeItem } from '../_store/reducers/cartReducer';
 import Modal from '../_components/modal/Modal';
 import LoginModal from '../_components/modal/LoginModal';
 
-const addCart = () => {
+const AddCart = () => {
 
   const dispatch = useAppDispatch();
   const { items, cart } = useAppSelector((state) => state.cart);
@@ -170,4 +170,4 @@ const addCart = () => {
   );
 };
 
-export default addCart;
+export default AddCart;
