@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import SideNavbar from "../_components/SideNavbar/SideNavbar";
 import Image from "next/image";
 import FlagIcon from "../_assets/pngs/navFlag.png";
@@ -8,15 +8,20 @@ import CartBtn from "../_components/Buttons/cartBtn";
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getCartItems } from '../_store/thunk/cart.thunk';
 import { addItem, removeItem } from '../_store/reducers/cartReducer';
+import Modal from '../_components/modal/Modal';
+import LoginModal from '../_components/modal/LoginModal';
 
 const addCart = () => {
 
   const dispatch = useAppDispatch();
   const { items, cart } = useAppSelector((state) => state.cart);
+  const customerData = useAppSelector((state) => state.customer.data);
   const allItems = useAppSelector((state) => state.menuCatageory.catagories).flatMap((obj) => obj.docs);
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
   );
+  const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
+
 
   useEffect(() => {
     dispatch(getCartItems({
@@ -78,6 +83,13 @@ const addCart = () => {
     return tax
   }
 
+  const handleConfirmOrder = () => {
+    if (customerData) {
+      setisLoginModalOpen(true)
+    }
+  }
+
+
   return (
     <div>
       <div className="flex justify-between p-4 items-center relative z-[1]">
@@ -137,12 +149,23 @@ const addCart = () => {
           <div className="text-[15px] font-[400] pr-1 text-white">{calculatePrice()} SAR</div>
         </div>
       </div>
-      <div className="px-2 mt-[53px] mb-6">
+      <div className="px-2 mt-[53px] mb-6" onClick={handleConfirmOrder}>
         <CartBtn
           btnText1="Confirm Order"
           btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
         />
       </div>
+      <Modal
+        modalPosition="items-center"
+        cancelCSS="right-0"
+        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        isModalOpen={isLoginModalOpen}
+        handleModalToggle={() => setisLoginModalOpen(!isLoginModalOpen)}
+      >
+        <div className="mt-[59px]">
+          <LoginModal />
+        </div>
+      </Modal>
     </div>
   );
 };
