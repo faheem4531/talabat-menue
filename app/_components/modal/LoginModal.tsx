@@ -35,7 +35,7 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
             value={name}
             onChange={(event) => setName(event.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg block w-full p-2.5 "
-            placeholder="Enter your name"
+            placeholder={t("login.Enter-your-name")}
             required
           />
         </div>
@@ -52,7 +52,7 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
         </div> */}
         <div className="mb-6">
           <PhoneInput
-            placeholder="Enter phone number"
+            placeholder={t("login.Enter-phone-number")}
             value={phoneNumber}
             onChange={(value: string | undefined) => setPhoneNumber(value)}
           />
