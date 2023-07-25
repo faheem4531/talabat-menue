@@ -1,6 +1,6 @@
 import React from "react";
 import AddOnSelecter from "./AddOnSelecter";
-const ItemCustomizer = ({ title, id, options }: any) => {
+const ItemCustomizer = ({ title, id, options, addOption, multiple, isChecked }: any) => {
 
   return (
     <div>
@@ -14,6 +14,11 @@ const ItemCustomizer = ({ title, id, options }: any) => {
                 title={element.name}
                 price={`+${element.price} SR`}
                 caleries={element.calory}
+                addOption={addOption}
+                addOnId={id}
+                optionId={element._id}
+                multiple={multiple}
+                isChecked={isChecked}
               />
             );
           })}

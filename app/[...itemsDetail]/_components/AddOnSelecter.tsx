@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import fire from "../../_assets/svgs/fire.svg";
 
-const AddOnSelecter = ({ title, price, caleries }: any) => {
+const AddOnSelecter = ({ title, price, caleries, addOption, checked = false, addOnId, optionId, multiple, isChecked }: any) => {
   return (
     <div>
       <div className="flex items-center justify-between border-b-[1px] border-[#0000000f] mt-[8px]">
@@ -10,7 +10,10 @@ const AddOnSelecter = ({ title, price, caleries }: any) => {
           <label className="container">
             {title}
             <div>
-              <input className="check hidden" type="checkbox" />
+              <input className="check hidden" type="checkbox"
+                onClick={(e) => addOption({ addOnId, optionId, multiple })}
+                checked={isChecked(addOnId, optionId)}
+              />
               <span className="checkmark"></span>
             </div>
           </label>

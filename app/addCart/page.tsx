@@ -14,14 +14,14 @@ import LoginModal from '../_components/modal/LoginModal';
 const AddCart = () => {
 
   const dispatch = useAppDispatch();
-  const { items, cart } = useAppSelector((state) => state.cart);
+  const { items, cart, loading } = useAppSelector((state) => state.cart);
   const customerData = useAppSelector((state) => state.customer.data);
   const allItems = useAppSelector((state) => state.menuCatageory.catagories).flatMap((obj) => obj.docs);
+  const [update, setUpdate] = useState(false)
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
   );
   const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
-
 
   useEffect(() => {
     dispatch(getCartItems({
@@ -32,7 +32,7 @@ const AddCart = () => {
       source: 'Website',
       deliveryAddress: {}
     }))
-  }, [dispatch])
+  }, [dispatch, update])
 
   const getItemData = (id: string) => {
     const item = allItems.find(item => item._id == id);
@@ -52,10 +52,12 @@ const AddCart = () => {
         menuItemId: id
       }
     }))
+    setUpdate(prev => !prev)
   };
 
   const decrementCounter = (id: string) => {
     dispatch(removeItem({ id }))
+    setUpdate(prev => !prev)
   };
 
   const getQuantity = (id: string) => {
@@ -104,12 +106,12 @@ const AddCart = () => {
         </div>
       </div>
       <div className="mt-[30px] cartItemsMain">
-        {items.map((item, index) => {
+        {cart?.items?.map((item: any, index: number) => {
           return (
             <CartItem
               key={index}
               title={getItemData(item.menuItem.menuItemId)?.name}
-              price={getItemData(item.menuItem.menuItemId)?.price}
+              price={item?.amountBeforeDiscount}
               cartImg={getItemData(item.menuItem.menuItemId)?.image}
               incrementCounter={() => incrementCounter(item.menuItem.menuItemId)}
               decrementCounter={() => decrementCounter(item.menuItem.menuItemId)}
@@ -140,13 +142,13 @@ const AddCart = () => {
           </div>
 
           <div className="text-[15px] font-[400] pr-3 text-white">
-            <div>{calculatePrice() - calculateTax()} SAR</div>
-            <div className="mt-[9px]">{calculateTax()} SAR</div>
+            <div>{cart?.summary?.totalTaxableAmount} SAR</div>
+            <div className="mt-[9px]">{cart?.summary?.totalTax} SAR</div>
           </div>
         </div>
         <div className="flex justify-between mt-[35.5px]">
           <div className="text-[15px] font-[400] text-white">Total</div>
-          <div className="text-[15px] font-[400] pr-1 text-white">{calculatePrice()} SAR</div>
+          <div className="text-[15px] font-[400] pr-1 text-white">{cart?.summary?.totalWithTax} SAR</div>
         </div>
       </div>
       <div className="px-2 mt-[53px] mb-6" onClick={handleConfirmOrder}>
