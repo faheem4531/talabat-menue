@@ -1,35 +1,35 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import heroImg from "../_assets/pngs/detailHeroImg.png";
-import FlagIcon from "../_assets/pngs/navFlag.png";
-import fire from "../_assets/svgs/fire.svg";
-import ItemCustomizer from "./_components/ItemCustomizer";
-import QuantityCounter from "../_components/QuantityCounter";
-import Addbtn from "../_components/Buttons/cartBtn";
-import backArrow from "../_assets/svgs/arrow-back.svg";
-import Link from "next/link";
-import { useAppDispatch, useAppSelector } from "../_store/hooks";
-import { getItem } from "../_store/thunk/item.thunk";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import heroImg from '../_assets/pngs/detailHeroImg.png';
+import FlagIcon from '../_assets/pngs/navFlag.png';
+import fire from '../_assets/svgs/fire.svg';
+import ItemCustomizer from './_components/ItemCustomizer';
+import QuantityCounter from '../_components/QuantityCounter';
+import Addbtn from '../_components/Buttons/cartBtn';
+import backArrow from '../_assets/svgs/arrow-back.svg';
+import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { getItem } from '../_store/thunk/item.thunk';
 import { addItem, removeItem } from '../_store/reducers/cartReducer';
 
 const ItemsDetail = ({ params }: any) => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.item);
-  const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? "");
+  const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? '');
   const cartItems = useAppSelector((state) => state.cart.items);
   const [price, setPrice] = useState<number>(data?.price ?? 0);
   const [addOns, setAddOns] = useState<any[]>([]);
   const [notes, setNotes] = useState('');
 
   const getQuantity = (id: string) => {
-    const product = cartItems.find(item => item?.menuItem?.menuItemId == id);
+    const product = cartItems?.find((item) => item?.menuItem?.menuItemId == id);
     if (product) {
-      return product.quantity
+      return product.quantity;
     } else {
-      return 0
+      return 0;
     }
-  }
+  };
   const [quantity, setQuantity] = useState(getQuantity(data?._id) ?? 0);
 
   useEffect(() => {
@@ -38,34 +38,35 @@ const ItemsDetail = ({ params }: any) => {
 
   const incrementCounter = () => {
     setQuantity((prev: number) => {
-      return prev + 1
-    })
-  }
+      return prev + 1;
+    });
+  };
 
   const decrementCounter = () => {
-    setQuantity((prev: number) => --prev)
-  }
+    setQuantity((prev: number) => --prev);
+  };
 
   const updateOptions = (menuAdditionId: string, options: any[]) => {
-    setAddOns(prev => [...prev, { menuAdditionId, options }])
-  }
+    setAddOns((prev) => [...prev, { menuAdditionId, options }]);
+  };
 
   const addItemToCart = () => {
-
-    dispatch(addItem({
-      additions: addOns,
-      notes,
-      quantity,
-      menuItem: {
-        menuItemId: data?._id
-      }
-    }))
-  }
+    dispatch(
+      addItem({
+        additions: addOns,
+        notes,
+        quantity,
+        menuItem: {
+          menuItemId: data?._id,
+        },
+      })
+    );
+  };
 
   return (
     <div>
       <div className="flex justify-between p-4 items-center relative z-[1]">
-        <Link href={"/"}>
+        <Link href={'/'}>
           {/* <SideNavbar /> */}
           <Image src={backArrow} alt="backArrow" />
         </Link>
@@ -91,10 +92,10 @@ const ItemsDetail = ({ params }: any) => {
         <div>
           <div className="border-t-[1px] border-[#0000000f] pt-2">
             <h4 className="text-[15px] font-[500] mb-[11px] tracking-wide">
-              {data?.name ?? ""}
+              {data?.name ?? ''}
             </h4>
             <div className="text-[9px] font-[500] text-[#00000070]">
-              <div>{data?.description ?? ""}</div>
+              <div>{data?.description ?? ''}</div>
               {/* <div className="mt-1">1 garlic clove, crushed</div> */}
               {/* <div className="mt-1">2 spring onions 1 medium tomato</div> */}
             </div>
@@ -140,7 +141,7 @@ const ItemsDetail = ({ params }: any) => {
               count={quantity}
               incrementCounter={incrementCounter}
               decrementCounter={decrementCounter}
-            // delIconflag={true}
+              // delIconflag={true}
             />
           </div>
           <div>
