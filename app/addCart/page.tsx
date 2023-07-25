@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import SideNavbar from '../_components/SideNavbar/SideNavbar';
 import Image from 'next/image';
+import { toast } from 'react-toastify';
 import FlagIcon from '../_assets/pngs/navFlag.png';
 import CartItem from './_components/cartItem';
 import CartBtn from '../_components/Buttons/cartBtn';
@@ -31,7 +32,7 @@ const AddCart = () => {
   const [termsAndConditionsModal, setTermsAndConditionsModal] = useState(false);
   const [paymentMethodModal, setPaymentMethodModal] = useState(false);
   const [otpModalOpen, setOtpModalOpen] = useState(false);
-  const [verificationId, setVerificationId] = useState<string>('')
+  const [verificationId, setVerificationId] = useState<number>()
   const [phoneNumber, setPhoneNumber] = useState<string>("")
 
   useEffect(() => {
@@ -78,14 +79,24 @@ const AddCart = () => {
     dispatch(phoneNumberExists(phone)).unwrap().then(() => {
       dispatch(requestOtp(phone)).unwrap().then((data) => {
         setOtpModalOpen(true)
-        setVerificationId(data.verificationId || "")
+        setVerificationId(data.verificationId)
         setisLoginModalOpen(false)
       })
     })
   }
 
-  const verifyOtp = (otp: number) => {
-    dispatch(confirmOtp({ phoneNumber, verificationId, otp}))
+  const verifyOtp = (otp: string) => {
+    dispatch(confirmOtp({ phoneNumber, verificationId, otp})).unwrap().then(() => {
+      toast.success('Verified successfully!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+      router.push('/order/success')
+      setOtpModalOpen(false)
+    }).catch(() => {
+      toast.error('Verification failed!', {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    })
   }
 
   const getQuantity = (id: string) => {
@@ -259,7 +270,7 @@ const AddCart = () => {
         handleModalToggle={() => setOtpModalOpen(!otpModalOpen)}
       >
         <div className="mt-[59px]">
-          <OTPModal verifyOtp={verifyOtp} />
+          <OTPModal verifyOtp={verifyOtp} setOtpModalOpen={setOtpModalOpen} />
         </div>
       </Modal>
     </div>

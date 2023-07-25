@@ -7,7 +7,7 @@ interface LoginModalProps {
 }
 
 const LoginModal = ({ login }: LoginModalProps) => {
-  const [email, setEmail] = useState<string | undefined>('')
+  const [name, setName] = useState<string | undefined>('')
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>('');
 
   const handleLogin  = (event: any) => {
@@ -23,15 +23,15 @@ const LoginModal = ({ login }: LoginModalProps) => {
       <form>
         <div className='mb-6'>
           <label className='block mb-2 text-xs font-medium text-gray-900 dark:text-white'>
-            Your email
+            Your Name
           </label>
           <input
-            type='email'
-            id='email'
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            type='text'
+            id='username'
+            value={name}
+            onChange={(event) => setName(event.target.value)}
             className='bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg block w-full p-2.5 '
-            placeholder='name@flowbite.com'
+            placeholder='Enter your name'
             required
           />
         </div>
@@ -67,7 +67,7 @@ const LoginModal = ({ login }: LoginModalProps) => {
           </label>
         </div>
         <button
-          disabled={!email || !phoneNumber}
+          disabled={!name || !phoneNumber}
           onClick={handleLogin}
           className='text-white bg-blue-700  font-medium rounded-lg text-xs w-full px-5 py-2.5 text-center '
         >

@@ -2,7 +2,7 @@ import SideNavbar from '@/app/_components/SideNavbar/SideNavbar';
 import React from 'react'
 import Image from 'next/image';
 import FlagIcon from "../_assets/pngs/navFlag.png";
-import PaymentSuccess from '../order/_components/PaymentSuccess';
+import PaymentSuccess from './_components/PaymentSuccess';
 
 const paymentSuccess = () => {
   return (

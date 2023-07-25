@@ -4,8 +4,8 @@ import api from '@/app/_services/api';
 
 interface ConfirmOtpParams {
     phoneNumber: string
-    verificationId: number
-    otp: number
+    verificationId: number | undefined
+    otp: string
 }
 
 export const phoneNumberExists = createAsyncThunk("customer/phoneNumber", async (phone: string) => {
