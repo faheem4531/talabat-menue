@@ -2,7 +2,7 @@ import React from 'react';
 import MenuItem from './MenuItem';
 
 const MenuItemsContainer = ({ title, id, items = [], query }: any) => {
-  const filteredResults = items.filter((item) =>
+  const filteredResults = items.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())
   );
   return (
