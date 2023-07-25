@@ -160,7 +160,7 @@ const AddCart = () => {
 
   const handlePayNow = () => {
     dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant, items })).unwrap().then((data) => {
-    dispatch(takePayment({ orderId: data?._id, "paymentMethod": "Online", "redirectUrl": "https://revamped-gti-website-front-end.vercel.app/addCart" })).unwrap().then((data) => {
+    dispatch(takePayment({ orderId: data?._id, "paymentMethod": "Online", "redirectUrl": "https://revamped-gti-website-front-end.vercel.app/order" })).unwrap().then((data) => {
       router.push(`https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=${data?.paymentId}`)
     })
     })
