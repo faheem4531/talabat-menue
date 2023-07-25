@@ -20,17 +20,15 @@ import InputModal from '../_components/modal/InputModal';
 import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
 import { useTranslation } from 'react-i18next';
 import { updateLanguage } from '../_store/reducers/languageReducer';
+import { getCartItems } from '../_store/thunk/cart.thunk';
 
 const Menu = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
 
-  const { catagories }: { catagories: any } = useAppSelector(
-    (state) => state.menuCatageory
-  );
-  const restaurants = useAppSelector(
-    (state: any) => state.restaurant.data?.docs
-  );
+  const { catagories }: { catagories: any } = useAppSelector((state) => state.menuCatageory);
+  const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
+  const { cart, items } = useAppSelector((state) => state.cart);
 
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
@@ -43,12 +41,25 @@ const Menu = () => {
   const [locModalOpen, setLocModalOpen] = useState(false);
 
   useEffect(() => {
-    if(!catagories.length){
+    if (!catagories.length) {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
     dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(
+      getCartItems({
+        items,
+        couponCode: "",
+        orderType: "Pickup",
+        restaurantId: selectedRestaurant,
+        source: "Website",
+        deliveryAddress: {},
+      })
+    );
+  }, [dispatch, items]);
 
   const handleLanguageChange = () => {
     console.log(language.name, 'language');
@@ -166,7 +177,7 @@ const Menu = () => {
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
-        <CartWithItems categories={catagories ?? []} query={query} />
+        <CartWithItems categories={catagories ?? []} query={query} cart={cart} />
       </div>
 
       <Modal
