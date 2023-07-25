@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
+import type { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useAppSelector } from "@/app/_store/hooks";
 
-const MenuSlider = () => {
+const MenuSlider: FC<{}> = () => {
   // const { t, lang } = useTranslation("menu");
   const { data } = useAppSelector((state) => state.menuCatageory);
   // const { docs } = data;

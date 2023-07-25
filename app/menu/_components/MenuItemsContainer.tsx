@@ -1,7 +1,9 @@
 import React from 'react';
+import type { FC } from 'react';
 import MenuItem from './MenuItem';
+import { MenuItemsContainer } from '../../_lib/types/menu';
 
-const MenuItemsContainer = ({ title, id, items = [], query }: any) => {
+const MenuItemsContainer: FC<MenuItemsContainer> = ({ title, id, items = [], query }) => {
   const filteredResults = items.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())
   );

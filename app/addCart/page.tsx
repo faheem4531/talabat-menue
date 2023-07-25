@@ -29,14 +29,14 @@ const AddCart = () => {
   const allItems = useAppSelector(
     (state) => state.menuCatageory.catagories
   ).flatMap((obj) => obj.docs);
-  const [update, setUpdate] = useState(false);
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
-  );
-  const [isLoginModalOpen, setisLoginModalOpen] = useState(false);
-  const [termsAndConditionsModal, setTermsAndConditionsModal] = useState(false);
-  const [paymentMethodModal, setPaymentMethodModal] = useState(false);
-  const [otpModalOpen, setOtpModalOpen] = useState(false);
+    );
+    const [update, setUpdate] = useState<boolean>(false);
+  const [isLoginModalOpen, setisLoginModalOpen] = useState<boolean>(false);
+  const [termsAndConditionsModal, setTermsAndConditionsModal] = useState<boolean>(false);
+  const [paymentMethodModal, setPaymentMethodModal] = useState<boolean>(false);
+  const [otpModalOpen, setOtpModalOpen] = useState<boolean>(false);
   const [verificationId, setVerificationId] = useState<number>();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
 

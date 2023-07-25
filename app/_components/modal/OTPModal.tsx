@@ -1,12 +1,9 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
+import type { FC } from "react";
 import OtpInput from "react-otp-input";
+import { OTPModal } from "../../_lib/types/genericComponents";
 
-interface Props {
-  verifyOtp: (otp: string) => void
-  setOtpModalOpen: Dispatch<SetStateAction<boolean>>
-}
-
-const OTPModal = ({ verifyOtp, setOtpModalOpen }: Props) => {
+const OTPModal: FC<OTPModal> = ({ verifyOtp, setOtpModalOpen }) => {
   const [otp, setOtp] = useState<string>("");
 
   const handleVerify = () => {

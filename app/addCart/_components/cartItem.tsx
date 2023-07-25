@@ -1,18 +1,10 @@
 import React from "react";
+import type { FC } from "react";
 import QuantityCounter from "../../_components/QuantityCounter";
-import cartItemImg from "../../_assets/svgs/cartItemImg.svg";
+import { CartItem } from "../../_lib/types/addCart";
 import Image from "next/image";
 
-interface Props {
-  title: string;
-  price: string;
-  cartImg: string;
-  incrementCounter?: () => void,
-  decrementCounter?: () => void,
-  count?: number
-}
-
-const CartItem = ({ cartImg, title, price, incrementCounter = () => { }, decrementCounter = () => { }, count = 0 }: Props) => {
+const CartItem: FC<CartItem> = ({ cartImg, title, price, incrementCounter = () => { }, decrementCounter = () => { }, count = 0 }) => {
   return (
     <div>
       <div className="px-4 mb-3">

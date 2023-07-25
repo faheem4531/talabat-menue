@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import type { FC } from "react";
 import HamburgerIcon from '../../_assets/pngs/hamBurger.png';
 import colorHamIcon from '../../_assets/svgs/colorHamIcon.svg';
 import Image from 'next/image';
@@ -11,12 +12,9 @@ import TimingModal from '../modal/TimingModal';
 import AboutModal from '../modal/AboutModal';
 import OurGoalsModal from '../modal/OurGoalsModal';
 import { useTranslation } from 'react-i18next';
+import { SideNavbar } from "../../_lib/types/genericComponents";
 
-interface Props {
-  hamBurgerIcon?: boolean;
-}
-
-const SideNavbar = ({ hamBurgerIcon }: Props) => {
+const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
 

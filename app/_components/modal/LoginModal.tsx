@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
+import type { FC } from 'react';
 import 'react-phone-number-input/style.css';
 import { useTranslation } from "react-i18next";
 import PhoneInput from 'react-phone-number-input';
+import { LoginModalProps } from "../../_lib/types/genericComponents";
 
-interface LoginModalProps {
-  login?: (phone: string) => void
-  info?: boolean
-}
-
-const LoginModal = ({ login = () => {}, info }: LoginModalProps) => {
+const LoginModal: FC<LoginModalProps> = ({ login = () => {}, info }) => {
   const [name, setName] = useState<string | undefined>('')
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>('');
 

@@ -1,24 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import type { FC } from "react";
 import cancelIcon from "../../_assets/pngs/cancelIcon.png";
+import { Modal } from "../../_lib/types/genericComponents";
 
-interface Props {
-  children: any;
-  modalPosition: string;
-  cancelCSS: string;
-  modalCSS: string;
-  isModalOpen: boolean;
-  handleModalToggle: () => void;
-}
-
-const Modal = ({
+const Modal: FC<Modal> = ({
   children,
   modalPosition,
   cancelCSS,
   modalCSS,
   isModalOpen,
   handleModalToggle,
-}: Props) => {
+}) => {
   const handleModalOpen = (event: any) => {
     event.stopPropagation();
   };

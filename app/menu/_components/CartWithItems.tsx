@@ -1,17 +1,16 @@
 import React from "react";
+import type { FC } from "react";
+import Link from "next/link";
+
 import MenuSlider from "./MenuSlider";
 import MenuItemsContainer from "./MenuItemsContainer";
 import CartBtn from "../../_components/Buttons/cartBtn";
-import Link from "next/link";
+import { CartWithItems } from "../../_lib/types/menu";
 
-const CartWithItems = ({
+const CartWithItems: FC<CartWithItems> = ({
   categories,
   query,
   cart
-}: {
-  categories: any[];
-  query: string;
-  cart: any
 }) => {
   return (
     <div>

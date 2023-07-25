@@ -1,8 +1,11 @@
 import React from "react";
+import type { FC } from "react";
 import Image from "next/image";
 import fire from "../../_assets/svgs/fire.svg";
+import { AddOnSelecter } from "../../_lib/types/itemsDetails";
 
-const AddOnSelecter = ({ title, price, caleries, addOption, checked = false, addOnId, optionId, multiple, isChecked }: any) => {
+const AddOnSelecter: FC<AddOnSelecter> = ({ title, price, caleries, addOption, checked = false, addOnId, optionId, multiple, isChecked }) => {
+  
   return (
     <div>
       <div className="flex items-center justify-between border-b-[1px] border-[#0000000f] mt-[8px]">

@@ -1,13 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
+import type { FC } from "react";
 import Image from "next/image";
 import searchIcon from "../../_assets/pngs/inputSearch.png";
 import { useTranslation } from "react-i18next";
+import { InputModal } from "../../_lib/types/genericComponents";
 
-interface Props {
-  setQuery: Dispatch<SetStateAction<string>>
-}
-
-const InputModal = ({ setQuery }: Props) => {
+const InputModal: FC<InputModal> = ({ setQuery }) => {
    const { t, i18n } = useTranslation();
    const lang = i18n.language;
   const handleChange = (value: string) => {

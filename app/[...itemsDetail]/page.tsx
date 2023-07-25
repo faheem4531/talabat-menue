@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import type { FC } from 'react';
 import Image from 'next/image';
 import heroImg from '../_assets/pngs/detailHeroImg.png';
 import FlagIcon from '../_assets/pngs/navFlag.png';
@@ -12,8 +13,9 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getItem } from '../_store/thunk/item.thunk';
 import { addItem, removeItem } from '../_store/reducers/cartReducer';
+import { ItemsDetail } from '../_lib/types/itemsDetails';
 
-const ItemsDetail = ({ params }: any) => {
+const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state.item);
   const [itemId, setItemId] = useState<string>(params?.itemsDetail[1] ?? '');
@@ -168,7 +170,6 @@ const ItemsDetail = ({ params }: any) => {
         </div>
         <div>
           {(data?.additions ?? []).map((item: any, index: number) => {
-            // console.log(item, 'itemitem');
 
             return (
               <ItemCustomizer

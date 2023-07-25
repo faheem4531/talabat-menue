@@ -1,20 +1,9 @@
 import React from "react";
+import type { FC } from "react";
 
-interface Props {
-  btnText1: string;
-  btnline?: boolean;
-  btnText2?: string;
-  btnClasses: string;
-  onClick?: () => void
-  // font: string;
-  // btnPadding: string;
-  // center?: string;
-  // btnHeight: string;
-  // btnWidth: string;
-  // bgColor: string;
-}
+import { CartBtn } from "../../_lib/types/addCart";
 
-const CartBtn = ({ btnClasses, btnText1, btnline, btnText2, onClick= () => {} }: Props) => {
+const CartBtn: FC<CartBtn> = ({ btnClasses, btnText1, btnline, btnText2, onClick= () => {} }) => {
   return (
     <div>
       <button

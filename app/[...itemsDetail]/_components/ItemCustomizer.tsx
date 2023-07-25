@@ -1,6 +1,9 @@
 import React from "react";
+import type { FC } from "react";
 import AddOnSelecter from "./AddOnSelecter";
-const ItemCustomizer = ({ title, id, options, addOption, multiple, isChecked }: any) => {
+import { ItemCustomizer } from "../../_lib/types/itemsDetails";
+
+const ItemCustomizer: FC<ItemCustomizer> = ({ title, id, options, addOption, multiple, isChecked }) => {
 
   return (
     <div>

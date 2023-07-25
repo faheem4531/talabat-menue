@@ -1,44 +1,47 @@
 'use client';
-import SideNavbar from '../_components/SideNavbar/SideNavbar';
+import { useEffect, useState } from 'react';
+import type { FC } from 'react';
 import Image from 'next/image';
-import heroImg from '../_assets/pngs/heroImg.png';
+import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { getCartItems } from '../_store/thunk/cart.thunk';
+import { getRestaurants } from '../_store/thunk/restaurant.thunk';
+import { updateLanguage } from '../_store/reducers/languageReducer';
+import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
+import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
+import { Menu } from '../_lib/types/menu';
 import logo from '../_assets/svgs/logo.svg';
-import searchIcon from '../_assets/pngs/inputSearch.png';
+import clock from '../_assets/svgs/clock.svg';
+import locationIcon from '../_assets/svgs/location.svg';
+import heroImg from '../_assets/pngs/heroImg.png';
 import FlagIcon from '../_assets/pngs/navFlag.png';
 import USAFlagIcon from '../_assets/pngs/usaFlag.png';
-import locationIcon from '../_assets/svgs/location.svg';
-import clock from '../_assets/svgs/clock.svg';
+import searchIcon from '../_assets/pngs/inputSearch.png';
 import CartWithItems from './_components/CartWithItems';
 import Modal from '../_components/modal/Modal';
-import { useAppDispatch, useAppSelector } from '../_store/hooks';
-import { useEffect, useState } from 'react';
-import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
-import { getRestaurants } from '../_store/thunk/restaurant.thunk';
 import LocationModal from '../_components/modal/LocationModal';
 import TimingModal from '../_components/modal/TimingModal';
 import InputModal from '../_components/modal/InputModal';
-import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
-import { useTranslation } from 'react-i18next';
-import { updateLanguage } from '../_store/reducers/languageReducer';
-import { getCartItems } from '../_store/thunk/cart.thunk';
+import SideNavbar from '../_components/SideNavbar/SideNavbar';
+import { Catagories } from "../_lib/types/menu";
 
-const Menu = () => {
+const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
 
-  const { catagories }: { catagories: any } = useAppSelector((state) => state.menuCatageory);
+  const { catagories }: Catagories  = useAppSelector((state: any) => state.menuCatageory);
   const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
-  const { cart, items } = useAppSelector((state) => state.cart);
+  const { cart, items } = useAppSelector((state: any) => state.cart);
 
   const selectedRestaurant = useAppSelector(
-    (state) => state.restaurant.selectedId
+    (state: any) => state.restaurant.selectedId
   );
-  const [query, setQuery] = useState("")
-
-  const language = useAppSelector((state) => state.language);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hourModalOpen, setHourModalOpen] = useState(false);
-  const [locModalOpen, setLocModalOpen] = useState(false);
+  const language = useAppSelector((state: any) => state.language);
+  
+  const [query, setQuery] = useState<string>("")
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [hourModalOpen, setHourModalOpen] = useState<boolean>(false);
+  const [locModalOpen, setLocModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!catagories.length) {
@@ -62,7 +65,6 @@ const Menu = () => {
   }, [dispatch, items]);
 
   const handleLanguageChange = () => {
-    console.log(language.name, 'language');
     i18n.changeLanguage(language.name);
   };
   return (

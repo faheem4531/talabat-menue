@@ -1,26 +1,19 @@
 "use client";
 import React, { useState } from "react";
+import type { FC } from "react";
 import Image from "next/image";
 import plus from "../_assets/svgs/plus.svg";
 import delIcon from "../_assets/svgs/delIcon.svg";
+import { QuantityCounter } from "../_lib/types/genericComponents";
 
-interface Props {
-  delIconflag?: boolean;
-  color: string;
-  bgColor?: string;
-  count?: number;
-  incrementCounter?: () => void;
-  decrementCounter?: () => void;
-}
-
-const QuantityCounter = ({
+const QuantityCounter: FC<QuantityCounter> = ({
   delIconflag,
   color,
   bgColor,
   count = 0,
   incrementCounter = () => {},
   decrementCounter = () => {},
-}: Props) => {
+}) => {
   return (
     <div>
       <div

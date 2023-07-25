@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import type { FC } from 'react';
 import Image from 'next/image';
 import QuantityCounter from '../../_components/QuantityCounter';
 import fire from '../../_assets/svgs/fire.svg';
@@ -12,8 +13,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { addItem, removeItem } from '@/app/_store/reducers/cartReducer';
 import { useTranslation } from 'react-i18next';
+import { MenuItem } from "../../_lib/types/menu";
 
-const MenuItem = ({
+const MenuItem: FC<MenuItem> = ({
   id,
   itemsImg,
   title,
@@ -21,7 +23,7 @@ const MenuItem = ({
   calerioes,
   price,
   additions,
-}: any) => {
+}) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { data }: { data: string[] } = useAppSelector(

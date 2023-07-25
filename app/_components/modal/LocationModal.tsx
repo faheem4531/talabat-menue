@@ -5,11 +5,7 @@ import Image from 'next/image';
 import locationIcon from '../../_assets/svgs/location.svg';
 import { setSelectedRestaurant } from '@/app/_store/reducers/restaurantReducer';
 import { useAppDispatch } from '@/app/_store/hooks';
-
-interface LocationModal {
-  restaurants?: any;
-  setLocModalOpen?: any;
-}
+import { LocationModal } from '../../_lib/types/genericComponents';
 
 const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen }) => {
   const dispatch = useAppDispatch();
