@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { addItem, removeItem } from '@/app/_store/reducers/cartReducer';
+import { useTranslation } from 'react-i18next';
 
 const MenuItem = ({
   id,
@@ -28,17 +29,26 @@ const MenuItem = ({
     (state) => state.favorites
   );
   const { items } = useAppSelector((state) => state.cart);
-
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
     if (result === undefined) {
-      toast.success('Added to Favorites!', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      lang === 'ar'
+        ? toast.success(`${t('favorites.added-to-favorites')}!`, {
+            position: toast.POSITION.TOP_LEFT,
+          })
+        : toast.success(`${t('favorites.added-to-favorites')}!`, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
     } else {
-      toast.error('Removed from Favorites!', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      lang === 'ar'
+        ? toast.error(`${t('favorites.removed-from-favorites')}!`, {
+            position: toast.POSITION.TOP_LEFT,
+          })
+        : toast.error(`${t('favorites.removed-from-favorites')}!`, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
     }
   };
 
