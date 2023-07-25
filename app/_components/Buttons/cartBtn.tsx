@@ -5,6 +5,7 @@ interface Props {
   btnline?: boolean;
   btnText2?: string;
   btnClasses: string;
+  onClick: () => void
   // font: string;
   // btnPadding: string;
   // center?: string;
@@ -13,11 +14,12 @@ interface Props {
   // bgColor: string;
 }
 
-const CartBtn = ({ btnClasses, btnText1, btnline, btnText2 }: Props) => {
+const CartBtn = ({ btnClasses, btnText1, btnline, btnText2, onClick }: Props) => {
   return (
     <div>
       <button
         type="button"
+        onClick={onClick}
         // className="flex justify-around focus:outline-none text-white rounded-lg text-sm px-4 py-2 mr-2 mb-2 bg-[#C02328] w-[152px] h-[33px] text-[12px] font-semibold"
         className={`flex focus:outline-none text-white ${btnClasses}`}
       >
