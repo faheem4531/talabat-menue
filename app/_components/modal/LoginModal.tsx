@@ -5,9 +5,10 @@ import PhoneInput from 'react-phone-number-input';
 
 interface LoginModalProps {
   login?: (phone: string) => void
+  info?: boolean
 }
 
-const LoginModal = ({ login = () => {} }: LoginModalProps) => {
+const LoginModal = ({ login = () => {}, info }: LoginModalProps) => {
   const [name, setName] = useState<string | undefined>('')
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>('');
 
@@ -27,7 +28,9 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
       <form>
         <div className="mb-6">
           <label className="block mb-2 text-xs font-medium text-gray-900 dark:text-white">
-            Your Name
+          {info ? 
+             "User Information" : t("login.login")
+          }
           </label>
           <input
             type="text"

@@ -238,7 +238,7 @@ const AddCart = () => {
         handleModalToggle={() => setisLoginModalOpen(!isLoginModalOpen)}
       >
         <div className="mt-[59px]">
-          <LoginModal login={login} />
+          <LoginModal login={login} info={true}/>
         </div>
       </Modal>
 
