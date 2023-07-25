@@ -2,10 +2,12 @@
 import Image from 'next/image';
 import { useAppSelector } from '../../_store/hooks';
 import React from 'react'
+import { useRouter } from "next/navigation";
 import SuccessImg from "../../_assets/svgs/item3.svg"
 import CartBtn from '@/app/_components/Buttons/cartBtn';
 
 const PaymentSuccess = () => {
+  const router = useRouter();
   const { order } = useAppSelector((state) => state?.order);
 
   const getTotalAmount = () => {
@@ -149,7 +151,8 @@ const PaymentSuccess = () => {
       <div className="mt-2 ">
         <CartBtn
           btnText1="See The Menu"
-          btnClasses="justify-center rounded-[6px] bg-gray-600 w-full text-[14px] font-[400] py-[15px]"
+          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
+          onClick={() => router.push('/')}
         />
       </div>
       <div className="text-center text-[13px] font-medium capitalize text-gray-500 mt-3">
