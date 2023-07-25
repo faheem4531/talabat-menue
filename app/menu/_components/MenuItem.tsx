@@ -1,7 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import heroImg from '../../_assets/pngs/heroImg.png';
 import QuantityCounter from '../../_components/QuantityCounter';
 import fire from '../../_assets/svgs/fire.svg';
 import emptyHeart from '../../_assets/svgs/emptyHeart.svg';
@@ -12,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { addItem, removeItem } from '@/app/_store/reducers/cartReducer';
+import { useTranslation } from 'react-i18next';
 
 const MenuItem = ({
   id,
@@ -20,26 +20,34 @@ const MenuItem = ({
   discription,
   calerioes,
   price,
-  additions
+  additions,
 }: any) => {
-  
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { data }: { data: string[] } = useAppSelector(
     (state) => state.favorites
   );
   const { items } = useAppSelector((state) => state.cart);
-
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
     if (result === undefined) {
-      toast.success('Added to Favorites!', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      lang === 'ar'
+        ? toast.success(`${t('favorites.added-to-favorites')}!`, {
+            position: toast.POSITION.TOP_LEFT,
+          })
+        : toast.success(`${t('favorites.added-to-favorites')}!`, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
     } else {
-      toast.error('Removed from Favorites!', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
+      lang === 'ar'
+        ? toast.error(`${t('favorites.removed-from-favorites')}!`, {
+            position: toast.POSITION.TOP_LEFT,
+          })
+        : toast.error(`${t('favorites.removed-from-favorites')}!`, {
+            position: toast.POSITION.TOP_RIGHT,
+          });
     }
   };
 
@@ -118,7 +126,7 @@ const MenuItem = ({
         <div className="flex items-center">
           <span className="text-[11px] font-semibold text-[#C02328] ">
             {/* {menuItem?.price}  */}
-            {price}
+            {`${price} SAR`}
           </span>
           <div onClick={handleItem}>
             {additions.length == 0 && (
@@ -156,7 +164,7 @@ const MenuItem = ({
             showToastMessage(id);
           }}
         >
-          {!checkItemInFavorites(id) ? (
+          {checkItemInFavorites(id) ? (
             <>
               <Image
                 src={emptyHeart}

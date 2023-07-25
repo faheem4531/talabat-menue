@@ -4,7 +4,8 @@ export interface RootState {
   favorites: FavoriteState;
   item: itemState;
   restaurant: RestaurantState;
-  customer: CustomerState
+  customer: CustomerState;
+  language: LanguageState
 }
 export interface MenuCatageoryState {
   data: any;
@@ -40,4 +41,7 @@ export interface CustomerState {
   data: any;
   loading: boolean;
   error: string | null;
+}
+export interface LanguageState {
+  name: string
 }

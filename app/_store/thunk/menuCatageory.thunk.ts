@@ -6,7 +6,9 @@ import { clearCatagories } from '../reducers/menuCatageory';
 export const getMenuCatageorys = createAsyncThunk("menu/getCatageorys", async (_, { dispatch }) => {
   try {
     const res = await api.get(`${NEXT_APP_BASE_URL}/menu-category?pagination=false&fetchCategoriesHavingItems=true&sortBy=order&sortDirection=1`);
-    dispatch(clearCatagories())
+   
+   //Commented due to flicker issue
+    // dispatch(clearCatagories())
     res?.data?.data?.docs.map((category: any) =>
       dispatch(getCatageorysWithItems(category))
     );

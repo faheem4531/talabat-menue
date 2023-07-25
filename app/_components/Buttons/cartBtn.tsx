@@ -5,7 +5,7 @@ interface Props {
   btnline?: boolean;
   btnText2?: string;
   btnClasses: string;
-  onClick: () => void
+  onClick?: () => void
   // font: string;
   // btnPadding: string;
   // center?: string;
@@ -14,7 +14,7 @@ interface Props {
   // bgColor: string;
 }
 
-const CartBtn = ({ btnClasses, btnText1, btnline, btnText2, onClick }: Props) => {
+const CartBtn = ({ btnClasses, btnText1, btnline, btnText2, onClick= () => {} }: Props) => {
   return (
     <div>
       <button

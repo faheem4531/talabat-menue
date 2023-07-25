@@ -1,12 +1,21 @@
 import React from 'react';
-import Link from 'next/link'
+import type { FC } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import locationIcon from '../../_assets/svgs/location.svg';
+import { setSelectedRestaurant } from '@/app/_store/reducers/restaurantReducer';
+import { useAppDispatch } from '@/app/_store/hooks';
 
-const LocationModal = (restaurants: any) => {
+interface LocationModal {
+  restaurants?: any;
+  setLocModalOpen?: any;
+}
+
+const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen }) => {
+  const dispatch = useAppDispatch();
   return (
     <div>
-      {restaurants?.restaurants?.map((item: any) => {
+      {restaurants?.map((item: any) => {
         return (
           <div
             className="flex justify-between items-center mb-[18px]"
@@ -16,15 +25,27 @@ const LocationModal = (restaurants: any) => {
               <div>
                 <Image src={locationIcon} alt="locationIcon" />
               </div>
-              <h4 className="text-[12px] font-[600] text-[#494949] ml-[13px]">
+              <h4
+                className="cursor-pointer text-[12px] font-[600] text-[#494949] ml-[13px]"
+                onClick={() => {
+                  dispatch(setSelectedRestaurant(item._id));
+                  setLocModalOpen(false);
+                }}
+              >
                 {item.name}
               </h4>
             </div>
-            <Link className="cursor-pointer ml-9 text-[10px] font-[400] text-[#494949]" href={{
-              pathname: '/branchLocation',
-              query: { lat: item?.location?.latitude, lng: item?.location?.longitude }
-              }}>
-                View Location in Map
+            <Link
+              className="cursor-pointer ml-9 text-[10px] font-[400] text-[#494949]"
+              href={{
+                pathname: '/branchLocation',
+                query: {
+                  lat: item?.location?.latitude,
+                  lng: item?.location?.longitude,
+                },
+              }}
+            >
+              View Location in Map
             </Link>
           </div>
         );

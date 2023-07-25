@@ -1,34 +1,41 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
+
 
 const TimingModal = () => {
+   const { t, i18n } = useTranslation();
+   const lang = i18n.language;
   const hoursItem = [
     {
-      day: "Sunday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Sunday"),
+      
+      // hours: "Open 24 Hours",
+      hours: t("openHours.Open-24-Hours"),
     },
     {
-      day: "Monday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Monday"),
+      hours: t("openHours.Open-24-Hours"),
     },
     {
-      day: "Tuesday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Tuesday"),
+      hours: t("openHours.Open-24-Hours"),
     },
     {
-      day: "Wednesday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Wednesday"),
+      hours: t("openHours.Open-24-Hours"),
     },
     {
-      day: "Thursday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Thursday"),
+      hours: t("openHours.Open-24-Hours"),
     },
     {
-      day: "Friday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Friday"),
+      hours: t("openHours.Open-24-Hours"),
     },
     {
-      day: "Saturday",
-      hours: "Open 24 Hours",
+      day: t("openHours.Saturday"),
+      hours: t("openHours.Open-24-Hours"),
     },
   ];
 
