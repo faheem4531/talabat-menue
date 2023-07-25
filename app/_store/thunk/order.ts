@@ -17,3 +17,12 @@ export const order = createAsyncThunk("/order", async (data: any) => {
       console.error(error);
     }
   });
+
+export const takePayment = createAsyncThunk("/takePayment", async (data: any) => {
+    try {
+      const res = await api.post(`${NEXT_APP_BASE_URL}/payments/take-payment`, data);
+      return res?.data?.data;
+    } catch (error) {
+      console.error(error);
+    }
+  });

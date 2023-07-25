@@ -8,7 +8,7 @@ import CartItem from "./_components/cartItem";
 import CartBtn from "../_components/Buttons/cartBtn";
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { getCartItems } from "../_store/thunk/cart.thunk";
-import { order } from "../_store/thunk/order";
+import { order, takePayment } from "../_store/thunk/order";
 import { addItem, clearCart, removeItem } from "../_store/reducers/cartReducer";
 import Modal from "../_components/modal/Modal";
 import LoginModal from "../_components/modal/LoginModal";
@@ -158,6 +158,14 @@ const AddCart = () => {
     })
   };
 
+  const handlePayNow = () => {
+    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant, items })).unwrap().then((data) => {
+    dispatch(takePayment({ orderId: data?._id, "paymentMethod": "Online", "redirectUrl": "https://revamped-gti-website-front-end.vercel.app/addCart" })).unwrap().then((data) => {
+      router.push(`https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=${data?.paymentId}`)
+    })
+    })
+  }
+
   return (
     <div>
       <div className="flex justify-between p-4 items-center relative z-[1]">
@@ -257,9 +265,7 @@ const AddCart = () => {
               Terms and Condition
             </h4>
             <div className="flex justify-center text-center gap-3 mt-4">
-            <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={() => setTermsAndConditionsModal(false)}
-              >
-                Disagree</button>
+            <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={() => setTermsAndConditionsModal(false)}>Disagree</button>
             <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleConfirmOrder}
               >
                 Agree
@@ -282,10 +288,8 @@ const AddCart = () => {
               Terms and Condition
             </h4>
           <div className='flex justify-evenly'>
-          <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]">
-            <a href="https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=700202320657457454">
-            Pay Now
-            </a>
+          <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={handlePayNow}>
+          Pay Now
             </button>
             <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleCashOnDelivery}>Cash On Delivery</button>
           </div>
