@@ -43,7 +43,9 @@ const Menu = () => {
   const [locModalOpen, setLocModalOpen] = useState(false);
 
   useEffect(() => {
-    dispatch(getMenuCatageorys());
+    if(!catagories.length){
+      dispatch(getMenuCatageorys());
+    }
     dispatch(getRestaurants());
     dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
   }, [dispatch]);
