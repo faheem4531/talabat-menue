@@ -27,7 +27,7 @@ const PaymentSuccess = () => {
           <div className="text-[14px] font-semibold">#{order?.orderNumber}</div>
         </div>
         {order?.items?.map((item: any, index: number) => 
-        <div className="mt-7 mb-6 flex justify-between items-center text-[14px]">
+        <div key={index} className="mt-7 mb-6 flex justify-between items-center text-[14px]">
           <div className="flex items-center gap-3">
             <Image key={index} className="h-10 w-10" src={SuccessImg} alt="Success Image" />
             <div className="font-semibold">{item?.menuItem?.name}</div>

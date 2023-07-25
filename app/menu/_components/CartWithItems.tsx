@@ -18,7 +18,7 @@ const CartWithItems = ({
       <MenuSlider />
       {categories.map((element, index) => {
         return (
-          <div className="pb-6">
+          <div key={index} className="pb-6">
 
             <MenuItemsContainer
               key={index}
