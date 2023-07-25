@@ -35,8 +35,7 @@ const Menu = () => {
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
   );
-
-  console.log('selectedRestaurant', selectedRestaurant);
+  const [query, setQuery] = useState("")
 
   const language = useAppSelector((state) => state.language);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -165,7 +164,7 @@ const Menu = () => {
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
-        <CartWithItems categories={catagories ?? []} />
+        <CartWithItems categories={catagories ?? []} query={query} />
       </div>
 
       <Modal
@@ -175,7 +174,7 @@ const Menu = () => {
         isModalOpen={isModalOpen}
         handleModalToggle={() => setIsModalOpen(!isModalOpen)}
       >
-        <InputModal />
+        <InputModal setQuery={setQuery} />
       </Modal>
 
       {/* Hours Modal */}

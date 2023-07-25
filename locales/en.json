@@ -1,25 +1,43 @@
 {
-    "menu": {
-        "opening-hours" : "Opening Hours",
-        "Branches":  "Branches",
-        "gulf-madina": "Gulf Madina",
-        "today-open-24-hours": "Today : Open 24 Hours"
-
-    },
-        "sideBar": {
-        "MENU": "MENU",
-        "login": "Login",
-        "see-the-menu": "See The Menu",
-        "pickup-orders": "Pickup Orders",
-        "deliver-order":  "Deliver Orders",
-        "branches": "Branches",
-        "opening-hours": "Opening Hours",
-        "about-us": "About Us",
-        "goals": "Our Goals"
-        
-        
-    },
-    "favorites": {
+  "menu": {
+    "opening-hours": "Opening Hours",
+    "Branches": "Branches",
+    "gulf-madina": "Gulf Madina",
+    "today-open-24-hours": "Today : Open 24 Hours"
+  },
+  "sideBar": {
+    "MENU": "MENU",
+    "login": "Login",
+    "see-the-menu": "See The Menu",
+    "pickup-orders": "Pickup Orders",
+    "deliver-order": "Deliver Orders",
+    "branches": "Branches",
+    "opening-hours": "Opening Hours",
+    "about-us": "About Us",
+    "goals": "Our Goals"
+  },
+  "openHours": {
+    "Sunday": "Sunday",
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday",
+    "Saturday": "Saturday",
+    "Open-24-Hours":"Open 24 hours"
+  },
+  "input": {
+    "What-are-you-looking-for":"What are you looking for"
+  },
+  "login" : {
+    "Your-Password":"Your Password",
+    "Remember-me":"Remember Me",
+    "Submit":"Submit",
+    "About-us":"About us",
+    "Our-Goals":"Our Goals",
+    "name@flowbite.com":"name@flowbite.com"
+   },
+   "favorites": {
         "added-to-favorites": "Added to Favorites",
         "removed-from-favorites": "Removed from Favorites"
     }

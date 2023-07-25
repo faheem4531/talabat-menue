@@ -21,5 +21,27 @@
     "favorites": {
         "added-to-favorites": "تمت الإضافة إلى المفضلة",
         "removed-from-favorites": "تمت إزالته من المفضلة"
-    }
+    },
+    "openHours": {
+        "Sunday": "الأحد",
+        "Monday": "الاثنين",
+        "Tuesday": "الثلاثاء",
+        "Wednesday": "الأربعاء",
+        "Thursday": "الخميس",
+        "Friday": "جمعة",
+        "Saturday": "السبت",
+        "Open-24-Hours":"مفتوحة 24 ساعة"
+    },
+    "input" : {
+        "What-are-you-looking-for":"ما الذي تبحث عنه"
+    },
+    "login" : {
+    "Your-Password":"كلمة السر خاصتك",
+    "Remember-me":"تذكرنى",
+    "Submit":"يُقدِّم",
+    "About-us":"معلومات عنا",
+    "Our-Goals":"أهدافنا",
+    "name@flowbite.com":"اسم@فلبيت.كوم"
+   }
+    
 }

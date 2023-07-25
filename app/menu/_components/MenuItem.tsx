@@ -1,7 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import heroImg from '../../_assets/pngs/heroImg.png';
 import QuantityCounter from '../../_components/QuantityCounter';
 import fire from '../../_assets/svgs/fire.svg';
 import emptyHeart from '../../_assets/svgs/emptyHeart.svg';
