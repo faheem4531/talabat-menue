@@ -35,7 +35,7 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
             value={name}
             onChange={(event) => setName(event.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg block w-full p-2.5 "
-            placeholder="Enter your name"
+            placeholder={t("login.Enter-your-name")}
             required
           />
         </div>
@@ -52,7 +52,7 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
         </div> */}
         <div className="mb-6">
           <PhoneInput
-            placeholder="Enter phone number"
+            placeholder={t("login.Enter-phone-number")}
             value={phoneNumber}
             onChange={(value: string | undefined) => setPhoneNumber(value)}
           />
@@ -73,7 +73,7 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
         <button
           disabled={!name || !phoneNumber}
           onClick={handleLogin}
-          className="text-white bg-blue-700  font-medium rounded-lg text-xs w-full px-5 py-2.5 text-center "
+          className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-full "
         >
           {t("login.Submit")}
         </button>

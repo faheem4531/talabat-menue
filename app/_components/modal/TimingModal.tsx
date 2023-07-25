@@ -41,8 +41,8 @@ const TimingModal = () => {
 
   return (
     <div>
-      <h4 className="text-center mt-6 mb-10 text-sm font-[600] text-[#494949]">
-        Opening Hours
+      <h4 className="text-center mt-6 mb-10 text-xs font-[600] text-[#494949]">
+        {t("sideBar.opening-hours")}
       </h4>
       {hoursItem.map((item, index) => {
         return (
