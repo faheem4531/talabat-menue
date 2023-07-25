@@ -9,8 +9,8 @@ interface Props {
   color: string;
   bgColor?: string;
   count?: number;
-  incrementCounter?: () => void,
-  decrementCounter?: () => void
+  incrementCounter?: () => void;
+  decrementCounter?: () => void;
 }
 
 const QuantityCounter = ({
@@ -18,10 +18,9 @@ const QuantityCounter = ({
   color,
   bgColor,
   count = 0,
-  incrementCounter = () => { },
-  decrementCounter = () => { }
+  incrementCounter = () => {},
+  decrementCounter = () => {},
 }: Props) => {
-
   return (
     <div>
       <div
@@ -29,8 +28,8 @@ const QuantityCounter = ({
         style={
           delIconflag
             ? {
-              boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-            }
+                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+              }
             : {}
         }
       >
@@ -42,9 +41,7 @@ const QuantityCounter = ({
           <Image src={plus} alt="plusIcon" />
         </div>
         <span
-          className={
-            count === 0 ? "hidden" : `text-[11px] font-bold ${color}`
-          }
+          className={count === 0 ? "hidden" : `text-[11px] font-bold ${color}`}
         >
           {count}
         </span>
@@ -56,10 +53,7 @@ const QuantityCounter = ({
             {delIconflag ? (
               <Image src={delIcon} alt="delIcon" />
             ) : (
-              <p
-                className={`text-center h-[24px] w-[24px] rounded-3xl ${count === 1 ? " bg-[#D9D9D9] " : " bg-[#C84044] "
-                  }`}
-              >
+              <p className="text-center h-[24px] w-[24px] rounded-3xl  bg-[#C84044] ">
                 -
               </p>
             )}

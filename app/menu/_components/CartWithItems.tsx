@@ -1,6 +1,8 @@
-import React from 'react';
-import MenuSlider from './MenuSlider';
-import MenuItemsContainer from './MenuItemsContainer';
+import React from "react";
+import MenuSlider from "./MenuSlider";
+import MenuItemsContainer from "./MenuItemsContainer";
+import CartBtn from "../../_components/Buttons/cartBtn";
+import Link from "next/link";
 
 const CartWithItems = ({
   categories,
@@ -23,6 +25,14 @@ const CartWithItems = ({
           />
         );
       })}
+      <Link href={"/addCart"} className="fixed bottom-2 w-[350px]">
+        <CartBtn
+          btnText1="View cart"
+          btnText2="96.00 SR"
+          // onClick={}
+          btnClasses="justify-between px-4 rounded-[6px] bg-[#00A559] w-full text-[14px] font-[400] py-[15px]"
+        />
+      </Link>
     </div>
   );
 };
