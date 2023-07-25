@@ -1,11 +1,7 @@
-'use client';
-
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Providers } from './_store/provider';
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,19 +15,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { i18n: i18nLocale } = useTranslation();
-
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-
-    if (savedLanguage) {
-      i18nLocale.changeLanguage(savedLanguage);
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('language', i18nLocale.language);
-  }, [i18nLocale.language]);
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
