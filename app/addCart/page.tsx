@@ -10,8 +10,13 @@ import { getCartItems } from '../_store/thunk/cart.thunk';
 import { addItem, removeItem } from '../_store/reducers/cartReducer';
 import Modal from '../_components/modal/Modal';
 import LoginModal from '../_components/modal/LoginModal';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 const AddCart = () => {
+
+  const router = useRouter();
 
   const dispatch = useAppDispatch();
   const { items, cart } = useAppSelector((state) => state.cart);
@@ -87,8 +92,12 @@ const AddCart = () => {
     if (customerData) {
       setisLoginModalOpen(true)
     }
+    navigate();
   }
 
+   const navigate = () => {
+     router.push(`/paymentSuccess`);
+   };
 
   return (
     <div>
@@ -153,7 +162,7 @@ const AddCart = () => {
         <CartBtn
           btnText1="Confirm Order"
           btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
-        />
+          />
       </div>
       <Modal
         modalPosition="items-center"
