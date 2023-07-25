@@ -227,7 +227,7 @@ const AddCart = () => {
       <Modal
         modalPosition="items-center"
         cancelCSS="right-0"
-        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        modalCSS="rounded-[14px] pb-6 px-4"
         isModalOpen={isLoginModalOpen}
         handleModalToggle={() => setisLoginModalOpen(!isLoginModalOpen)}
       >
@@ -237,7 +237,7 @@ const AddCart = () => {
       </Modal>
 
       <Modal
-        modalCSS="items-center"
+        modalCSS="items-center rounded-[14px] pb-6 px-4"
         cancelCSS="right-0"
         modalPosition="items-center"
         isModalOpen={termsAndConditionsModal}
@@ -250,46 +250,47 @@ const AddCart = () => {
             <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
               Terms and Condition
             </h4>
-            <div className="mt-4">
-              <button
-                className="bg-gray-400 border text-gray-700 p-2 w-28 rounded mr-3"
-                onClick={() => setTermsAndConditionsModal(false)}
+            <div className="flex justify-center text-center gap-3 mt-4">
+            <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={() => setTermsAndConditionsModal(false)}
               >
-                Disagree
-              </button>
-              <button
-                className="bg-red-400 border text-white p-2 w-28 rounded"
-                onClick={handleConfirmOrder}
+                Disagree</button>
+            <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleConfirmOrder}
               >
                 Agree
-              </button>
-            </div>
+            </button>
+          </div>
           </div>
         </div>
       </Modal>
 
       <Modal
-        modalCSS="items-start"
+        modalCSS="items-center rounded-[14px] pb-6 px-4"
         cancelCSS="right-0"
-        modalPosition="items-start"
+        modalPosition="items-center"
         isModalOpen={paymentMethodModal}
         handleModalToggle={() => setPaymentMethodModal(!paymentMethodModal)}
       >
-        <div className="flex flex-col w-80">
-          <div>Terms And Conditions</div>
-          <div className="flex justify-evenly">
-            <button>Pay Now</button>
-            <button onClick={() => router.push("/order/success")}>
+        <div className="my-[59px]">
+
+        <div className="flex flex-col">
+        <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
+              Terms and Condition
+            </h4>
+          <div className="flex justify-center text-center gap-3">
+            <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]">Pay Now</button>
+            <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={() => router.push("/order/success")}>
               Cash On Delivery
             </button>
           </div>
         </div>
+        </div>
+
       </Modal>
 
       <Modal
         modalPosition="items-center"
         cancelCSS="right-0"
-        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        modalCSS="rounded-[14px] pb-6 px-4"
         isModalOpen={otpModalOpen}
         handleModalToggle={() => setOtpModalOpen(!otpModalOpen)}
       >

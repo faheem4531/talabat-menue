@@ -16,6 +16,8 @@ const CartWithItems = ({
       <MenuSlider />
       {categories.map((element, index) => {
         return (
+          <div className="pb-6">
+
           <MenuItemsContainer
             key={index}
             title={element?.name}
@@ -23,12 +25,14 @@ const CartWithItems = ({
             items={element?.docs ?? []}
             query={query}
           />
+          </div>
+
         );
       })}
       <Link href={"/addCart"} className="fixed bottom-2 w-[350px]">
         <CartBtn
           btnText1="View cart"
-          btnText2=""
+          btnText2="90.00 SR"
           // onClick={}
           btnClasses="justify-between px-4 rounded-[6px] bg-[#00A559] w-full text-[14px] font-[400] py-[15px]"
         />

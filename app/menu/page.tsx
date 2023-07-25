@@ -170,7 +170,7 @@ const Menu = () => {
       </div>
 
       <Modal
-        modalCSS="items-start"
+        modalCSS="items-start rounded-[14px] pb-6"
         cancelCSS="right-0"
         modalPosition="items-start"
         isModalOpen={isModalOpen}
@@ -185,7 +185,7 @@ const Menu = () => {
         handleModalToggle={() => setHourModalOpen(!hourModalOpen)}
         modalPosition="items-center"
         cancelCSS="right-0"
-        modalCSS="w-[292px] rounded-[14px] pb-6"
+        modalCSS="rounded-[14px] pb-6"
       >
         <div>
           <TimingModal />
@@ -196,7 +196,7 @@ const Menu = () => {
       <Modal
         modalPosition="items-center"
         cancelCSS="right-0"
-        modalCSS="w-[292px] rounded-[14px] pb-6 px-4"
+        modalCSS=" rounded-[14px] pb-6 px-4"
         isModalOpen={locModalOpen}
         handleModalToggle={() => setLocModalOpen(!locModalOpen)}
       >

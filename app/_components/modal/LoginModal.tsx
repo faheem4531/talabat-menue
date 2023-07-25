@@ -73,7 +73,7 @@ const LoginModal = ({ login = () => {} }: LoginModalProps) => {
         <button
           disabled={!name || !phoneNumber}
           onClick={handleLogin}
-          className="text-white bg-blue-700  font-medium rounded-lg text-xs w-full px-5 py-2.5 text-center "
+          className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-full "
         >
           {t("login.Submit")}
         </button>
