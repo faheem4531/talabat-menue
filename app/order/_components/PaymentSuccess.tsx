@@ -26,10 +26,10 @@ const PaymentSuccess = () => {
           <div className="text-gray-500 text-[14px]">{order?.createdAt?.slice(0, 10)}</div>
           <div className="text-[14px] font-semibold">#{order?.orderNumber}</div>
         </div>
-        {order?.items?.map((item: any) => 
+        {order?.items?.map((item: any, index: number) => 
         <div className="mt-7 mb-6 flex justify-between items-center text-[14px]">
           <div className="flex items-center gap-3">
-            <Image className="h-10 w-10" src={SuccessImg} alt="Success Image" />
+            <Image key={index} className="h-10 w-10" src={SuccessImg} alt="Success Image" />
             <div className="font-semibold">{item?.menuItem?.name}</div>
           </div>
           <div className="flex gap-1">
