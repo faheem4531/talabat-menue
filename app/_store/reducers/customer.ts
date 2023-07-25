@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CustomerState, RestaurantState } from '../interfaces';
-import { getRestaurants } from '../thunk/restaurant.thunk';
-import { getCustomerData } from '../thunk/customer.thunk';
+import { CustomerState } from '../interfaces';
+import {  } from '../thunk/customer.thunk';
+import { confirmOtp } from '../thunk/user';
 
 const initialState: CustomerState = {
   data: null,
@@ -15,14 +15,14 @@ const customerSlice = createSlice({
   reducers: {
   },
   extraReducers: (builder) => {
-    builder.addCase(getCustomerData.fulfilled, (state, { payload }: PayloadAction<any>) => {
+    builder.addCase(confirmOtp.fulfilled, (state, { payload }: PayloadAction<any>) => {
       state.data = payload;
       state.loading = false;
     });
-    builder.addCase(getCustomerData.rejected, (state) => {
+    builder.addCase(confirmOtp.rejected, (state) => {
       state.loading = false;
     });
-    builder.addCase(getCustomerData.pending, (state) => {
+    builder.addCase(confirmOtp.pending, (state) => {
       state.loading = true;
     });
   },

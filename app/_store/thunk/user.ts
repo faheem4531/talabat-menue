@@ -34,7 +34,8 @@ export const confirmOtp = createAsyncThunk("auth/confirm-otp", async ({ phoneNum
         verificationCode: Number(otp), 
         verificationId
       });
-      return res?.data?.data;
+      localStorage.setItem('token', res?.data?.data?.accessToken)
+      return res?.data?.data?.customer;
     } catch (error) {
       console.error(error);
     }

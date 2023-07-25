@@ -1,4 +1,5 @@
 export interface RootState {
+  order: OrderState;
   menuCatageory: MenuCatageoryState,
   cart: CartState,
   favorites: FavoriteState;
@@ -44,4 +45,9 @@ export interface CustomerState {
 }
 export interface LanguageState {
   name: string
+}
+
+export interface OrderState {
+  order: any
+  loading: boolean
 }

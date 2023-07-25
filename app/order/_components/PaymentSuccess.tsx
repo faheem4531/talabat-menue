@@ -1,10 +1,21 @@
 'use client'
 import Image from 'next/image';
+import { useAppSelector } from '../../_store/hooks';
 import React from 'react'
 import SuccessImg from "../../_assets/svgs/item3.svg"
 import CartBtn from '@/app/_components/Buttons/cartBtn';
 
 const PaymentSuccess = () => {
+  const { order } = useAppSelector((state) => state?.order);
+
+  const getTotalAmount = () => {
+    let total = 0;
+    order?.items?.forEach((item: any) => {
+      total += item?.amountBeforeDiscount * item?.quantity
+    })
+    return total
+  }
+
   return (
     <div>
       <div className="border py-3 px-2 rounded-lg shadow-lg shadow-gray-200">
@@ -12,32 +23,33 @@ const PaymentSuccess = () => {
           <div className="w-16 text-[14px] text-center bg-[#f7aa02] -ml-3 py-1 rounded-sm shadow-sm shadow-black">
             New
           </div>
-          <div className="text-gray-500 text-[14px]">7/24/2023</div>
-          <div className="text-[14px] font-semibold">#32</div>
+          <div className="text-gray-500 text-[14px]">{order?.createdAt?.slice(0, 10)}</div>
+          <div className="text-[14px] font-semibold">#{order?.orderNumber}</div>
         </div>
+        {order?.items?.map((item: any) => 
         <div className="mt-7 mb-6 flex justify-between items-center text-[14px]">
           <div className="flex items-center gap-3">
             <Image className="h-10 w-10" src={SuccessImg} alt="Success Image" />
-            <div className="font-semibold">Sevenup</div>
+            <div className="font-semibold">{item?.menuItem?.name}</div>
           </div>
           <div className="flex gap-1">
-            <div className="text-gray-500">x4</div>
-            <div className="font-semibold">40</div>
+            <div className="text-gray-500">x{item?.quantity}</div>
+            <div className="font-semibold">{item?.amountBeforeDiscount}</div>
           </div>
-        </div>
+        </div>)}
         <div className="border-dotted border-[1px] border-gray h-[1px] w-full"></div>
         <div className="mt-2 text-gray-600">
           <div className="flex justify-between items-center mt-[1px]">
             <div className="text-[12px] font-medium">Tip Amount</div>
-            <div className="text-[12px] font-medium">0 SAR</div>
+            <div className="text-[12px] font-medium">{order?.tip} SAR</div>
           </div>
           <div className="flex justify-between items-center mt-[1px]">
             <div className="text-[12px] font-medium">Total</div>
-            <div className="text-[12px] font-medium">40 SAR</div>
+            <div className="text-[12px] font-medium">{getTotalAmount()} SAR</div>
           </div>
           <div className="flex justify-between items-center mt-[1px]">
             <div className="text-[12px] font-medium">Total Amount</div>
-            <div className="text-[12px] font-medium">40 SAR</div>
+            <div className="text-[12px] font-medium">{getTotalAmount() - order?.tip} SAR</div>
           </div>
         </div>
       </div>

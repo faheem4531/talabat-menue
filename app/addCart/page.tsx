@@ -8,7 +8,8 @@ import CartItem from "./_components/cartItem";
 import CartBtn from "../_components/Buttons/cartBtn";
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { getCartItems } from "../_store/thunk/cart.thunk";
-import { addItem, removeItem } from "../_store/reducers/cartReducer";
+import { order } from "../_store/thunk/order";
+import { addItem, clearCart, removeItem } from "../_store/reducers/cartReducer";
 import Modal from "../_components/modal/Modal";
 import LoginModal from "../_components/modal/LoginModal";
 import { useRouter } from "next/navigation";
@@ -140,6 +141,9 @@ const AddCart = () => {
     setTermsAndConditionsModal(false);
     if (!customerData) {
       setisLoginModalOpen(true);
+    }else{
+      setPaymentMethodModal(true)
+      setTermsAndConditionsModal(false)
     }
   };
 
@@ -147,9 +151,11 @@ const AddCart = () => {
     setTermsAndConditionsModal(true);
   };
 
-  const openPaymentMethodModal = () => {
-    setTermsAndConditionsModal(false);
-    setPaymentMethodModal(true);
+  const handleCashOnDelivery = () => {
+    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant, items })).unwrap().then(() => {
+    dispatch(clearCart());
+      router.push('/order/success')
+    })
   };
 
   return (
@@ -277,11 +283,11 @@ const AddCart = () => {
       >
         <div className="flex flex-col w-80">
           <div>Terms And Conditions</div>
-          <div className="flex justify-evenly">
-            <button>Pay Now</button>
-            <button onClick={() => router.push("/order/success")}>
-              Cash On Delivery
-            </button>
+          <div className='flex justify-evenly'>
+            <a href="https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=700202320657457454">
+            Pay Now
+            </a>
+            <button onClick={handleCashOnDelivery}>Cash On Delivery</button>
           </div>
         </div>
       </Modal>
