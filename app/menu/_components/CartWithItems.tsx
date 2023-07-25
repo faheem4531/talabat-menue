@@ -1,8 +1,14 @@
-import React from "react";
-import MenuSlider from "./MenuSlider";
-import MenuItemsContainer from "./MenuItemsContainer";
+import React from 'react';
+import MenuSlider from './MenuSlider';
+import MenuItemsContainer from './MenuItemsContainer';
 
-const CartWithItems = ({ categories }: { categories: any[] }) => {
+const CartWithItems = ({
+  categories,
+  query,
+}: {
+  categories: any[];
+  query: string;
+}) => {
   return (
     <div>
       <MenuSlider />
@@ -13,6 +19,7 @@ const CartWithItems = ({ categories }: { categories: any[] }) => {
             title={element?.name}
             id={element?._id}
             items={element?.docs ?? []}
+            query={query}
           />
         );
       })}

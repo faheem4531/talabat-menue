@@ -33,7 +33,7 @@ const Menu = () => {
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
   );
-
+  const [query, setQuery] = useState("")
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hourModalOpen, setHourModalOpen] = useState(false);
   const [locModalOpen, setLocModalOpen] = useState(false);
@@ -135,7 +135,7 @@ const Menu = () => {
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
-        <CartWithItems categories={catagories ?? []} />
+        <CartWithItems categories={catagories ?? []} query={query} />
       </div>
 
       <Modal
@@ -145,7 +145,7 @@ const Menu = () => {
         isModalOpen={isModalOpen}
         handleModalToggle={() => setIsModalOpen(!isModalOpen)}
       >
-        <InputModal />
+        <InputModal setQuery={setQuery} />
       </Modal>
 
       {/* Hours Modal */}
@@ -177,6 +177,3 @@ const Menu = () => {
   );
 };
 export default Menu;
-function typeOf(restaurants: any): any {
-  throw new Error("Function not implemented.");
-}

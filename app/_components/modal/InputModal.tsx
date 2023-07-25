@@ -1,8 +1,15 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import searchIcon from "../../_assets/pngs/inputSearch.png";
 
-const InputModal = () => {
+interface Props {
+  setQuery: Dispatch<SetStateAction<string>>
+}
+
+const InputModal = ({ setQuery }: Props) => {
+  const handleChange = (value: string) => {
+    setQuery(value);
+  };
   return (
     <div>
       <div className="relative flex w-[365px] m-auto">
@@ -17,6 +24,7 @@ const InputModal = () => {
           style={{
             boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
+          onChange={(e) => handleChange(e.target.value)}
         />
       </div>
     </div>

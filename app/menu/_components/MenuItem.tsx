@@ -22,16 +22,13 @@ const MenuItem = ({
   price,
   additions
 }: any) => {
-
+  
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { data }: { data: string[] } = useAppSelector(
     (state) => state.favorites
   );
-  const { items } = useAppSelector(
-    (state) => state.cart
-  );
-
+  const { items } = useAppSelector((state) => state.cart);
 
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
@@ -64,32 +61,34 @@ const MenuItem = ({
   };
 
   const getQuantity = (id: string) => {
-    const product = items.find(item => item?.menuItem?.menuItemId == id);
+    const product = items?.find((item) => item?.menuItem?.menuItemId == id);
     if (product) {
-      return product.quantity
+      return product.quantity;
     } else {
-      return 0
+      return 0;
     }
-  }
+  };
 
   const incrementCounter = (id: string) => {
-    dispatch(addItem({
-      additions: [],
-      notes: '',
-      quantity: 1,
-      menuItem: {
-        menuItemId: id
-      }
-    }))
+    dispatch(
+      addItem({
+        additions: [],
+        notes: '',
+        quantity: 1,
+        menuItem: {
+          menuItemId: id,
+        },
+      })
+    );
   };
 
   const decrementCounter = (id: string) => {
-    dispatch(removeItem({ id }))
+    dispatch(removeItem({ id }));
   };
 
   const navigate = () => {
-    router.push(`/itemsDetail/${id}`)
-  }
+    router.push(`/itemsDetail/${id}`);
+  };
 
   return (
     <div
@@ -122,8 +121,7 @@ const MenuItem = ({
             {price}
           </span>
           <div onClick={handleItem}>
-            {
-              additions.length == 0 &&
+            {additions.length == 0 && (
               <QuantityCounter
                 color="text-white"
                 bgColor="bg-[#C84044]"
@@ -132,7 +130,7 @@ const MenuItem = ({
                 incrementCounter={() => incrementCounter(id)}
                 decrementCounter={() => decrementCounter(id)}
               />
-            }
+            )}
           </div>
         </div>
       </div>
@@ -144,7 +142,7 @@ const MenuItem = ({
             minWidth: '84px',
             maxWidth: '84px',
             borderRadius: 10,
-            objectFit: "cover",
+            objectFit: 'cover',
           }}
           width={400}
           height={300}
