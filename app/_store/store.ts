@@ -7,6 +7,7 @@ import favoritesReducer from './reducers/favoritesReducer';
 import itemReducer from './reducers/itemReducer';
 import restaurantReducer from './reducers/restaurantReducer';
 import customerReducer from './reducers/customer';
+import languageReducer from './reducers/languageReducer';
 
 const persistConfig = {
   key: 'root',
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   favorites: favoritesReducer,
   item: itemReducer,
   restaurant: restaurantReducer,
-  customer: customerReducer
+  customer: customerReducer,
+  language: languageReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

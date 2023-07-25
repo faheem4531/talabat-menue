@@ -3,10 +3,10 @@ import 'react-phone-number-input/style.css';
 import PhoneInput from 'react-phone-number-input';
 
 interface LoginModalProps {
-  login: (phone: string) => void
+  login?: (phone: string) => void
 }
 
-const LoginModal = ({ login }: LoginModalProps) => {
+const LoginModal = ({ login = () => {} }: LoginModalProps) => {
   const [name, setName] = useState<string | undefined>('')
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>('');
 

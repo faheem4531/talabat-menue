@@ -13,7 +13,7 @@ i18n.use(initReactI18next).init({
       translation: arTranslation,
     },
   },
-  lng: 'en',
+  lng: (typeof window !== 'undefined' && localStorage.getItem('language')) || 'en',
   fallbackLng: 'en',
   interpolation: {
     escapeValue: false,

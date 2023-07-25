@@ -17,5 +17,9 @@
         "goals": "أهدافنا"
 
 
+    }, 
+    "favorites": {
+        "added-to-favorites": "تمت الإضافة إلى المفضلة",
+        "removed-from-favorites": "تمت إزالته من المفضلة"
     }
 }

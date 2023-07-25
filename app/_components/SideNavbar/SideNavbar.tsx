@@ -1,16 +1,16 @@
-"use client";
-import React, { useState } from "react";
-import HamburgerIcon from "../../_assets/pngs/hamBurger.png";
-import colorHamIcon from "../../_assets/svgs/colorHamIcon.svg";
-import Image from "next/image";
-import Modal from "../modal/Modal";
-import Link from "next/link";
-import LoginModal from "../modal/LoginModal";
-import LocationModal from "../modal/LocationModal";
-import TimingModal from "../modal/TimingModal";
-import AboutModal from "../modal/AboutModal";
-import OurGoalsModal from "../modal/OurGoalsModal";
-import { useTranslation } from "react-i18next";
+'use client';
+import React, { useState } from 'react';
+import HamburgerIcon from '../../_assets/pngs/hamBurger.png';
+import colorHamIcon from '../../_assets/svgs/colorHamIcon.svg';
+import Image from 'next/image';
+import Modal from '../modal/Modal';
+import Link from 'next/link';
+import LoginModal from '../modal/LoginModal';
+import LocationModal from '../modal/LocationModal';
+import TimingModal from '../modal/TimingModal';
+import AboutModal from '../modal/AboutModal';
+import OurGoalsModal from '../modal/OurGoalsModal';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   hamBurgerIcon?: boolean;
@@ -60,7 +60,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
           id="drawer-navigation-label"
           className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
         >
-          {t("sideBar.MENU")}
+          {t('sideBar.MENU')}
         </h5>
         <button
           type="button"
@@ -130,7 +130,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.see-the-menu")}
+                  {t('sideBar.see-the-menu')}
                 </span>
               </Link>
             </li>
@@ -155,7 +155,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.pickup-orders")}
+                  {t('sideBar.pickup-orders')}
                 </span>
                 {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-4 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
@@ -183,7 +183,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.deliver-order")}
+                  {t('sideBar.deliver-order')}
                 </span>
               </div>
             </li>
@@ -209,7 +209,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.branches")}
+                  {t('sideBar.branches')}
                 </span>
               </div>
             </li>
@@ -241,7 +241,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.opening-hours")}
+                  {t('sideBar.opening-hours')}
                 </span>
               </div>
             </li>
@@ -269,7 +269,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.about-us")}
+                  {t('sideBar.about-us')}
                 </span>
               </div>
             </li>
@@ -297,12 +297,12 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t("sideBar.goals")}
+                  {t('sideBar.goals')}
                 </span>
               </div>
             </li>
           </ul>
-          <div className="mb-[20px] ml-[50px] mr-[50px] flex justify-between mt-auto">
+          <div className="mb-[20px] ml-[80px] mr-[80px] flex justify-between mt-auto">
             {/* <svg className="cursor-pointer" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10 4.59998V15.4M12.7 7.74998C12.7 6.50798 11.4913 5.49998 10 5.49998C8.50875 5.49998 7.30005 6.50798 7.30005 7.74998C7.30005 8.99198 8.50875 9.99998 10 9.99998C11.4913 9.99998 12.7 11.008 12.7 12.25C12.7 13.492 11.4913 14.5 10 14.5C8.50875 14.5 7.30005 13.492 7.30005 12.25" stroke="#ABA5A2" stroke-width="1.5" stroke-linecap="round"/>
               <path d="M5.5 2.20421C6.86757 1.41302 8.42006 0.997576 10 1.00001C14.9707 1.00001 19 5.02931 19 10C19 14.9707 14.9707 19 10 19C5.0293 19 1 14.9707 1 10C1 8.36111 1.4383 6.82301 2.2042 5.50001" stroke="#ABA5A2" stroke-width="1.5" stroke-linecap="round"/>

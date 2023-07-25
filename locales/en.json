@@ -18,5 +18,9 @@
         "goals": "Our Goals"
         
         
+    },
+    "favorites": {
+        "added-to-favorites": "Added to Favorites",
+        "removed-from-favorites": "Removed from Favorites"
     }
 }

@@ -1,27 +1,29 @@
-"use client";
-import SideNavbar from "../_components/SideNavbar/SideNavbar";
-import Image from "next/image";
-import heroImg from "../_assets/pngs/heroImg.png";
-import logo from "../_assets/svgs/logo.svg";
-import searchIcon from "../_assets/pngs/inputSearch.png";
-import FlagIcon from "../_assets/pngs/navFlag.png";
-import locationIcon from "../_assets/svgs/location.svg";
-import clock from "../_assets/svgs/clock.svg";
-import CartWithItems from "./_components/CartWithItems";
-import Modal from "../_components/modal/Modal";
-import { useAppDispatch, useAppSelector } from "../_store/hooks";
-import { useEffect, useState } from "react";
-import { getMenuCatageorys } from "../_store/thunk/menuCatageory.thunk";
-import { getRestaurants } from "../_store/thunk/restaurant.thunk";
-import LocationModal from "../_components/modal/LocationModal";
-import TimingModal from "../_components/modal/TimingModal";
-import InputModal from "../_components/modal/InputModal";
-import { setSelectedRestaurant } from "../_store/reducers/restaurantReducer";
-import { useTranslation } from "react-i18next";
+'use client';
+import SideNavbar from '../_components/SideNavbar/SideNavbar';
+import Image from 'next/image';
+import heroImg from '../_assets/pngs/heroImg.png';
+import logo from '../_assets/svgs/logo.svg';
+import searchIcon from '../_assets/pngs/inputSearch.png';
+import FlagIcon from '../_assets/pngs/navFlag.png';
+import USAFlagIcon from '../_assets/pngs/usaFlag.png';
+import locationIcon from '../_assets/svgs/location.svg';
+import clock from '../_assets/svgs/clock.svg';
+import CartWithItems from './_components/CartWithItems';
+import Modal from '../_components/modal/Modal';
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { useEffect, useState } from 'react';
+import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
+import { getRestaurants } from '../_store/thunk/restaurant.thunk';
+import LocationModal from '../_components/modal/LocationModal';
+import TimingModal from '../_components/modal/TimingModal';
+import InputModal from '../_components/modal/InputModal';
+import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
+import { useTranslation } from 'react-i18next';
+import { updateLanguage } from '../_store/reducers/languageReducer';
 
 const Menu = () => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { catagories }: { catagories: any } = useAppSelector(
     (state) => state.menuCatageory
@@ -34,6 +36,9 @@ const Menu = () => {
     (state) => state.restaurant.selectedId
   );
 
+  console.log('selectedRestaurant', selectedRestaurant);
+
+  const language = useAppSelector((state) => state.language);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hourModalOpen, setHourModalOpen] = useState(false);
   const [locModalOpen, setLocModalOpen] = useState(false);
@@ -41,9 +46,13 @@ const Menu = () => {
   useEffect(() => {
     dispatch(getMenuCatageorys());
     dispatch(getRestaurants());
-    dispatch(setSelectedRestaurant("63f3021acafc472f2238e4c6"));
+    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
   }, [dispatch]);
 
+  const handleLanguageChange = () => {
+    console.log(language.name, 'language');
+    i18n.changeLanguage(language.name);
+  };
   return (
     <div>
       <div className="h-64">
@@ -51,12 +60,33 @@ const Menu = () => {
           <div>
             <SideNavbar />
           </div>
-          <div className="flex items-center">
-            <div className="text-white font-semibold text-1xl">AR</div>
-            <div className="ml-2">
-              <Image src={FlagIcon} alt="FlagIcon" />
+          {language.name === 'en' ? (
+            <div
+              className="cursor-pointer flex items-center"
+              onClick={() => {
+                dispatch(updateLanguage('ar'));
+                handleLanguageChange();
+              }}
+            >
+              <div className="text-white font-semibold text-1xl">EN</div>
+              <div className="ml-2">
+                <Image src={USAFlagIcon} alt="FlagIcon" width={27} />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div
+              className="cursor-pointer flex items-center"
+              onClick={() => {
+                dispatch(updateLanguage('en'));
+                handleLanguageChange();
+              }}
+            >
+              <div className="text-white font-semibold text-1xl">AR</div>
+              <div className="ml-2">
+                <Image src={FlagIcon} alt="FlagIcon" />
+              </div>
+            </div>
+          )}
         </div>
         <div className="h-64 absolute top-0 z-[-1] heroImgMain">
           <Image
@@ -73,7 +103,7 @@ const Menu = () => {
             <div
               className="bg-white flex h-[71px] w-full rounded-5px border border-transparent px-2 py-[10px] text-xs font-sm shadow-10 transition-all duration-300 ease-in-out focus:border-red focus:outline-none rounded-[3px] shadow-lg text-black placeholder-black"
               style={{
-                boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+                boxShadow: ' 0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
               }}
             >
               <Image
@@ -86,10 +116,10 @@ const Menu = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                    {t("menu.gulf-madina")}
+                    {t('menu.gulf-madina')}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
-                    {t("menu.today-open-24-hours")}
+                    {t('menu.today-open-24-hours')}
                   </div>
                 </div>
                 <div className="flex mt-[14px]">
@@ -98,7 +128,7 @@ const Menu = () => {
                     onClick={() => setHourModalOpen(true)}
                   >
                     <h4 className="text-[9px] font-[400] text-black ">
-                      {t("menu.opening-hours")}
+                      {t('menu.opening-hours')}
                     </h4>
                     <Image
                       src={clock}
@@ -111,7 +141,7 @@ const Menu = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                      {t("menu.Branches")}
+                      {t('menu.Branches')}
                     </div>
                     <Image
                       src={locationIcon}
@@ -170,13 +200,13 @@ const Menu = () => {
         handleModalToggle={() => setLocModalOpen(!locModalOpen)}
       >
         <div className="mt-[59px]">
-          <LocationModal restaurants={restaurants} />
+          <LocationModal
+            restaurants={restaurants}
+            setLocModalOpen={setLocModalOpen}
+          />
         </div>
       </Modal>
     </div>
   );
 };
 export default Menu;
-function typeOf(restaurants: any): any {
-  throw new Error("Function not implemented.");
-}
