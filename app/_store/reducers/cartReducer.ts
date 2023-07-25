@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartState } from '../interfaces';
 import { addToCart, getCartItems } from '../thunk/cart.thunk';
-import { getId } from '@/app/_lib/helper';
 
 const initialState: CartState = {
   cart: null,
@@ -45,7 +44,7 @@ const menuCatageorySlice = createSlice({
     addNewItem: (state, { payload }) => {
       const { quantity } = payload;
       if (quantity > 0) {
-        state.items = [...state.items, { ...payload, id: getId() },];
+        state.items = [...state.items, payload,];
       }
     },
 
