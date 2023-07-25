@@ -3,10 +3,6 @@ import React from "react";
 const TimingModal = () => {
   const hoursItem = [
     {
-      day: "Saturday",
-      hours: "Open 24 Hours",
-    },
-    {
       day: "Sunday",
       hours: "Open 24 Hours",
     },
@@ -28,6 +24,10 @@ const TimingModal = () => {
     },
     {
       day: "Friday",
+      hours: "Open 24 Hours",
+    },
+    {
+      day: "Saturday",
       hours: "Open 24 Hours",
     },
   ];

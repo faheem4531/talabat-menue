@@ -10,10 +10,14 @@ import { getCartItems } from '../_store/thunk/cart.thunk';
 import { addItem, removeItem } from '../_store/reducers/cartReducer';
 import Modal from '../_components/modal/Modal';
 import LoginModal from '../_components/modal/LoginModal';
+import { useRouter } from "next/navigation";
 import { phoneNumberExists, requestOtp, confirmOtp } from '../_store/thunk/user';
 import OTPModal from "../_components/modal/OTPModal";
 
-const addCart = () => {
+const AddCart = () => {
+
+  const router = useRouter();
+
   const dispatch = useAppDispatch();
   const { items, cart } = useAppSelector((state) => state.cart);
   const customerData = useAppSelector((state) => state.customer.data);
@@ -262,4 +266,4 @@ const addCart = () => {
   );
 };
 
-export default addCart;
+export default AddCart;
