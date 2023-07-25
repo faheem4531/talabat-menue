@@ -5,6 +5,7 @@ import heroImg from '../_assets/pngs/heroImg.png';
 import logo from '../_assets/svgs/logo.svg';
 import searchIcon from '../_assets/pngs/inputSearch.png';
 import FlagIcon from '../_assets/pngs/navFlag.png';
+import USAFlagIcon from '../_assets/pngs/usaFlag.png';
 import locationIcon from '../_assets/svgs/location.svg';
 import clock from '../_assets/svgs/clock.svg';
 import CartWithItems from './_components/CartWithItems';
@@ -18,10 +19,11 @@ import TimingModal from '../_components/modal/TimingModal';
 import InputModal from '../_components/modal/InputModal';
 import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
 import { useTranslation } from 'react-i18next';
+import { updateLanguage } from '../_store/reducers/languageReducer';
 
 const Menu = () => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const { catagories }: { catagories: any } = useAppSelector(
     (state) => state.menuCatageory
@@ -33,7 +35,10 @@ const Menu = () => {
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedId
   );
+
   console.log('selectedRestaurant', selectedRestaurant);
+
+  const language = useAppSelector((state) => state.language);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hourModalOpen, setHourModalOpen] = useState(false);
   const [locModalOpen, setLocModalOpen] = useState(false);
@@ -44,6 +49,10 @@ const Menu = () => {
     dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
   }, [dispatch]);
 
+  const handleLanguageChange = () => {
+    console.log(language.name, 'language');
+    i18n.changeLanguage(language.name);
+  };
   return (
     <div>
       <div className="h-64">
@@ -51,12 +60,33 @@ const Menu = () => {
           <div>
             <SideNavbar />
           </div>
-          <div className="flex items-center">
-            <div className="text-white font-semibold text-1xl">AR</div>
-            <div className="ml-2">
-              <Image src={FlagIcon} alt="FlagIcon" />
+          {language.name === 'en' ? (
+            <div
+              className="cursor-pointer flex items-center"
+              onClick={() => {
+                dispatch(updateLanguage('ar'));
+                handleLanguageChange();
+              }}
+            >
+              <div className="text-white font-semibold text-1xl">EN</div>
+              <div className="ml-2">
+                <Image src={USAFlagIcon} alt="FlagIcon" width={27} />
+              </div>
             </div>
-          </div>
+          ) : (
+            <div
+              className="cursor-pointer flex items-center"
+              onClick={() => {
+                dispatch(updateLanguage('en'));
+                handleLanguageChange();
+              }}
+            >
+              <div className="text-white font-semibold text-1xl">AR</div>
+              <div className="ml-2">
+                <Image src={FlagIcon} alt="FlagIcon" />
+              </div>
+            </div>
+          )}
         </div>
         <div className="h-64 absolute top-0 z-[-1] heroImgMain">
           <Image

@@ -127,7 +127,7 @@ const MenuItem = ({
         <div className="flex items-center">
           <span className="text-[11px] font-semibold text-[#C02328] ">
             {/* {menuItem?.price}  */}
-            {price}
+            {price}SAR
           </span>
           <div onClick={handleItem}>
             {additions.length == 0 && (
