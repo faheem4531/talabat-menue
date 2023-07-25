@@ -85,11 +85,8 @@ const AddCart = () => {
   }
 
   const verifyOtp = (otp: string) => {
-    dispatch(confirmOtp({ phoneNumber, verificationId, otp })).unwrap().then(() => {
-      toast.success('Verified successfully!', {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-      router.push('/order/success')
+    dispatch(confirmOtp({ phoneNumber, verificationId, otp})).unwrap().then(() => {
+      setPaymentMethodModal(true)
       setOtpModalOpen(false)
     }).catch(() => {
       toast.error('Verification failed!', {
@@ -254,7 +251,7 @@ const AddCart = () => {
           <div>Terms And Conditions</div>
           <div className='flex justify-evenly'>
             <button>Pay Now</button>
-            <button onClick={openPaymentMethodModal}>Can On Delivery</button>
+            <button onClick={() =>  router.push('/order/success')}>Cash On Delivery</button>
           </div>
         </div>
       </Modal>
