@@ -392,7 +392,7 @@ const SideNavbar = ({ hamBurgerIcon }: Props) => {
               </svg>
             </a>
           </div>
-          <span className="text-center text-13px font-medium capitalize text-gray-500">
+          <span className="text-center text-[13px] font-medium capitalize text-gray-500">
             Powered By Talabat Menu © 2023
           </span>
         </div>

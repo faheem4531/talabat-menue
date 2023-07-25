@@ -41,7 +41,7 @@ const TimingModal = () => {
 
   return (
     <div>
-      <h4 className="text-center mt-6 mb-10 text-xs font-[600] text-[#494949]">
+      <h4 className="text-center mt-6 mb-10 text-sm font-[600] text-[#494949]">
         Opening Hours
       </h4>
       {hoursItem.map((item, index) => {
@@ -50,7 +50,7 @@ const TimingModal = () => {
             <div className="flex justify-center text-xs font-[400] text-[#494949]">
               <div className="flex justify-between w-44">
                 <div className="flex justify-between w-20">
-                  <div className="text-left ">{item.day} </div>
+                  <div className="text-left font-semibold">{item.day} </div>
                   <div>:</div>
                 </div>
                 <div className="">{item.hours}</div>
