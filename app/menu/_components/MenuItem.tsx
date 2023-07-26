@@ -7,7 +7,6 @@ import fire from '../../_assets/svgs/fire.svg';
 import emptyHeart from '../../_assets/svgs/emptyHeart.svg';
 import fillHeart from '../../_assets/svgs/filledHeart.svg';
 import { useAppSelector, useAppDispatch } from '@/app/_store/hooks';
-import { updateFavorites } from '@/app/_store/reducers/favoritesReducer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
@@ -23,6 +22,7 @@ const MenuItem: FC<MenuItem> = ({
   calerioes,
   price,
   additions,
+  updatingFavorites
 }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -34,27 +34,11 @@ const MenuItem: FC<MenuItem> = ({
   const lang = i18n.language;
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
-    if (result === undefined) {
-      lang === 'ar'
-        ? toast.success(`${t('favorites.added-to-favorites')}!`, {
-            position: toast.POSITION.TOP_LEFT,
-          })
-        : toast.success(`${t('favorites.added-to-favorites')}!`, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+    if (!result) {
+        toast(`${t('favorites.added-to-favorites')}!`, { type: 'success' })
     } else {
-      lang === 'ar'
-        ? toast.error(`${t('favorites.removed-from-favorites')}!`, {
-            position: toast.POSITION.TOP_LEFT,
-          })
-        : toast.error(`${t('favorites.removed-from-favorites')}!`, {
-            position: toast.POSITION.TOP_RIGHT,
-          });
+         toast(`${t('favorites.removed-from-favorites')}!`, {type: 'error'})
     }
-  };
-
-  const updatingFavorites = () => {
-    dispatch(updateFavorites(id));
   };
 
   const handleItem = (event: any) => {
@@ -162,7 +146,7 @@ const MenuItem: FC<MenuItem> = ({
         <div
           onClick={(event) => {
             event.stopPropagation();
-            updatingFavorites();
+            updatingFavorites(id);
             showToastMessage(id);
           }}
         >

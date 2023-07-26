@@ -3,7 +3,7 @@ import type { FC } from 'react';
 import MenuItem from './MenuItem';
 import { MenuItemsContainer } from '../../_lib/types/menu';
 
-const MenuItemsContainer: FC<MenuItemsContainer> = ({ title, id, items = [], query }) => {
+const MenuItemsContainer: FC<MenuItemsContainer> = ({ title, id, items = [], query, updatingFavorites }) => {
   const filteredResults = items.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())
   );
@@ -23,6 +23,7 @@ const MenuItemsContainer: FC<MenuItemsContainer> = ({ title, id, items = [], que
             calerioes={element.calories}
             price={element.price}
             additions={element.additions}
+            updatingFavorites={updatingFavorites}
           />
         );
       })}

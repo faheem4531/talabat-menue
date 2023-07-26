@@ -8,9 +8,6 @@ import { InputModal } from "../../_lib/types/genericComponents";
 const InputModal: FC<InputModal> = ({ setQuery }) => {
    const { t, i18n } = useTranslation();
    const lang = i18n.language;
-  const handleChange = (value: string) => {
-    setQuery(value);
-  };
   
   return (
     <div>
@@ -26,7 +23,7 @@ const InputModal: FC<InputModal> = ({ setQuery }) => {
           style={{
             boxShadow: " 0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
           }}
-          onChange={(e) => handleChange(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
         />
       </div>
     </div>

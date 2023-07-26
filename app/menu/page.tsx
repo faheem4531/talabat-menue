@@ -24,15 +24,18 @@ import TimingModal from '../_components/modal/TimingModal';
 import InputModal from '../_components/modal/InputModal';
 import SideNavbar from '../_components/SideNavbar/SideNavbar';
 import { Catagories } from "../_lib/types/menu";
+import { updateFavorites } from '../_store/reducers/favoritesReducer'; 
+
 
 const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
-
   const { catagories }: Catagories  = useAppSelector((state: any) => state.menuCatageory);
   const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
   const { cart, items } = useAppSelector((state: any) => state.cart);
-
+  const { data }: { data: string[] } = useAppSelector(
+    (state) => state.favorites
+  );
   const selectedRestaurant = useAppSelector(
     (state: any) => state.restaurant.selectedId
   );
@@ -42,13 +45,12 @@ const Menu: FC<Menu> = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [hourModalOpen, setHourModalOpen] = useState<boolean>(false);
   const [locModalOpen, setLocModalOpen] = useState<boolean>(false);
-
   useEffect(() => {
     if (!catagories.length) {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
+    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6s'));
   }, [dispatch]);
 
   useEffect(() => {
@@ -67,6 +69,10 @@ const Menu: FC<Menu> = () => {
   const handleLanguageChange = () => {
     i18n.changeLanguage(language.name);
   };
+  const updatingFavorites = (id:string) => {
+    dispatch(updateFavorites(id));
+  };
+
   return (
     <div>
       <div className="h-64">
@@ -115,7 +121,7 @@ const Menu: FC<Menu> = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                    {t('menu.gulf-madina')}
+                  {t('menu.gulf-madina')}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
@@ -164,7 +170,7 @@ const Menu: FC<Menu> = () => {
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
           Category
         </h5>
-        <CartWithItems categories={catagories ?? []} query={query} cart={cart} />
+        <CartWithItems categories={catagories ?? []} query={query} cart={cart} updatingFavorites={updatingFavorites} />
       </div>
 
       <Modal
