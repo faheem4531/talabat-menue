@@ -74,33 +74,18 @@ const Menu: FC<Menu> = () => {
           <div>
             <SideNavbar />
           </div>
-          {language.name === 'en' ? (
-            <div
+          <div
               className="cursor-pointer flex items-center"
               onClick={() => {
-                dispatch(updateLanguage('ar'));
+                language.name === "en"? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
                 handleLanguageChange();
               }}
             >
-              <div className="text-white font-semibold text-1xl">EN</div>
+              <div className="text-white font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
               <div className="ml-2">
-                <Image src={USAFlagIcon} alt="FlagIcon" width={27} />
+                <Image src={language.name==="en"? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
               </div>
             </div>
-          ) : (
-            <div
-              className="cursor-pointer flex items-center"
-              onClick={() => {
-                dispatch(updateLanguage('en'));
-                handleLanguageChange();
-              }}
-            >
-              <div className="text-white font-semibold text-1xl">AR</div>
-              <div className="ml-2">
-                <Image src={FlagIcon} alt="FlagIcon" />
-              </div>
-            </div>
-          )}
         </div>
         <div className="h-64 absolute top-0 z-[-1] heroImgMain">
           <Image
