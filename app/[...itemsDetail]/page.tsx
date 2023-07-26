@@ -25,6 +25,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
   const [notes, setNotes] = useState('');
 
   const addOption = (item: any) => {
+    console.log('item : ', item);
     setAddOns((prevAddOns) => {
       const updatedAddOns = [...prevAddOns];
       const existingAddOnIndex = updatedAddOns.findIndex((addOn) => addOn.menuAdditionId === item.addOnId);
@@ -203,7 +204,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
               count={quantity}
               incrementCounter={incrementCounter}
               decrementCounter={decrementCounter}
-              // delIconflag={true}
+            // delIconflag={true}
             />
           </div>
           <div>
