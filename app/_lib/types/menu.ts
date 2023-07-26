@@ -8,6 +8,7 @@ export interface CartWithItems {
 	categories: Array<any>;
 	query: string;
 	cart: any
+  updatingFavorites: any
 }
 
 export interface MenuItem {
@@ -18,6 +19,7 @@ export interface MenuItem {
   calerioes: string;
   price: string;
   additions: Array<any>;
+  updatingFavorites:any  
 }
 
 export interface MenuItemsContainer {
@@ -25,4 +27,5 @@ export interface MenuItemsContainer {
   id: string;
   items: Array<any>;
   query: string;
+  updatingFavorites: any
 }

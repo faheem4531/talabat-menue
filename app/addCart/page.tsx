@@ -19,10 +19,12 @@ import {
   confirmOtp,
 } from "../_store/thunk/user";
 import OTPModal from "../_components/modal/OTPModal";
+import USAFlagIcon from '../_assets/pngs/usaFlag.png';
+import { useTranslation } from 'react-i18next';
+import { updateLanguage } from '../_store/reducers/languageReducer';
 
 const AddCart = () => {
   const router = useRouter();
-
   const dispatch = useAppDispatch();
   const { items, cart, loading } = useAppSelector((state) => state.cart);
   const customerData = useAppSelector((state) => state.customer.data);
@@ -39,6 +41,11 @@ const AddCart = () => {
   const [otpModalOpen, setOtpModalOpen] = useState<boolean>(false);
   const [verificationId, setVerificationId] = useState<number>();
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const { t, i18n } = useTranslation();
+  const language = useAppSelector((state: any) => state.language);
+  const handleLanguageChange = () => {
+    i18n.changeLanguage(language.name);
+  };
 
   useEffect(() => {
     dispatch(
@@ -172,11 +179,17 @@ const AddCart = () => {
         <div>
           <SideNavbar hamBurgerIcon={true} />
         </div>
-        <div className="flex items-center">
-          <div className="text-[#C84044] font-semibold text-1xl">AR</div>
-          <div className="ml-2">
-            <Image src={FlagIcon} alt="FlagIcon" />
-          </div>
+        <div
+              className="cursor-pointer flex items-center"
+              onClick={() => {
+                language.name === "en"? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
+                handleLanguageChange();
+              }}
+            >
+              <div className="text-black font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
+              <div className="ml-2">
+                <Image src={language.name==="en"? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
+              </div>
         </div>
       </div>
       <div className="mt-[30px] cartItemsMain">
@@ -206,17 +219,17 @@ const AddCart = () => {
       >
         <div className="flex gap-4 ml-[41px]">
           <div className="w-[130px] h-[38px] bg-[#F5866B] rounded-lg text-[15px] font-[400] px-[8px] py-2 text-white">
-            Have a coupon?
+            {t("cart.have-a-coupon")}?
           </div>
           <input className="w-[130px] h-[38px] bg-white rounded-lg px-3" />
           <button className="w-[38px] h-[38px] rounded-full bg-[#F5866B] text-[14px] font-[400] px-[4px] py-2 text-white">
-            ADD
+          {t("cart.add")}
           </button>
         </div>
         <div className="flex gap-5 justify-center mt-[18px]">
           <div className="text-[15px] font-[400] pr-3 text-white">
-            <div className="mr-4">Subtotal:</div>
-            <div className="mt-[9px]">TAX:</div>
+            <div className="mr-4"> {t("cart.subtotal")}:</div>
+            <div className="mt-[9px]"> {t("cart.tax")}:</div>
           </div>
 
           <div className="text-[15px] font-[400] pr-3 text-white">
@@ -225,7 +238,7 @@ const AddCart = () => {
           </div>
         </div>
         <div className="flex justify-between mt-[35.5px]">
-          <div className="text-[15px] font-[400] text-white">Total</div>
+          <div className="text-[15px] font-[400] text-white"> {t("cart.total")}</div>
           <div className="text-[15px] font-[400] pr-1 text-white">
             {cart?.summary?.totalWithTax} SAR
           </div>

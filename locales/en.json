@@ -42,5 +42,17 @@
    "favorites": {
         "added-to-favorites": "Added to Favorites",
         "removed-from-favorites": "Removed from Favorites"
+    },
+    "productDetail" : {
+      "write-note": "Write Note",
+      "type-your-comment": "Type Your Comment",
+      "add": "Add"
+    },
+    "cart": {
+      "have-a-coupon": "Have a coupon",
+      "add": "Add",
+      "subtotal": "Subtotal",
+      "tax": "TAX",
+      "total": "Total"
     }
 }
