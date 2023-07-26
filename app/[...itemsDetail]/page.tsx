@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getItem } from '../_store/thunk/item.thunk';
 import { addItem, removeItem } from '../_store/reducers/cartReducer';
-import { ItemsDetail } from '../_lib/types/itemsDetails';
+import { ItemsDetail, AddOption, Additions } from '../_lib/types/itemsDetails';
 
 const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
   const dispatch = useAppDispatch();
@@ -24,7 +24,8 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
   const [addOns, setAddOns] = useState<any[]>([]);
   const [notes, setNotes] = useState('');
 
-  const addOption = (item: any) => {
+  const addOption = (item: AddOption) => {
+
     setAddOns((prevAddOns) => {
       const updatedAddOns = [...prevAddOns];
       const existingAddOnIndex = updatedAddOns.findIndex((addOn) => addOn.menuAdditionId === item.addOnId);
@@ -34,7 +35,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
 
         if (item.multiple) {
           // Toggle optionId (remove it if it exists)
-          const existingOptionIndex = existingAddOn.options.findIndex((option: any) => option.optionId === item.optionId);
+          const existingOptionIndex = existingAddOn.options.findIndex((option: { optionId: string; }) => option.optionId === item.optionId);
 
           if (existingOptionIndex !== -1) {
             existingAddOn.options.splice(existingOptionIndex, 1);
@@ -61,7 +62,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
 
   const isChecked = (addOnId: string, optionId: string) => {
     return addOns.some(
-      (addOn) => addOn.menuAdditionId === addOnId && addOn.options.some((option: any) => option.optionId === optionId)
+      (addOn) => addOn.menuAdditionId === addOnId && addOn.options.some((option: { optionId: string; }) => option.optionId === optionId)
     );
   };
 
@@ -89,9 +90,9 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
     setQuantity((prev: number) => --prev);
   };
 
-  const updateOptions = (menuAdditionId: string, options: any[]) => {
-    setAddOns((prev) => [...prev, { menuAdditionId, options }]);
-  };
+  // const updateOptions = (menuAdditionId: string, options: []) => {
+  //   setAddOns((prev) => [...prev, { menuAdditionId, options }]);
+  // };
 
   const addItemToCart = () => {
     dispatch(
@@ -107,14 +108,14 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
   };
 
   const getOptionPrice = (optionId: string) => {
-    const allOptions = data?.additions?.flatMap((obj: any) => obj?.options);
-    const option = allOptions.find((option: any) => option?._id === optionId)
+    const allOptions = data?.additions?.flatMap((obj: { options: any; }) => obj?.options);
+    const option = allOptions.find((option: { _id: string; }) => option?._id === optionId)
     return option?.price ?? 0
   }
 
   const calculatePrice = () => {
     let p = price;
-    const selected = addOns?.flatMap((obj: any) => obj?.options);
+    const selected = addOns?.flatMap((obj) => obj?.options);
     selected.forEach(element => {
       p = p + getOptionPrice(element.optionId);
     })
@@ -169,7 +170,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
           </div>
         </div>
         <div>
-          {(data?.additions ?? []).map((item: any, index: number) => {
+          {(data?.additions ?? []).map((item: Additions, index: number) => {
 
             return (
               <ItemCustomizer
@@ -203,7 +204,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
               count={quantity}
               incrementCounter={incrementCounter}
               decrementCounter={decrementCounter}
-              // delIconflag={true}
+            // delIconflag={true}
             />
           </div>
           <div>

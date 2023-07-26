@@ -29,15 +29,15 @@ const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
 
-  const { catagories }: Catagories  = useAppSelector((state: any) => state.menuCatageory);
+  const { catagories }: Catagories = useAppSelector((state) => state.menuCatageory);
   const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
-  const { cart, items } = useAppSelector((state: any) => state.cart);
+  const { cart, items } = useAppSelector((state) => state.cart);
 
   const selectedRestaurant = useAppSelector(
-    (state: any) => state.restaurant.selectedId
+    (state) => state.restaurant.selectedId
   );
-  const language = useAppSelector((state: any) => state.language);
-  
+  const language = useAppSelector((state) => state.language);
+
   const [query, setQuery] = useState<string>("")
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [hourModalOpen, setHourModalOpen] = useState<boolean>(false);

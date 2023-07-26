@@ -1,7 +1,7 @@
 import React from "react";
 import type { FC } from "react";
 import AddOnSelecter from "./AddOnSelecter";
-import { ItemCustomizer } from "../../_lib/types/itemsDetails";
+import { ItemCustomizer, Options } from "../../_lib/types/itemsDetails";
 
 const ItemCustomizer: FC<ItemCustomizer> = ({ title, id, options, addOption, multiple, isChecked }) => {
 
@@ -10,7 +10,7 @@ const ItemCustomizer: FC<ItemCustomizer> = ({ title, id, options, addOption, mul
       <div className="mt-5" id={id}>
         <h5 className="text-sm font-semibold mb-[11px]">{title}</h5>
         <div>
-          {options.map((element: any, index: number) => {
+          {options?.map((element: Options, index: number) => {
             return (
               <AddOnSelecter
                 key={index}

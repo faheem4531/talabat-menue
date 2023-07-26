@@ -12,6 +12,7 @@ const CartWithItems: FC<CartWithItems> = ({
   query,
   cart
 }) => {
+
   return (
     <div>
       <MenuSlider />

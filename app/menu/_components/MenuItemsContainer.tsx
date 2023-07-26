@@ -4,6 +4,8 @@ import MenuItem from './MenuItem';
 import { MenuItemsContainer } from '../../_lib/types/menu';
 
 const MenuItemsContainer: FC<MenuItemsContainer> = ({ title, id, items = [], query }) => {
+  console.log('item ----- ', items);
+
   const filteredResults = items.filter((item: any) =>
     item.name.toLowerCase().includes(query.toLowerCase())
   );
