@@ -115,7 +115,7 @@ const MenuItem: FC<MenuItem> = ({
             {`${price} SAR`}
           </span>
           <div onClick={handleItem}>
-            {additions.length == 0 && (
+            {additions.length == 0 ? (
               <QuantityCounter
                 color="text-white"
                 bgColor="bg-[#C84044]"
@@ -123,6 +123,14 @@ const MenuItem: FC<MenuItem> = ({
                 delIconflag={true}
                 incrementCounter={() => incrementCounter(id)}
                 decrementCounter={() => decrementCounter(id)}
+                actionType="increment"
+              />
+            ):(
+              <QuantityCounter
+                color="text-white"
+                bgColor="bg-[#C84044]"
+                actionType="navigate"
+                navigate={ navigate}
               />
             )}
           </div>
