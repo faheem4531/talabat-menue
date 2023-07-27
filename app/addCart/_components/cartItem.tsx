@@ -50,6 +50,7 @@ const CartItem: FC<CartItem> = ({ cartImg, title, price, incrementCounter = () =
                 delIconflag={true}
                 incrementCounter={incrementCounter}
                 decrementCounter={decrementCounter}
+                actionType="increment"
               />
             </div>
           </div>
