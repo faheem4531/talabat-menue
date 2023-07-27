@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RestaurantState } from '../interfaces';
-import { getRestaurants } from './../thunk/restaurant.thunk';
+import { getRestaurants, getDefaultRestaurant } from './../thunk/restaurant.thunk';
 
 const initialState: RestaurantState = {
     data: [],
@@ -28,6 +28,16 @@ const initialState: RestaurantState = {
         state.loading = false;
       });
       builder.addCase(getRestaurants.pending, (state) => {
+        state.loading = true;
+      });
+      builder.addCase(getDefaultRestaurant.fulfilled, (state, { payload }: PayloadAction<any>) => {
+        state.selectedRestaurant = payload;
+        state.loading = false;
+      });
+      builder.addCase(getDefaultRestaurant.rejected, (state) => {
+        state.loading = false;
+      });
+      builder.addCase(getDefaultRestaurant.pending, (state) => {
         state.loading = true;
       });
     },
