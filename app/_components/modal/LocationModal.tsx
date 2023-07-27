@@ -10,8 +10,9 @@ import { LocationModal } from '../../_lib/types/genericComponents';
 import locationIcon from '../../_assets/svgs/location.svg';
 import { setSelectedRestaurant } from '@/app/_store/reducers/restaurantReducer';
 
-const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen }) => {
+const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen, lang }) => {
   const dispatch = useAppDispatch();
+
   return (
     <div>
       {restaurants?.map((item: any) => {
@@ -31,7 +32,7 @@ const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen }) => {
                   setLocModalOpen(false);
                 }}
               >
-                {item.name}
+                {!(lang === "en" ) ? item.name : item.nameAr}
               </h4>
             </div>
             <Link

@@ -165,7 +165,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
             </li>
             <li>
               <Link
-                href="/googleMaps"
+                href="/deliverOrder"
                 className={`flex    ${
                   lang === "ar" ? "flex-row-reverse gap-4" : "items-center"
                 }
