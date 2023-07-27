@@ -3,8 +3,7 @@ import type { FC } from "react";
 
 import { CartBtn } from "../../_lib/types/addCart";
 
-const CartBtn: FC<CartBtn> = ({ btnClasses, btnText1, btnline, btnText2, onClick= () => {} , cartItems}) => {
-  console.log("cartItems", cartItems)
+const CartBtn: FC<CartBtn> = ({ btnClasses, btnText1, btnline, btnText2, onClick= () => {}}) => {
   return (
     <div>
       <button

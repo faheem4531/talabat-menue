@@ -250,8 +250,8 @@ const AddCart = () => {
         <CartBtn
           btnText1="Confirm Order"
           onClick={openTermsAndConditionsModal}
-          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
-        />
+          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]" 
+          />
       </div>
       <Modal
         modalPosition="items-center"

@@ -13,7 +13,6 @@ export interface CartBtn {
   btnText2?: string;
   btnClasses?: string;
   onClick?: () => void;
-  cartItems: any[]
   // font: string;
   // btnPadding: string;
   // center?: string;

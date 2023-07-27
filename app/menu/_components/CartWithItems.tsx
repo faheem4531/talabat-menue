@@ -36,7 +36,6 @@ const CartWithItems: FC<CartWithItems> = ({
         <CartBtn
           btnText1="View cart"
           btnText2={`${cart?.summary?.totalWithTax ?? 0} SR`}
-          cartItems={cart?.items}
           // onClick={}
           btnClasses={`justify-between px-4 rounded-[6px] ${!cart?.items?.length ? "bg-[#D9D9D9]": " bg-[#00A559]"} w-full text-[14px] font-[400] py-[15px]`}
         />

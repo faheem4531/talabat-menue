@@ -233,8 +233,8 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
                 btnText1={t("productDetail.add")}
                 btnText2={`${calculatePrice()} SAR`}
                 btnline={true}
-                btnClasses=" justify-around rounded-lg px-4 py-2 mr-2 mb-2 bg-[#C02328] w-[152px] h-[33px] text-[12px] font-semibold"
-              />
+                btnClasses=" justify-around rounded-lg px-4 py-2 mr-2 mb-2 bg-[#C02328] w-[152px] h-[33px] text-[12px] font-semibold" 
+                />
             </Link>
           </div>
         </div>
