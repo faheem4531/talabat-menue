@@ -182,16 +182,24 @@ const AddCart = () => {
           <SideNavbar hamBurgerIcon={true} />
         </div>
         <div
-              className="cursor-pointer flex items-center"
-              onClick={() => {
-                language.name === "en"? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
-                handleLanguageChange();
-              }}
-            >
-              <div className="text-black font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
-              <div className="ml-2">
-                <Image src={language.name==="en"? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
-              </div>
+          className="cursor-pointer flex items-center"
+          onClick={() => {
+            language.name === "en"
+              ? dispatch(updateLanguage("ar"))
+              : dispatch(updateLanguage("en"));
+            handleLanguageChange();
+          }}
+        >
+          <div className="text-black font-semibold text-1xl">
+            {language.name === "en" ? "EN" : "AR"}
+          </div>
+          <div className="ml-2">
+            <Image
+              src={language.name === "en" ? USAFlagIcon : FlagIcon}
+              alt="FlagIcon"
+              width={27}
+            />
+          </div>
         </div>
       </div>
       <div className="mt-[30px] cartItemsMain">
@@ -225,7 +233,7 @@ const AddCart = () => {
           </div>
           <input className="w-[130px] h-[38px] bg-white rounded-lg px-3" />
           <button className="w-[38px] h-[38px] rounded-full bg-[#F5866B] text-[14px] font-[400] px-[4px] py-2 text-white">
-          {t("cart.add")}
+            {t("cart.add")}
           </button>
         </div>
         <div className="flex gap-5 justify-center mt-[18px]">
@@ -235,20 +243,27 @@ const AddCart = () => {
           </div>
 
           <div className="text-[15px] font-[400] pr-3 text-white">
-            <div>{cart?.summary?.totalTaxableAmount} SAR</div>
-            <div className="mt-[9px]">{cart?.summary?.totalTax} SAR</div>
+            <div>
+              {cart?.summary?.totalTaxableAmount} {t("payment.SAR")}
+            </div>
+            <div className="mt-[9px]">
+              {cart?.summary?.totalTax} {t("payment.SAR")}
+            </div>
           </div>
         </div>
         <div className="flex justify-between mt-[35.5px]">
-          <div className="text-[15px] font-[400] text-white"> {t("cart.total")}</div>
+          <div className="text-[15px] font-[400] text-white">
+            {" "}
+            {t("cart.total")}
+          </div>
           <div className="text-[15px] font-[400] pr-1 text-white">
-            {cart?.summary?.totalWithTax} SAR
+            {cart?.summary?.totalWithTax} {t("payment.SAR")}
           </div>
         </div>
       </div>
       <div className="px-2 mt-[53px] mb-6">
         <CartBtn
-          btnText1="Confirm Order"
+          btnText1={t("page.Confirm-order")}
           onClick={openTermsAndConditionsModal}
           btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]" 
           />
@@ -261,7 +276,7 @@ const AddCart = () => {
         handleModalToggle={() => setisLoginModalOpen(!isLoginModalOpen)}
       >
         <div className="mt-[59px]">
-          <LoginModal login={login} info={true}/>
+          <LoginModal login={login} info={true} />
         </div>
       </Modal>
 
@@ -277,15 +292,22 @@ const AddCart = () => {
         <div className="my-[59px]">
           <div className="text-center gap-3">
             <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
-              Terms and Condition
+              {t("page.Terms-And-Condition")}
             </h4>
             <div className="flex justify-center text-center gap-3 mt-7">
-            <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={() => setTermsAndConditionsModal(false)}>Disagree</button>
-            <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleConfirmOrder}
+              <button
+              className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]"
+              onClick={() => setTermsAndConditionsModal(false)}
               >
-                Agree
-            </button>
-          </div>
+                {t("page.Disagree")}
+                </button>
+              <button
+                className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]"
+                onClick={handleConfirmOrder}
+              >
+                {t("page.Agree")}
+              </button>
+            </div>
           </div>
         </div>
       </Modal>
@@ -298,19 +320,26 @@ const AddCart = () => {
         handleModalToggle={() => setPaymentMethodModal(!paymentMethodModal)}
       >
         <div className="my-[59px]">
-        <div className="text-center gap-3">
+          <div className="text-center gap-3">
             <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
-              Payment Method
+              {t("page.Payment-Method")}
             </h4>
-          <div className='flex justify-center text-center gap-3 mt-7'>
-          <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={handlePayNow}>
-          Pay Now
-            </button>
-            <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleCashOnDelivery}>Cash On Delivery</button>
+            <div className="flex justify-center text-center gap-3 mt-7">
+              <button
+                className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]"
+                onClick={handlePayNow}
+              >
+                {t("page.Pay-Now")}
+              </button>
+              <button
+                className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]"
+                onClick={handleCashOnDelivery}
+              >
+                {t("page.Cash-On-Delivery")}
+              </button>
+            </div>
           </div>
         </div>
-        </div>
-
       </Modal>
 
       <Modal

@@ -54,6 +54,26 @@
       "add": "Add",
       "subtotal": "Subtotal",
       "tax": "TAX",
-      "total": "Total"
+      "total": "Total",
+      "View-Cart" :"View Cart"
+    },
+    "page" : {
+      "Confirm-order" : "Confirm Order",
+      "Terms-And-Condition": "Terms and Condition",
+      "Agree": "Agree",
+      "Disagree" : "Disagree",
+      "Payment-Method" : "Payment Method",
+      "Pay-Now" : "Pay Now",
+      "Cash-On-Delivery": "Cash On Delivery"
+    },
+    "payment" : {
+      "New": "New",
+      "Tip-Amount": "Tip Amount",
+      "Total": "Total",
+      "Total-Amount": "Total Amount",
+      "SAR": "SAR",
+      "Past-Order": "Past Order",
+      "See-The-Menu": "See The Menu",
+      "Powered-By-Talabat-Menu-©-2023": "Powered By Talabat Menu © 2023"
     }
 }

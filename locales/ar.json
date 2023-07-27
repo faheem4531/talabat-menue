@@ -1,52 +1,50 @@
 {
-    "menu": {
-        "opening-hours" : "ساعات العمل",
-        "Branches":  "الفروع",
-        "gulf-madina": "خليج المدينة المنورة",
-        "today-open-24-hours": "اليوم: مفتوح 24 ساعة",
-        "category": "فئة"
-    },
-    "sideBar": {
-        "MENU": "قائمة طعام",
-        "login": "تسجيل الدخول",
-        "see-the-menu": "انظر القائمة",
-        "pickup-orders": "أوامر الاستلام",
-        "deliver-order":  "تسليم الطلب",
-        "branches": "الفروع",
-        "opening-hours": "ساعات العمل",
-        "about-us": "معلومات عنا",
-        "goals": "أهدافنا"
-
-
-    }, 
-    "favorites": {
-        "added-to-favorites": "تمت الإضافة إلى المفضلة",
-        "removed-from-favorites": "تمت إزالته من المفضلة"
-    },
-    "openHours": {
-        "Sunday": "الأحد",
-        "Monday": "الاثنين",
-        "Tuesday": "الثلاثاء",
-        "Wednesday": "الأربعاء",
-        "Thursday": "الخميس",
-        "Friday": "جمعة",
-        "Saturday": "السبت",
-        "Open-24-Hours":"مفتوحة 24 ساعة"
-    },
-    "input" : {
-        "What-are-you-looking-for":"ما الذي تبحث عنه"
-    },
-    "login" : {
-    "Your-Password":"كلمة السر خاصتك",
-    "Remember-me":"تذكرنى",
-    "Submit":"يُقدِّم",
-    "About-us":"معلومات عنا",
-    "Our-Goals":"أهدافنا",
-    "name@flowbite.com":"اسم@فلبيت.كوم",
-    "Enter-your-name":"أدخل أسمك",
-    "Enter-phone-number":"أدخل رقم الهاتف"
-   },
-   "productDetail" : {
+  "menu": {
+    "opening-hours": "ساعات العمل",
+    "Branches": "الفروع",
+    "gulf-madina": "خليج المدينة المنورة",
+    "today-open-24-hours": "اليوم: مفتوح 24 ساعة",
+    "category": "فئة"
+  },
+  "sideBar": {
+    "MENU": "قائمة طعام",
+    "login": "تسجيل الدخول",
+    "see-the-menu": "انظر القائمة",
+    "pickup-orders": "أوامر الاستلام",
+    "deliver-order": "تسليم الطلب",
+    "branches": "الفروع",
+    "opening-hours": "ساعات العمل",
+    "about-us": "معلومات عنا",
+    "goals": "أهدافنا"
+  },
+  "favorites": {
+    "added-to-favorites": "تمت الإضافة إلى المفضلة",
+    "removed-from-favorites": "تمت إزالته من المفضلة"
+  },
+  "openHours": {
+    "Sunday": "الأحد",
+    "Monday": "الاثنين",
+    "Tuesday": "الثلاثاء",
+    "Wednesday": "الأربعاء",
+    "Thursday": "الخميس",
+    "Friday": "جمعة",
+    "Saturday": "السبت",
+    "Open-24-Hours": "مفتوحة 24 ساعة"
+  },
+  "input": {
+    "What-are-you-looking-for": "ما الذي تبحث عنه"
+  },
+  "login": {
+    "Your-Password": "كلمة السر خاصتك",
+    "Remember-me": "تذكرنى",
+    "Submit": "يُقدِّم",
+    "About-us": "معلومات عنا",
+    "Our-Goals": "أهدافنا",
+    "name@flowbite.com": "اسم@فلبيت.كوم",
+    "Enter-your-name": "أدخل أسمك",
+    "Enter-phone-number": "أدخل رقم الهاتف"
+  },
+  "productDetail": {
     "write-note": "اكتب ملا حظة",
     "type-your-comment": "اكتب تعليقك",
     "add": "يضيف"
@@ -56,7 +54,26 @@
     "add": "يضيف",
     "subtotal": "المجموع الفرعي",
     "tax": "ضريبة",
-    "total": "المجموع"
+    "total": "المجموع",
+    "View-Cart": "عرض عربة التسوق"
+  },
+  "page": {
+    "Confirm-order": "أكد الطلب",
+    "Terms-And-Condition": "الأحكام والشروط",
+    "Agree": "يوافق",
+    "Disagree": "تعارض",
+    "Payment-Method": "طريقة الدفع او السداد",
+    "Pay-Now": "ادفع الآن",
+    "Cash-On-Delivery": "الدفع عند الاستلام"
+  },
+  "payment": {
+    "New": "جديد",
+    "Tip-Amount": "مبلغ الإكرامية",
+    "Total": "المجموع",
+    "Total-Amount": "المبلغ الإجمالي",
+    "SAR": "ريال سعودي",
+    "Past-Order": "طلب سابق",
+    "See-The-Menu": "انظر القائمة",
+    "Powered-By-Talabat-Menu-©-2023": "تصميم وبرمجة طلبات منيو © 2023"
   }
-    
 }

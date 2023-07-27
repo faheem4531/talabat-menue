@@ -142,18 +142,25 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
         </Link>
 
         <div
-              className="cursor-pointer flex items-center"
-              onClick={() => {
-                language.name === "en"? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
-                handleLanguageChange();
-              }}
-            >
-              <div className="text-black font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
-              <div className="ml-2">
-                <Image src={language.name==="en"? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
-              </div>
+          className="cursor-pointer flex items-center"
+          onClick={() => {
+            language.name === "en"
+              ? dispatch(updateLanguage('ar'))
+              : dispatch(updateLanguage('en'));
+            handleLanguageChange();
+          }}
+        >
+          <div className="text-black font-semibold text-1xl">
+            {language.name === "en" ? "EN" : "AR"}
+          </div>
+          <div className="ml-2">
+            <Image
+              src={language.name === "en" ? USAFlagIcon : FlagIcon}
+              alt="FlagIcon"
+              width={27}
+            />
+          </div>
         </div>
-
       </div>
       <div className="h-64">
         <div className="h-64 absolute heroImgMain">
@@ -190,7 +197,6 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
         </div>
         <div>
           {(data?.additions ?? []).map((item: Additions, index: number) => {
-
             return (
               <ItemCustomizer
                 title={item.name}
@@ -205,7 +211,9 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
           })}
         </div>
         <div>
-          <h5 className="text-sm font-semibold my-[18px]">{t("productDetail.write-note")}</h5>
+          <h5 className="text-sm font-semibold my-[18px]">
+            {t("productDetail.write-note")}
+          </h5>
           <textarea
             className="h-28 w-full rounded-[10px] border-[1px] border-[#E0E0E0] p-3 text-[11px] placeholder-[#00000036]"
             name="comment"
@@ -222,7 +230,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
               bgColor="bg-white"
               count={quantity}
               incrementCounter={incrementCounter}
-              decrementCounter={decrementCounter} 
+              decrementCounter={decrementCounter}
               actionType={'increment'}
               // delIconflag={true}
             />
@@ -231,7 +239,7 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
             <Link href={'/addCart'} onClick={addItemToCart}>
               <Addbtn
                 btnText1={t("productDetail.add")}
-                btnText2={`${calculatePrice()} SAR`}
+                btnText2={`${calculatePrice()}  ${t('payment.SAR')}`}
                 btnline={true}
                 btnClasses=" justify-around rounded-lg px-4 py-2 mr-2 mb-2 bg-[#C02328] w-[152px] h-[33px] text-[12px] font-semibold" 
                 />

@@ -92,12 +92,10 @@ const MenuItem: FC<MenuItem> = ({
       <div className="flex grow flex-col justify-between">
         <div className="relative flex items-center justify-between">
           <h3 className="text-[12px] font-[500] text-[#494949]">
-            {/* {lang === "ar" ? menuItem?.nameAr : menuItem?.name} */}
             {title}
           </h3>
         </div>
         <h4 className="my-1 line-clamp-2 text-[8px] text-[#00000070] w-52">
-          {/* {lang === "ar" ? menuItem?.description_ar : menuItem?.description} */}
           {discription}
         </h4>
         <div className="flex item-center ">
@@ -105,14 +103,12 @@ const MenuItem: FC<MenuItem> = ({
             <Image src={fire} alt="fire" />
           </div>
           <h4 className="font-extrabold text-darkBlue text-[8px]">
-            {/* {menuItem.calories} */}
             {calerioes}
           </h4>
         </div>
         <div className="flex items-center">
           <span className="text-[11px] font-semibold text-[#C02328] ">
-            {/* {menuItem?.price}  */}
-            {`${price} SAR`}
+            {`${price} ${t("payment.SAR")}`}
           </span>
           <div onClick={handleItem}>
             {additions.length == 0 ? (
@@ -125,12 +121,12 @@ const MenuItem: FC<MenuItem> = ({
                 decrementCounter={() => decrementCounter(id)}
                 actionType="increment"
               />
-            ):(
+            ) : (
               <QuantityCounter
                 color="text-white"
                 bgColor="bg-[#C84044]"
                 actionType="navigate"
-                navigate={ navigate}
+                navigate={navigate}
               />
             )}
           </div>
@@ -139,12 +135,12 @@ const MenuItem: FC<MenuItem> = ({
       <div className="mr-2.5 relative">
         <Image
           style={{
-            minHeight: '84px',
-            maxHeight: '84px',
-            minWidth: '84px',
-            maxWidth: '84px',
+            minHeight: "84px",
+            maxHeight: "84px",
+            minWidth: "84px",
+            maxWidth: "84px",
             borderRadius: 10,
-            objectFit: 'cover',
+            objectFit: "cover",
           }}
           width={400}
           height={300}
