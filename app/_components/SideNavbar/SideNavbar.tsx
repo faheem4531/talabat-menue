@@ -1,18 +1,21 @@
 'use client';
 import React, { useState } from 'react';
 import type { FC } from "react";
-import HamburgerIcon from '../../_assets/pngs/hamBurger.png';
-import colorHamIcon from '../../_assets/svgs/colorHamIcon.svg';
+import { useTranslation } from 'react-i18next';
+
 import Image from 'next/image';
-import Modal from '../modal/Modal';
 import Link from 'next/link';
+
+import Modal from '../modal/Modal';
 import LoginModal from '../modal/LoginModal';
 import LocationModal from '../modal/LocationModal';
 import TimingModal from '../modal/TimingModal';
 import AboutModal from '../modal/AboutModal';
 import OurGoalsModal from '../modal/OurGoalsModal';
-import { useTranslation } from 'react-i18next';
 import { SideNavbar } from "../../_lib/types/genericComponents";
+
+import HamburgerIcon from '../../_assets/pngs/hamBurger.png';
+import colorHamIcon from '../../_assets/svgs/colorHamIcon.svg';
 
 const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
   const { t, i18n } = useTranslation();

@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import type { FC } from "react";
+
 import Image from "next/image";
+
+import { QuantityCounter } from "../_lib/types/genericComponents";
+
 import plus from "../_assets/svgs/plus.svg";
 import delIcon from "../_assets/svgs/delIcon.svg";
-import { QuantityCounter } from "../_lib/types/genericComponents";
 
 const QuantityCounter: FC<QuantityCounter> = ({
   delIconflag,
@@ -30,7 +33,16 @@ const QuantityCounter: FC<QuantityCounter> = ({
       >
         <div
           className="flex h-[24px] w-[24px] rounded-3xl items-center justify-center bg-[#C84044]"
-          onClick={actionType === "increment" ? incrementCounter : navigate }
+          onClick={()=>{
+            actionType === "increment" ? incrementCounter() : navigate();
+            if ('vibrate' in navigator) {
+              navigator.vibrate(200);
+              console.log('Vibration is on.');
+            } else {
+              console.log('Vibration is not supported on this device.');
+            }
+          }
+         }
         >
           {/* <BsPlus className="fill-red" /> */}
           <Image src={plus} alt="plusIcon" />
@@ -43,7 +55,15 @@ const QuantityCounter: FC<QuantityCounter> = ({
         <div className={count === 0 ? "hidden" : ""}>
           <div
             className={`flex h-[24px] w-[24px] cursor-pointer rounded-3xl items-center justify-center text-white`}
-            onClick={decrementCounter}
+            onClick={()=>{
+              decrementCounter()
+              if ('vibrate' in navigator) {
+                navigator.vibrate(200);
+                console.log('Vibration is on.');
+              } else {
+                console.log('Vibration is not supported on this device.');
+              }
+            }}
           >
             {delIconflag ? (
               <Image src={delIcon} alt="delIcon" />

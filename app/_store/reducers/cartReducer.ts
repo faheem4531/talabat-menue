@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { CartState } from '../interfaces';
 import { addToCart, getCartItems } from '../thunk/cart.thunk';
 

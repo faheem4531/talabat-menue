@@ -1,12 +1,15 @@
 'use client'
-import Image from 'next/image';
-import { useAppSelector } from '../../_store/hooks';
 import React from 'react'
+
+import Image from 'next/image';
 import { useRouter } from "next/navigation";
-import SuccessImg from "../../_assets/svgs/item3.svg"
+
+import { useAppSelector } from '../../_store/hooks';
 import CartBtn from '@/app/_components/Buttons/cartBtn';
 import { useTranslation } from "react-i18next";
 
+
+import SuccessImg from "../../_assets/svgs/item3.svg"
 
 const PaymentSuccess = () => {
   const router = useRouter();

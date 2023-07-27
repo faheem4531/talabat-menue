@@ -1,6 +1,7 @@
 'use client';
-import { useSearchParams } from 'next/navigation';
 import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api';
+
+import { useSearchParams } from 'next/navigation';
 
 const BranchLocation = () => {
   const searchParams = useSearchParams();

@@ -1,7 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-
 const AboutModal = () => {
    const { t, i18n } = useTranslation();
    const lang = i18n.language;

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { RestaurantState } from '../interfaces';
 import { getRestaurants } from './../thunk/restaurant.thunk';
 

@@ -1,27 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SideNavbar from "../_components/SideNavbar/SideNavbar";
-import Image from "next/image";
 import { toast } from "react-toastify";
-import FlagIcon from "../_assets/pngs/navFlag.png";
-import CartItem from "./_components/cartItem";
-import CartBtn from "../_components/Buttons/cartBtn";
+import { useTranslation } from 'react-i18next';
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { updateLanguage } from '../_store/reducers/languageReducer';
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { getCartItems } from "../_store/thunk/cart.thunk";
 import { order, takePayment } from "../_store/thunk/order";
 import { addItem, clearCart, removeItem } from "../_store/reducers/cartReducer";
-import Modal from "../_components/modal/Modal";
-import LoginModal from "../_components/modal/LoginModal";
-import { useRouter } from "next/navigation";
 import {
   phoneNumberExists,
   requestOtp,
   confirmOtp,
-} from "../_store/thunk/user";
-import OTPModal from "../_components/modal/OTPModal";
+} from "../_store/thunk/user";import OTPModal from "../_components/modal/OTPModal";
+import SideNavbar from "../_components/SideNavbar/SideNavbar";
+import CartItem from "./_components/cartItem";
+import CartBtn from "../_components/Buttons/cartBtn";
+import Modal from "../_components/modal/Modal";
+import LoginModal from "../_components/modal/LoginModal";
+
+import FlagIcon from "../_assets/pngs/navFlag.png";
 import USAFlagIcon from '../_assets/pngs/usaFlag.png';
-import { useTranslation } from 'react-i18next';
-import { updateLanguage } from '../_store/reducers/languageReducer';
 
 const AddCart = () => {
   const router = useRouter();
@@ -263,8 +265,8 @@ const AddCart = () => {
         <CartBtn
           btnText1={t("page.Confirm-order")}
           onClick={openTermsAndConditionsModal}
-          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
-        />
+          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]" 
+          />
       </div>
       <Modal
         modalPosition="items-center"
@@ -288,14 +290,13 @@ const AddCart = () => {
         }
       >
         <div className="my-[59px]">
-          <div className="text-center mt-5 gap-3">
+          <div className="text-center gap-3">
             <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
               {t("page.Terms-And-Condition")}
             </h4>
-            <div className="flex justify-center text-center gap-3 mt-4">
-              <button
-                className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]"
-                onClick={() => setTermsAndConditionsModal(false)}
+            <div className="flex justify-center text-center gap-3 mt-7">
+            <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={() => setTermsAndConditionsModal(false)}>Disagree</button>
+            <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleConfirmOrder}
               >
                 {t("page.Disagree")}
               </button>

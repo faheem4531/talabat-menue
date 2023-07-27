@@ -1,11 +1,14 @@
 import React from 'react';
 import type { FC } from 'react';
+
 import Link from 'next/link';
 import Image from 'next/image';
-import locationIcon from '../../_assets/svgs/location.svg';
-import { setSelectedRestaurant } from '@/app/_store/reducers/restaurantReducer';
+
 import { useAppDispatch } from '@/app/_store/hooks';
 import { LocationModal } from '../../_lib/types/genericComponents';
+
+import locationIcon from '../../_assets/svgs/location.svg';
+import { setSelectedRestaurant } from '@/app/_store/reducers/restaurantReducer';
 
 const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen }) => {
   const dispatch = useAppDispatch();

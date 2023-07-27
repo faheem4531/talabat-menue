@@ -1,8 +1,10 @@
-import SideNavbar from '@/app/_components/SideNavbar/SideNavbar';
 import React from 'react'
+
 import Image from 'next/image';
-import FlagIcon from "../_assets/pngs/navFlag.png";
+import SideNavbar from '@/app/_components/SideNavbar/SideNavbar';
 import PaymentSuccess from './_components/PaymentSuccess';
+
+import FlagIcon from "../_assets/pngs/navFlag.png";
 
 const paymentSuccess = () => {
   return (

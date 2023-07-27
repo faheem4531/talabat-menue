@@ -1,5 +1,7 @@
 import React from "react";
 import type { FC } from "react";
+
+
 import QuantityCounter from "../../_components/QuantityCounter";
 import { CartItem } from "../../_lib/types/addCart";
 import Image from "next/image";
@@ -54,6 +56,7 @@ const CartItem: FC<CartItem> = ({ cartImg, title, price, incrementCounter = () =
                 delIconflag={true}
                 incrementCounter={incrementCounter}
                 decrementCounter={decrementCounter}
+                actionType="increment"
               />
             </div>
           </div>

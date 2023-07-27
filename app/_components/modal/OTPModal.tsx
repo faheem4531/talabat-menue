@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import type { FC } from "react";
+
 import OtpInput from "react-otp-input";
 import { OTPModal } from "../../_lib/types/genericComponents";
 
