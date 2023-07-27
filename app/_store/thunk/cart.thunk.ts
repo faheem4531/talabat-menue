@@ -12,7 +12,7 @@ export const getCartItems = createAsyncThunk("cart/getCartItems", async (data: a
   }
 });
 
-export const addToCart = createAsyncThunk("cart/addToCart", async (data: any, { dispatch }) => {
+export const addToCart = createAsyncThunk("cart/addToCart", async (data, { dispatch }) => {
   try {
     const res = await api.post(`${NEXT_APP_BASE_URL}/menu-category?pagination=false&fetchCategoriesHavingItems=true&sortBy=order&sortDirection=1`);
     dispatch(getCartItems);

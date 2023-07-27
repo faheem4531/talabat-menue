@@ -8,15 +8,15 @@ import {
 } from '@react-google-maps/api';
 
 const GoogleMaps = () => {
+  const [description, setDescription] = useState('');
   const inputRef: any = useRef();
   const [address, setAddress] = useState({
     lat: 35.9078,
     lng: 127.7669,
   });
   const mapContainerStyle = {
-    height: '250px',
+    height: '100vh',
     width: '100%',
-    marginTop: '30px',
     borderRadius: '5px',
   };
   const { isLoaded } = useLoadScript({
@@ -40,33 +40,67 @@ const GoogleMaps = () => {
       lng: event.latLng.lng(),
     }));
   };
+
+  const mapOptions = {
+    mapTypeControl: false,
+    fullscreenControl: false,
+    streetViewControl: false,
+    zoomControl: false,
+  };
+
+  const handleDescriptionChange = (event: any) => {
+    setDescription(event.target.value);
+  };
+
   return (
     <div>
-      {isLoaded && (
-        <>
-          <StandaloneSearchBox
-            onLoad={(ref: any) => (inputRef.current = ref)}
-            onPlacesChanged={handlePlaceChanged}
-          >
-            <input type='text' placeholder='Search for a location' />
-          </StandaloneSearchBox>
-          <div>
-            <GoogleMap
-              zoom={15}
-              center={address}
-              mapContainerStyle={mapContainerStyle}
-              id='map'
-            >
-              <MarkerF
-                position={address}
-                key='marker_1'
-                draggable
-                onDragEnd={updateLongLat}
-              />
-            </GoogleMap>
-          </div>
-        </>
-      )}
+      <div className=''>
+        {isLoaded && (
+          <>
+            <div className=''>
+              <StandaloneSearchBox
+                onLoad={(ref: any) => (inputRef.current = ref)}
+                onPlacesChanged={handlePlaceChanged}
+              >
+                <div className='bg-slate-500 w-full rounded-lg overflow-hidden
+                '>
+                  <div>
+                    <input type='text' placeholder='Address Name' className='h-[52px] text-xs text-[#0000004d] w-full pl-[15px]' />
+                  </div>
+                  <div>
+                    <input
+                      type='text'
+                      placeholder='Type Address Description'
+                      value={description}
+                      onChange={handleDescriptionChange}
+                      className='h-[52px] text-xs text-[#0000004d] w-full pl-[15px]'
+                    />
+                  </div>
+                </div>
+              </StandaloneSearchBox>
+            </div>
+            <div className='absolute top-0 -z-10 w-[392px]'>
+              <GoogleMap
+                zoom={15}
+                center={address}
+                mapContainerStyle={mapContainerStyle}
+                id='map'
+                options={mapOptions}
+              >
+                <MarkerF
+                  position={address}
+                  key='marker_1'
+                  draggable
+                  onDragEnd={updateLongLat}
+                />
+              </GoogleMap>
+            </div>
+          </>
+        )}
+      </div>
+      <div>
+
+      </div>
     </div>
   );
 };

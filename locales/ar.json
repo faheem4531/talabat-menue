@@ -3,7 +3,8 @@
         "opening-hours" : "ساعات العمل",
         "Branches":  "الفروع",
         "gulf-madina": "خليج المدينة المنورة",
-        "today-open-24-hours": "اليوم: مفتوح 24 ساعة"
+        "today-open-24-hours": "اليوم: مفتوح 24 ساعة",
+        "category": "فئة"
     },
     "sideBar": {
         "MENU": "قائمة طعام",

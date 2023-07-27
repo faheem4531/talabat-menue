@@ -13,6 +13,7 @@ const CartWithItems: FC<CartWithItems> = ({
   cart,
   updatingFavorites
 }) => {
+
   return (
     <div>
       <MenuSlider />

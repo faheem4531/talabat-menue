@@ -32,15 +32,15 @@ import searchIcon from '../_assets/pngs/inputSearch.png';
 const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
-  const { catagories }: Catagories  = useAppSelector((state: any) => state.menuCatageory);
+
+  const { catagories }: Catagories = useAppSelector((state) => state.menuCatageory);
   const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
-  const { cart, items } = useAppSelector((state: any) => state.cart);
-  const { data }: { data: string[] } = useAppSelector(
-    (state) => state.favorites
+  const { cart, items } = useAppSelector((state) => state.cart);
+
+  const selectedRestaurant: any = useAppSelector(
+    (state: any) => state.restaurant.selectedRestaurant
   );
-  const selectedRestaurant = useAppSelector(
-    (state: any) => state.restaurant.selectedId
-  );
+  const defaultRestaurant = restaurants?.find((item: { _id: string; }) => item._id === "63f3021acafc472f2238e4c6")
   const language = useAppSelector((state: any) => state.language);
   
   const [query, setQuery] = useState<string>("")
@@ -52,7 +52,7 @@ const Menu: FC<Menu> = () => {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6s'));
+    if(!selectedRestaurant){dispatch(setSelectedRestaurant(defaultRestaurant));}
   }, [dispatch]);
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const Menu: FC<Menu> = () => {
         items,
         couponCode: "",
         orderType: "Pickup",
-        restaurantId: selectedRestaurant,
+        restaurantId: selectedRestaurant?._id,
         source: "Website",
         deliveryAddress: {},
       })
@@ -123,7 +123,7 @@ const Menu: FC<Menu> = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                  {t('menu.gulf-madina')}
+                  {selectedRestaurant?.name}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
@@ -148,7 +148,7 @@ const Menu: FC<Menu> = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                      {t('menu.Branches')}
+                      {selectedRestaurant?.name}
                     </div>
                     <Image
                       src={locationIcon}
@@ -170,7 +170,7 @@ const Menu: FC<Menu> = () => {
       </div>
       <div className="mt-[39px] ml-[15px] font-semibold pb-10">
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
-          Category
+          {t("menu.category")}
         </h5>
         <CartWithItems categories={catagories ?? []} query={query} cart={cart} updatingFavorites={updatingFavorites} />
       </div>

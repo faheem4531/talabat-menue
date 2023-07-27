@@ -15,7 +15,7 @@ const Modal: FC<Modal> = ({
   isModalOpen,
   handleModalToggle,
 }) => {
-  const handleModalOpen = (event: any) => {
+  const handleModalOpen = (event: { stopPropagation: () => void; }) => {
     event.stopPropagation();
   };
 

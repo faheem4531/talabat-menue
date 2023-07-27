@@ -1,5 +1,18 @@
 export interface ItemsDetail {
-	itemsDetail?: Array<any>
+	itemsDetail?: [];
+}
+
+export interface AddOption {
+	addOnId: string;
+	multiple: boolean;
+	optionId: string;
+}
+
+export interface Options {
+	name: string;
+	price: string;
+	calory: string;
+	_id: string;
 }
 
 export interface AddOnSelecter {
@@ -14,11 +27,17 @@ export interface AddOnSelecter {
 	addOption?: any;
 }
 
+export interface Additions {
+	name: string | undefined;
+	_id: string | undefined;
+	options: any;
+	isMultipleAllowed: boolean | undefined;
+}
 export interface ItemCustomizer {
-  title?: string;
-  id?: string;
-  options?: Array<any> | any;
-  addOption?: (item: any) => void;
-  multiple?: boolean;
-  isChecked?: (addOnId: string, optionId: string) => boolean;
+	title?: string;
+	id?: string;
+	options?: [];
+	addOption?: (item: AddOption) => void;
+	multiple?: boolean;
+	isChecked?: (addOnId: string, optionId: string) => boolean;
 }

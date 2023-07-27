@@ -33,7 +33,7 @@ const QuantityCounter: FC<QuantityCounter> = ({
       >
         <div
           className="flex h-[24px] w-[24px] rounded-3xl items-center justify-center bg-[#C84044]"
-          onClick={actionType === "increment"?incrementCounter:navigate }
+          onClick={actionType === "increment" ? incrementCounter : navigate }
         >
           {/* <BsPlus className="fill-red" /> */}
           <Image src={plus} alt="plusIcon" />

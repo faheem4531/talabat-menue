@@ -7,16 +7,17 @@ const initialState: RestaurantState = {
     data: [],
     loading: false,
     error: null,
-    selectedId: ""
+    selectedRestaurant: {}
   };
   
   const restaurantSlice = createSlice({
     name: 'restaurant',
     initialState,
     reducers: {
-      setSelectedRestaurant: (state, action: PayloadAction<string>) => {
-        state.selectedId = action.payload  
+      setSelectedRestaurant: (state, action: PayloadAction<any>) => {
+        state.selectedRestaurant = action.payload  
       },
+      
     },
     extraReducers: (builder) => {
       builder.addCase(getRestaurants.fulfilled, (state, { payload }: PayloadAction<any>) => {
