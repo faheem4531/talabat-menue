@@ -13,7 +13,6 @@ const CartWithItems: FC<CartWithItems> = ({
   cart,
   updatingFavorites
 }) => {
-
   return (
     <div>
       <MenuSlider />
@@ -33,12 +32,13 @@ const CartWithItems: FC<CartWithItems> = ({
 
         );
       })}
-      <Link href={"/addCart"} className="fixed bottom-2 w-[350px]">
+      <Link href={ cart?.items?.length ? "/addCart" : "#" } className="fixed bottom-2 w-[350px]">
         <CartBtn
           btnText1="View cart"
           btnText2={`${cart?.summary?.totalWithTax ?? 0} SR`}
+          cartItems={cart?.items}
           // onClick={}
-          btnClasses="justify-between px-4 rounded-[6px] bg-[#00A559] w-full text-[14px] font-[400] py-[15px]"
+          btnClasses={`justify-between px-4 rounded-[6px] ${!cart?.items?.length ? "bg-[#D9D9D9]": " bg-[#00A559]"} w-full text-[14px] font-[400] py-[15px]`}
         />
       </Link>
     </div>

@@ -11,8 +11,9 @@ export interface CartBtn {
   btnText1: string;
   btnline?: boolean;
   btnText2?: string;
-  btnClasses: string;
-  onClick?: () => void
+  btnClasses?: string;
+  onClick?: () => void;
+  cartItems: any[]
   // font: string;
   // btnPadding: string;
   // center?: string;
