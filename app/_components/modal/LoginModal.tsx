@@ -50,7 +50,7 @@ const LoginModal: FC<LoginModalProps> = ({ login = () => { }, info }) => {
             required
           />
         </div> */}
-        <div className="mb-6 w-5">
+        <div className="mb-6">
           <PhoneInput
             placeholder={t("login.Enter-phone-number")}
             value={phoneNumber}
