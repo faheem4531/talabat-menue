@@ -35,7 +35,7 @@ export interface RestaurantState {
   data: any[];
   loading: boolean;
   error: string | null;
-  selectedId: string
+  selectedRestaurant: any
 }
 
 export interface CustomerState {
