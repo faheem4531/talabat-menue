@@ -32,7 +32,7 @@ const AddCart = () => {
     (state) => state.menuCatageory.catagories
   ).flatMap((obj) => obj.docs);
   const selectedRestaurant = useAppSelector(
-    (state) => state.restaurant.selectedId
+    (state) => state.restaurant.selectedRestaurant
     );
     const [update, setUpdate] = useState<boolean>(false);
   const [isLoginModalOpen, setisLoginModalOpen] = useState<boolean>(false);
@@ -53,7 +53,7 @@ const AddCart = () => {
         items,
         couponCode: "",
         orderType: "Pickup",
-        restaurantId: selectedRestaurant,
+        restaurantId: selectedRestaurant._id,
         source: "Website",
         deliveryAddress: {},
       })
@@ -159,14 +159,14 @@ const AddCart = () => {
   };
 
   const handleCashOnDelivery = () => {
-    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant, items })).unwrap().then(() => {
+    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant._id, items })).unwrap().then(() => {
     dispatch(clearCart());
       router.push('/order/success')
     })
   };
 
   const handlePayNow = () => {
-    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant, items })).unwrap().then((data) => {
+    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant._id, items })).unwrap().then((data) => {
     dispatch(takePayment({ orderId: data?._id, "paymentMethod": "Online", "redirectUrl": "https://revamped-gti-website-front-end.vercel.app/order" })).unwrap().then((data) => {
       router.push(`https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=${data?.paymentId}`)
     })

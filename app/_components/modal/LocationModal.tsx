@@ -24,7 +24,7 @@ const LocationModal: FC<LocationModal> = ({ restaurants, setLocModalOpen }) => {
               <h4
                 className="cursor-pointer text-[12px] font-[600] text-[#494949] ml-[13px]"
                 onClick={() => {
-                  dispatch(setSelectedRestaurant(item._id));
+                  dispatch(setSelectedRestaurant(item));
                   setLocModalOpen(false);
                 }}
               >
