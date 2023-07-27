@@ -35,7 +35,7 @@ const Menu: FC<Menu> = () => {
   const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
   const { cart, items } = useAppSelector((state) => state.cart);
 
-  const selectedRestaurant = useAppSelector(
+  const selectedRestaurant: any = useAppSelector(
     (state: any) => state.restaurant.selectedRestaurant
   );
   const defaultRestaurant = restaurants?.find((item: { _id: string; }) => item._id === "63f3021acafc472f2238e4c6")
@@ -59,7 +59,7 @@ const Menu: FC<Menu> = () => {
         items,
         couponCode: "",
         orderType: "Pickup",
-        restaurantId: selectedRestaurant._id,
+        restaurantId: selectedRestaurant?._id,
         source: "Website",
         deliveryAddress: {},
       })
@@ -121,7 +121,7 @@ const Menu: FC<Menu> = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                  {selectedRestaurant.name}
+                  {selectedRestaurant?.name}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
@@ -146,7 +146,7 @@ const Menu: FC<Menu> = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                      {selectedRestaurant.name}
+                      {selectedRestaurant?.name}
                     </div>
                     <Image
                       src={locationIcon}
