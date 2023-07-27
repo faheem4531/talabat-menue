@@ -275,11 +275,11 @@ const AddCart = () => {
         }
       >
         <div className="my-[59px]">
-          <div className="text-center mt-5 gap-3">
+          <div className="text-center gap-3">
             <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
               Terms and Condition
             </h4>
-            <div className="flex justify-center text-center gap-3 mt-4">
+            <div className="flex justify-center text-center gap-3 mt-7">
             <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={() => setTermsAndConditionsModal(false)}>Disagree</button>
             <button className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]" onClick={handleConfirmOrder}
               >
@@ -298,11 +298,11 @@ const AddCart = () => {
         handleModalToggle={() => setPaymentMethodModal(!paymentMethodModal)}
       >
         <div className="my-[59px]">
-        <div className="flex flex-col">
-          <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
-              Terms and Condition
+        <div className="text-center gap-3">
+            <h4 className="text-center mt-6 mb-3 text-sm font-[600] text-[#494949]">
+              Payment Method
             </h4>
-          <div className='flex justify-evenly'>
+          <div className='flex justify-center text-center gap-3 mt-7'>
           <button className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]" onClick={handlePayNow}>
           Pay Now
             </button>
