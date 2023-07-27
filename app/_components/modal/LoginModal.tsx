@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 import PhoneInput from 'react-phone-number-input';
 import { LoginModalProps } from "../../_lib/types/genericComponents";
 
-const LoginModal: FC<LoginModalProps> = ({ login = () => {}, info }) => {
+const LoginModal: FC<LoginModalProps> = ({ login = () => { }, info }) => {
   const [name, setName] = useState<string | undefined>('')
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>('');
 
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
 
-  const handleLogin  = (event: any) => {
+  const handleLogin = (event: { preventDefault: () => void; }) => {
     event.preventDefault()
     login(phoneNumber || '')
   }
@@ -25,9 +25,9 @@ const LoginModal: FC<LoginModalProps> = ({ login = () => {}, info }) => {
       <form>
         <div className="mb-6">
           <label className="block mb-2 text-xs font-medium text-gray-900 dark:text-white">
-          {info ? 
-             "User Information" : t("login.login")
-          }
+            {info ?
+              "User Information" : t("login.login")
+            }
           </label>
           <input
             type="text"

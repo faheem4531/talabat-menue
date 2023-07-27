@@ -30,9 +30,10 @@ import { updateFavorites } from '../_store/reducers/favoritesReducer';
 const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
-  const { catagories }: Catagories  = useAppSelector((state: any) => state.menuCatageory);
+
+  const { catagories }: Catagories = useAppSelector((state) => state.menuCatageory);
   const restaurants = useAppSelector((state: any) => state.restaurant?.data?.docs);
-  const { cart, items } = useAppSelector((state: any) => state.cart);
+  const { cart, items } = useAppSelector((state) => state.cart);
 
   const selectedRestaurant = useAppSelector(
     (state: any) => state.restaurant.selectedRestaurant

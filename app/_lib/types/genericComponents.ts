@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface Modal {
-	children: any;
-	modalPosition: string;
-	cancelCSS: string;
-	modalCSS: string;
-	isModalOpen: boolean;
-	handleModalToggle: () => void;
+  children: any;
+  modalPosition: string;
+  cancelCSS: string;
+  modalCSS: string;
+  isModalOpen: boolean;
+  handleModalToggle: () => void;
 }
 
 export interface SideNavbar {
