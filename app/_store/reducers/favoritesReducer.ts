@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { FavoriteState } from '../interfaces';
 
 const initialState: FavoriteState = {

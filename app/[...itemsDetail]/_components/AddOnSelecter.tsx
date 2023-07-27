@@ -1,6 +1,8 @@
 import React from "react";
 import type { FC } from "react";
+
 import Image from "next/image";
+
 import fire from "../../_assets/svgs/fire.svg";
 import { AddOnSelecter } from "../../_lib/types/itemsDetails";
 

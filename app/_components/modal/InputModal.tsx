@@ -1,9 +1,11 @@
 import React, { Dispatch, SetStateAction } from "react";
 import type { FC } from "react";
+import { useTranslation } from "react-i18next";
+
+import { InputModal } from "../../_lib/types/genericComponents";
+
 import Image from "next/image";
 import searchIcon from "../../_assets/pngs/inputSearch.png";
-import { useTranslation } from "react-i18next";
-import { InputModal } from "../../_lib/types/genericComponents";
 
 const InputModal: FC<InputModal> = ({ setQuery }) => {
    const { t, i18n } = useTranslation();

@@ -1,8 +1,10 @@
 import React from "react";
 import type { FC } from "react";
+
+import Image from "next/image";
+
 import QuantityCounter from "../../_components/QuantityCounter";
 import { CartItem } from "../../_lib/types/addCart";
-import Image from "next/image";
 
 const CartItem: FC<CartItem> = ({ cartImg, title, price, incrementCounter = () => { }, decrementCounter = () => { }, count = 0 }) => {
   return (

@@ -1,15 +1,26 @@
 'use client';
 import { useEffect, useState } from 'react';
 import type { FC } from 'react';
-import Image from 'next/image';
 import { useTranslation } from 'react-i18next';
+
+import Image from 'next/image';
+
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getCartItems } from '../_store/thunk/cart.thunk';
 import { getRestaurants } from '../_store/thunk/restaurant.thunk';
-import { updateLanguage } from '../_store/reducers/languageReducer';
 import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
+import { updateLanguage } from '../_store/reducers/languageReducer';
 import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
+import { updateFavorites } from '../_store/reducers/favoritesReducer'; 
 import { Menu } from '../_lib/types/menu';
+import { Catagories } from "../_lib/types/menu";
+import SideNavbar from '../_components/SideNavbar/SideNavbar';
+import CartWithItems from './_components/CartWithItems';
+import Modal from '../_components/modal/Modal';
+import LocationModal from '../_components/modal/LocationModal';
+import TimingModal from '../_components/modal/TimingModal';
+import InputModal from '../_components/modal/InputModal';
+
 import logo from '../_assets/svgs/logo.svg';
 import clock from '../_assets/svgs/clock.svg';
 import locationIcon from '../_assets/svgs/location.svg';
@@ -17,15 +28,6 @@ import heroImg from '../_assets/pngs/heroImg.png';
 import FlagIcon from '../_assets/pngs/navFlag.png';
 import USAFlagIcon from '../_assets/pngs/usaFlag.png';
 import searchIcon from '../_assets/pngs/inputSearch.png';
-import CartWithItems from './_components/CartWithItems';
-import Modal from '../_components/modal/Modal';
-import LocationModal from '../_components/modal/LocationModal';
-import TimingModal from '../_components/modal/TimingModal';
-import InputModal from '../_components/modal/InputModal';
-import SideNavbar from '../_components/SideNavbar/SideNavbar';
-import { Catagories } from "../_lib/types/menu";
-import { updateFavorites } from '../_store/reducers/favoritesReducer'; 
-
 
 const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();

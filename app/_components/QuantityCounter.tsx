@@ -1,10 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import type { FC } from "react";
+
 import Image from "next/image";
+
+import { QuantityCounter } from "../_lib/types/genericComponents";
+
 import plus from "../_assets/svgs/plus.svg";
 import delIcon from "../_assets/svgs/delIcon.svg";
-import { QuantityCounter } from "../_lib/types/genericComponents";
 
 const QuantityCounter: FC<QuantityCounter> = ({
   delIconflag,

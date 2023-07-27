@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { MenuCatageoryState } from '../interfaces';
 import { getCatageorysWithItems, getMenuCatageorys } from '../thunk/menuCatageory.thunk';
 

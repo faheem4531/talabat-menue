@@ -1,8 +1,11 @@
 import React from "react";
-import Image from "next/image";
 import type { FC } from "react";
-import cancelIcon from "../../_assets/pngs/cancelIcon.png";
+
+import Image from "next/image";
+
 import { Modal } from "../../_lib/types/genericComponents";
+
+import cancelIcon from "../../_assets/pngs/cancelIcon.png";
 
 const Modal: FC<Modal> = ({
   children,

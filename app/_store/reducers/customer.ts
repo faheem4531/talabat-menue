@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { CustomerState } from '../interfaces';
 import {  } from '../thunk/customer.thunk';
 import { confirmOtp } from '../thunk/user';
