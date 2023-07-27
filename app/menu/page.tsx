@@ -24,6 +24,8 @@ import TimingModal from '../_components/modal/TimingModal';
 import InputModal from '../_components/modal/InputModal';
 import SideNavbar from '../_components/SideNavbar/SideNavbar';
 import { Catagories } from "../_lib/types/menu";
+import { updateFavorites } from '../_store/reducers/favoritesReducer'; 
+
 
 const Menu: FC<Menu> = () => {
   const dispatch = useAppDispatch();
@@ -34,21 +36,21 @@ const Menu: FC<Menu> = () => {
   const { cart, items } = useAppSelector((state) => state.cart);
 
   const selectedRestaurant = useAppSelector(
-    (state) => state.restaurant.selectedId
+    (state: any) => state.restaurant.selectedRestaurant
   );
-  const language = useAppSelector((state) => state.language);
-
+  const defaultRestaurant = restaurants?.find((item: { _id: string; }) => item._id === "63f3021acafc472f2238e4c6")
+  const language = useAppSelector((state: any) => state.language);
+  
   const [query, setQuery] = useState<string>("")
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [hourModalOpen, setHourModalOpen] = useState<boolean>(false);
   const [locModalOpen, setLocModalOpen] = useState<boolean>(false);
-
   useEffect(() => {
     if (!catagories.length) {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-    dispatch(setSelectedRestaurant('63f3021acafc472f2238e4c6'));
+    if(!selectedRestaurant){dispatch(setSelectedRestaurant(defaultRestaurant));}
   }, [dispatch]);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ const Menu: FC<Menu> = () => {
         items,
         couponCode: "",
         orderType: "Pickup",
-        restaurantId: selectedRestaurant,
+        restaurantId: selectedRestaurant._id,
         source: "Website",
         deliveryAddress: {},
       })
@@ -67,6 +69,10 @@ const Menu: FC<Menu> = () => {
   const handleLanguageChange = () => {
     i18n.changeLanguage(language.name);
   };
+  const updatingFavorites = (id:string) => {
+    dispatch(updateFavorites(id));
+  };
+
   return (
     <div>
       <div className="h-64">
@@ -74,33 +80,18 @@ const Menu: FC<Menu> = () => {
           <div>
             <SideNavbar />
           </div>
-          {language.name === 'en' ? (
-            <div
+          <div
               className="cursor-pointer flex items-center"
               onClick={() => {
-                dispatch(updateLanguage('ar'));
+                language.name === "en"? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
                 handleLanguageChange();
               }}
             >
-              <div className="text-white font-semibold text-1xl">EN</div>
+              <div className="text-white font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
               <div className="ml-2">
-                <Image src={USAFlagIcon} alt="FlagIcon" width={27} />
+                <Image src={language.name==="en"? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
               </div>
             </div>
-          ) : (
-            <div
-              className="cursor-pointer flex items-center"
-              onClick={() => {
-                dispatch(updateLanguage('en'));
-                handleLanguageChange();
-              }}
-            >
-              <div className="text-white font-semibold text-1xl">AR</div>
-              <div className="ml-2">
-                <Image src={FlagIcon} alt="FlagIcon" />
-              </div>
-            </div>
-          )}
         </div>
         <div className="h-64 absolute top-0 z-[-1] heroImgMain">
           <Image
@@ -130,7 +121,7 @@ const Menu: FC<Menu> = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                    {t('menu.gulf-madina')}
+                  {selectedRestaurant.name}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
@@ -155,7 +146,7 @@ const Menu: FC<Menu> = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                      {t('menu.Branches')}
+                      {selectedRestaurant.name}
                     </div>
                     <Image
                       src={locationIcon}
@@ -177,9 +168,9 @@ const Menu: FC<Menu> = () => {
       </div>
       <div className="mt-[39px] ml-[15px] font-semibold pb-10">
         <h5 className="text-sm text-[#494949] font-semibold mb-[14px]">
-          Category
+          {t("menu.category")}
         </h5>
-        <CartWithItems categories={catagories ?? []} query={query} cart={cart} />
+        <CartWithItems categories={catagories ?? []} query={query} cart={cart} updatingFavorites={updatingFavorites} />
       </div>
 
       <Modal

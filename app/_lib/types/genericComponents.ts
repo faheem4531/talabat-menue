@@ -20,6 +20,8 @@ export interface QuantityCounter {
   count?: number;
   incrementCounter?: () => void;
   decrementCounter?: () => void;
+  navigate?: () => void;
+  actionType: string
 }
 
 export interface InputModal {

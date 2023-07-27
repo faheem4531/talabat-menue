@@ -10,7 +10,8 @@ import { CartWithItems } from "../../_lib/types/menu";
 const CartWithItems: FC<CartWithItems> = ({
   categories,
   query,
-  cart
+  cart,
+  updatingFavorites
 }) => {
 
   return (
@@ -26,6 +27,7 @@ const CartWithItems: FC<CartWithItems> = ({
               id={element?._id}
               items={element?.docs ?? []}
               query={query}
+              updatingFavorites={updatingFavorites}
             />
           </div>
 

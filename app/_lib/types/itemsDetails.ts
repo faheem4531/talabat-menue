@@ -23,8 +23,8 @@ export interface AddOnSelecter {
 	addOnId?: string;
 	optionId?: string;
 	multiple?: boolean;
-	isChecked?: (addOnId: string, optionId: string) => boolean;
-	addOption?: (items: AddOption) => void;
+	isChecked?: any;
+	addOption?: any;
 }
 
 export interface Additions {

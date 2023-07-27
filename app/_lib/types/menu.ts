@@ -80,6 +80,7 @@ export interface CartWithItems {
   categories: Array<Categories>;
   query: string;
   cart: Cart;
+  updatingFavorites: (id: string) => void;
 }
 
 export interface MenuItem {
@@ -90,6 +91,7 @@ export interface MenuItem {
   calerioes: string;
   price: string;
   additions: Array<any>;
+  updatingFavorites: (id: string) => void;  
 }
 
 export interface MenuItemsContainer {
@@ -97,4 +99,5 @@ export interface MenuItemsContainer {
   id: string;
   items: Array<any>;
   query: string;
+  updatingFavorites: (id: string) => void;
 }

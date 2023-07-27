@@ -3,7 +3,8 @@
         "opening-hours" : "ساعات العمل",
         "Branches":  "الفروع",
         "gulf-madina": "خليج المدينة المنورة",
-        "today-open-24-hours": "اليوم: مفتوح 24 ساعة"
+        "today-open-24-hours": "اليوم: مفتوح 24 ساعة",
+        "category": "فئة"
     },
     "sideBar": {
         "MENU": "قائمة طعام",
@@ -44,6 +45,18 @@
     "name@flowbite.com":"اسم@فلبيت.كوم",
     "Enter-your-name":"أدخل أسمك",
     "Enter-phone-number":"أدخل رقم الهاتف"
-   }
+   },
+   "productDetail" : {
+    "write-note": "اكتب ملا حظة",
+    "type-your-comment": "اكتب تعليقك",
+    "add": "يضيف"
+  },
+  "cart": {
+    "have-a-coupon": "هل لديك قسيمة",
+    "add": "يضيف",
+    "subtotal": "المجموع الفرعي",
+    "tax": "ضريبة",
+    "total": "المجموع"
+  }
     
 }
