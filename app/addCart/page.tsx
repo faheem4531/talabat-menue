@@ -1,27 +1,29 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import SideNavbar from "../_components/SideNavbar/SideNavbar";
-import Image from "next/image";
 import { toast } from "react-toastify";
-import FlagIcon from "../_assets/pngs/navFlag.png";
-import CartItem from "./_components/cartItem";
-import CartBtn from "../_components/Buttons/cartBtn";
+import { useTranslation } from 'react-i18next';
+
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { updateLanguage } from '../_store/reducers/languageReducer';
 import { useAppDispatch, useAppSelector } from "../_store/hooks";
 import { getCartItems } from "../_store/thunk/cart.thunk";
 import { order, takePayment } from "../_store/thunk/order";
 import { addItem, clearCart, removeItem } from "../_store/reducers/cartReducer";
-import Modal from "../_components/modal/Modal";
-import LoginModal from "../_components/modal/LoginModal";
-import { useRouter } from "next/navigation";
 import {
   phoneNumberExists,
   requestOtp,
   confirmOtp,
-} from "../_store/thunk/user";
-import OTPModal from "../_components/modal/OTPModal";
+} from "../_store/thunk/user";import OTPModal from "../_components/modal/OTPModal";
+import SideNavbar from "../_components/SideNavbar/SideNavbar";
+import CartItem from "./_components/cartItem";
+import CartBtn from "../_components/Buttons/cartBtn";
+import Modal from "../_components/modal/Modal";
+import LoginModal from "../_components/modal/LoginModal";
+
+import FlagIcon from "../_assets/pngs/navFlag.png";
 import USAFlagIcon from '../_assets/pngs/usaFlag.png';
-import { useTranslation } from 'react-i18next';
-import { updateLanguage } from '../_store/reducers/languageReducer';
 
 const AddCart = () => {
   const router = useRouter();

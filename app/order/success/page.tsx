@@ -1,8 +1,10 @@
 'use client'
-import SuccessImage from 'public/success.gif';
-import Image from 'next/image';
 import { useEffect } from 'react';
+
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+import SuccessImage from 'public/success.gif';
 
 const OrderSuccess = () => {
   const router = useRouter();

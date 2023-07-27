@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+
 import { NEXT_APP_BASE_URL } from '@/app/_lib/constants';
 import api from '@/app/_services/api';
 

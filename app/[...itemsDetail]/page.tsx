@@ -1,22 +1,25 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import type { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import Image from 'next/image';
+import Link from 'next/link';
+
+import ItemCustomizer from './_components/ItemCustomizer';
+import QuantityCounter from '../_components/QuantityCounter';
+import Addbtn from '../_components/Buttons/cartBtn';
+import { useAppDispatch, useAppSelector } from '../_store/hooks';
+import { getItem } from '../_store/thunk/item.thunk';
+import { addItem, removeItem } from '../_store/reducers/cartReducer';
+import { updateLanguage } from '../_store/reducers/languageReducer';
+import { ItemsDetail, AddOption, Additions } from '../_lib/types/itemsDetails';
+
 import heroImg from '../_assets/pngs/detailHeroImg.png';
 import FlagIcon from '../_assets/pngs/navFlag.png';
 import USAFlagIcon from '../_assets/pngs/usaFlag.png';
 import fire from '../_assets/svgs/fire.svg';
-import ItemCustomizer from './_components/ItemCustomizer';
-import QuantityCounter from '../_components/QuantityCounter';
-import Addbtn from '../_components/Buttons/cartBtn';
 import backArrow from '../_assets/svgs/arrow-back.svg';
-import Link from 'next/link';
-import { useAppDispatch, useAppSelector } from '../_store/hooks';
-import { getItem } from '../_store/thunk/item.thunk';
-import { addItem, removeItem } from '../_store/reducers/cartReducer';
-import { ItemsDetail, AddOption, Additions } from '../_lib/types/itemsDetails';
-import { useTranslation } from 'react-i18next';
-import { updateLanguage } from '../_store/reducers/languageReducer';
 
 const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
   const dispatch = useAppDispatch();

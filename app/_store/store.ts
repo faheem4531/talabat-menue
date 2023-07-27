@@ -1,6 +1,7 @@
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+
 import manuCatageoryReducer from './reducers/menuCatageory';
 import cartReducer from './reducers/cartReducer';
 import favoritesReducer from './reducers/favoritesReducer';
