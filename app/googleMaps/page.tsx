@@ -57,15 +57,15 @@ const GoogleMaps = () => {
       <div className=''>
         {isLoaded && (
           <>
-            <div className=''>
+            <div className='px-4'>
               <StandaloneSearchBox
                 onLoad={(ref: any) => (inputRef.current = ref)}
                 onPlacesChanged={handlePlaceChanged}
               >
                 <div className='bg-slate-500 w-full rounded-lg overflow-hidden
                 '>
-                  <div>
-                    <input type='text' placeholder='Address Name' className='h-[52px] text-xs text-[#0000004d] w-full pl-[15px]' />
+                  <div className='border-b-[1px]'>
+                    <input type='text' placeholder='Address Name' className='h-[52px] text-xs placeholder-[#0000004d] w-full pl-[15px] focus:outline-none' />
                   </div>
                   <div>
                     <input
@@ -73,7 +73,7 @@ const GoogleMaps = () => {
                       placeholder='Type Address Description'
                       value={description}
                       onChange={handleDescriptionChange}
-                      className='h-[52px] text-xs text-[#0000004d] w-full pl-[15px]'
+                      className='h-[52px] text-xs placeholder-[#0000004d] w-full pl-[15px] focus:outline-none'
                     />
                   </div>
                 </div>
