@@ -21,7 +21,7 @@ export interface QuantityCounter {
   incrementCounter?: () => void;
   decrementCounter?: () => void;
   navigate?: () => void;
-  actionType: string
+  actionType?: string;
 }
 
 export interface InputModal {

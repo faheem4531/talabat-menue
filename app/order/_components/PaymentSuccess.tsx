@@ -5,10 +5,13 @@ import React from 'react'
 import { useRouter } from "next/navigation";
 import SuccessImg from "../../_assets/svgs/item3.svg"
 import CartBtn from '@/app/_components/Buttons/cartBtn';
+import { useTranslation } from "react-i18next";
+
 
 const PaymentSuccess = () => {
   const router = useRouter();
   const { order } = useAppSelector((state) => state?.order);
+   const { t, i18n } = useTranslation();
 
   const getTotalAmount = () => {
     let total = 0;
@@ -23,46 +26,64 @@ const PaymentSuccess = () => {
       <div className="border py-3 px-2 rounded-lg shadow-lg shadow-gray-200">
         <div className=" flex items-center justify-between ">
           <div className="w-16 text-[14px] text-center bg-[#f7aa02] -ml-3 py-1 rounded-sm shadow-sm shadow-black">
-            New
+            {t("payment.New")}
           </div>
-          <div className="text-gray-500 text-[14px]">{order?.createdAt?.slice(0, 10)}</div>
+          <div className="text-gray-500 text-[14px]">
+            {order?.createdAt?.slice(0, 10)}
+          </div>
           <div className="text-[14px] font-semibold">#{order?.orderNumber}</div>
         </div>
-        {order?.items?.map((item: any, index: number) => 
-        <div key={index} className="mt-7 mb-6 flex justify-between items-center text-[14px]">
-          <div className="flex items-center gap-3">
-            <Image key={index} className="h-10 w-10" src={SuccessImg} alt="Success Image" />
-            <div className="font-semibold">{item?.menuItem?.name}</div>
+        {order?.items?.map((item: any, index: number) => (
+          <div
+            key={index}
+            className="mt-7 mb-6 flex justify-between items-center text-[14px]"
+          >
+            <div className="flex items-center gap-3">
+              <Image
+                key={index}
+                className="h-10 w-10"
+                src={SuccessImg}
+                alt="Success Image"
+              />
+              <div className="font-semibold">{item?.menuItem?.name}</div>
+            </div>
+            <div className="flex gap-1">
+              <div className="text-gray-500">x{item?.quantity}</div>
+              <div className="font-semibold">{item?.amountBeforeDiscount}</div>
+            </div>
           </div>
-          <div className="flex gap-1">
-            <div className="text-gray-500">x{item?.quantity}</div>
-            <div className="font-semibold">{item?.amountBeforeDiscount}</div>
-          </div>
-        </div>)}
+        ))}
         <div className="border-dotted border-[1px] border-gray h-[1px] w-full"></div>
         <div className="mt-2 text-gray-600">
           <div className="flex justify-between items-center mt-[1px]">
-            <div className="text-[12px] font-medium">Tip Amount</div>
-            <div className="text-[12px] font-medium">{order?.tip} SAR</div>
+            <div className="text-[12px] font-medium">
+              {t("payment.Tip-Amount")}
+            </div>
+            <div className="text-[12px] font-medium">
+              {order?.tip} {t("payment.SAR")}
+            </div>
           </div>
           <div className="flex justify-between items-center mt-[1px]">
-            <div className="text-[12px] font-medium">Total</div>
-            <div className="text-[12px] font-medium">{getTotalAmount()} SAR</div>
+            <div className="text-[12px] font-medium"> {t("payment.Total")}</div>
+            <div className="text-[12px] font-medium">
+              {getTotalAmount()} {t("payment.SAR")}
+            </div>
           </div>
           <div className="flex justify-between items-center mt-[1px]">
-            <div className="text-[12px] font-medium">Total Amount</div>
-            <div className="text-[12px] font-medium">{getTotalAmount() - order?.tip} SAR</div>
+            <div className="text-[12px] font-medium">
+              {" "}
+              {t("payment.Total-Amount")}
+            </div>
+            <div className="text-[12px] font-medium">
+              {getTotalAmount() - order?.tip} {t("payment.SAR")}
+            </div>
           </div>
         </div>
       </div>
       <div className="mt-6 h-72">
-        <div className="text-gray-600 font-medium">Past Order</div>
+        <div className="text-gray-600 font-medium"> {t("payment.Past-Order")}</div>
       </div>
       <div className="w-36 flex justify-between m-auto">
-        {/* <svg className="cursor-pointer" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 4.59998V15.4M12.7 7.74998C12.7 6.50798 11.4913 5.49998 10 5.49998C8.50875 5.49998 7.30005 6.50798 7.30005 7.74998C7.30005 8.99198 8.50875 9.99998 10 9.99998C11.4913 9.99998 12.7 11.008 12.7 12.25C12.7 13.492 11.4913 14.5 10 14.5C8.50875 14.5 7.30005 13.492 7.30005 12.25" stroke="#ABA5A2" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M5.5 2.20421C6.86757 1.41302 8.42006 0.997576 10 1.00001C14.9707 1.00001 19 5.02931 19 10C19 14.9707 14.9707 19 10 19C5.0293 19 1 14.9707 1 10C1 8.36111 1.4383 6.82301 2.2042 5.50001" stroke="#ABA5A2" stroke-width="1.5" stroke-linecap="round"/>
-            </svg> */}
 
         <a
           href="https://twitter.com/remal_alkhararh"
@@ -150,13 +171,13 @@ const PaymentSuccess = () => {
       </div>
       <div className="mt-2 ">
         <CartBtn
-          btnText1="See The Menu"
+          btnText1={t("payment.See-The-Menu")}
           btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
-          onClick={() => router.push('/')}
+          onClick={() => router.push("/")}
         />
       </div>
       <div className="text-center text-[13px] font-medium capitalize text-gray-500 mt-3">
-        Powered By Talabat Menu © 2023
+        {t("payment.Powered-By-Talabat-Menu-©-2023")}
       </div>
     </div>
   );

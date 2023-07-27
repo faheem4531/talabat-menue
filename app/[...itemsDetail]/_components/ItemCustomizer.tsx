@@ -2,8 +2,11 @@ import React from "react";
 import type { FC } from "react";
 import AddOnSelecter from "./AddOnSelecter";
 import { ItemCustomizer, Options } from "../../_lib/types/itemsDetails";
+import { useTranslation } from "react-i18next";
 
 const ItemCustomizer: FC<ItemCustomizer> = ({ title, id, options, addOption, multiple, isChecked }) => {
+const { t, i18n } = useTranslation();
+const lang = i18n.language;
 
   return (
     <div>
@@ -15,7 +18,7 @@ const ItemCustomizer: FC<ItemCustomizer> = ({ title, id, options, addOption, mul
               <AddOnSelecter
                 key={index}
                 title={element.name}
-                price={`+${element.price} SR`}
+                price={`+${element.price} ${t("payment.SAR")}`}
                 caleries={element.calory}
                 addOption={addOption}
                 addOnId={id}

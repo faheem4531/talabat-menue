@@ -58,7 +58,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
           id="drawer-navigation-label"
           className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
         >
-          {t('sideBar.MENU')}
+          {t("sideBar.MENU")}
         </h5>
         <button
           type="button"
@@ -128,7 +128,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.see-the-menu')}
+                  {t("sideBar.see-the-menu")}
                 </span>
               </Link>
             </li>
@@ -153,7 +153,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.pickup-orders')}
+                  {t("sideBar.pickup-orders")}
                 </span>
                 {/* <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-4 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                   3
@@ -167,7 +167,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                   lang === "ar" ? "flex-row-reverse gap-4" : "items-center"
                 }
                  p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group`}
-                 onClick={handleNavbarToggle}
+                onClick={handleNavbarToggle}
               >
                 <svg
                   className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -183,7 +183,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.deliver-order')}
+                  {t("sideBar.deliver-order")}
                 </span>
               </Link>
             </li>
@@ -234,7 +234,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.branches')}
+                  {t("sideBar.branches")}
                 </span>
               </div>
             </li>
@@ -266,7 +266,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.opening-hours')}
+                  {t("sideBar.opening-hours")}
                 </span>
               </div>
             </li>
@@ -294,7 +294,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.about-us')}
+                  {t("sideBar.about-us")}
                 </span>
               </div>
             </li>
@@ -322,7 +322,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                     lang === "ar" ? "" : "flex-1"
                   }`}
                 >
-                  {t('sideBar.goals')}
+                  {t("sideBar.goals")}
                 </span>
               </div>
             </li>
@@ -418,7 +418,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
             </a>
           </div>
           <span className="text-center text-[13px] font-medium capitalize text-gray-500">
-            Powered By Talabat Menu © 2023
+            {t("payment.Powered-By-Talabat-Menu-©-2023")}
           </span>
         </div>
       </div>
