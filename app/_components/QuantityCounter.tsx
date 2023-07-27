@@ -33,7 +33,16 @@ const QuantityCounter: FC<QuantityCounter> = ({
       >
         <div
           className="flex h-[24px] w-[24px] rounded-3xl items-center justify-center bg-[#C84044]"
-          onClick={actionType === "increment" ? incrementCounter : navigate }
+          onClick={()=>{
+            actionType === "increment" ? incrementCounter() : navigate();
+            if ('vibrate' in navigator) {
+              navigator.vibrate(200);
+              console.log('Vibration is on.');
+            } else {
+              console.log('Vibration is not supported on this device.');
+            }
+          }
+         }
         >
           {/* <BsPlus className="fill-red" /> */}
           <Image src={plus} alt="plusIcon" />
@@ -46,7 +55,15 @@ const QuantityCounter: FC<QuantityCounter> = ({
         <div className={count === 0 ? "hidden" : ""}>
           <div
             className={`flex h-[24px] w-[24px] cursor-pointer rounded-3xl items-center justify-center text-white`}
-            onClick={decrementCounter}
+            onClick={()=>{
+              decrementCounter()
+              if ('vibrate' in navigator) {
+                navigator.vibrate(200);
+                console.log('Vibration is on.');
+              } else {
+                console.log('Vibration is not supported on this device.');
+              }
+            }}
           >
             {delIconflag ? (
               <Image src={delIcon} alt="delIcon" />
