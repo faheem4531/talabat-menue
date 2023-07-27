@@ -49,7 +49,7 @@ const Menu: FC<Menu> = () => {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-     dispatch(setSelectedRestaurant(defaultRestaurant));
+    if(!selectedRestaurant){dispatch(setSelectedRestaurant(defaultRestaurant));}
   }, [dispatch]);
 
   useEffect(() => {
