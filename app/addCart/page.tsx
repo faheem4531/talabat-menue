@@ -15,7 +15,7 @@ import {
   phoneNumberExists,
   requestOtp,
   confirmOtp,
-} from "../_store/thunk/user";import OTPModal from "../_components/modal/OTPModal";
+} from "../_store/thunk/user"; import OTPModal from "../_components/modal/OTPModal";
 import SideNavbar from "../_components/SideNavbar/SideNavbar";
 import CartItem from "./_components/cartItem";
 import CartBtn from "../_components/Buttons/cartBtn";
@@ -35,8 +35,8 @@ const AddCart = () => {
   ).flatMap((obj) => obj.docs);
   const selectedRestaurant = useAppSelector(
     (state) => state.restaurant.selectedRestaurant
-    );
-    const [update, setUpdate] = useState<boolean>(false);
+  );
+  const [update, setUpdate] = useState<boolean>(false);
   const [isLoginModalOpen, setisLoginModalOpen] = useState<boolean>(false);
   const [termsAndConditionsModal, setTermsAndConditionsModal] = useState<boolean>(false);
   const [paymentMethodModal, setPaymentMethodModal] = useState<boolean>(false);
@@ -150,7 +150,7 @@ const AddCart = () => {
     setTermsAndConditionsModal(false);
     if (!customerData) {
       setisLoginModalOpen(true);
-    }else{
+    } else {
       setPaymentMethodModal(true)
       setTermsAndConditionsModal(false)
     }
@@ -161,17 +161,17 @@ const AddCart = () => {
   };
 
   const handleCashOnDelivery = () => {
-    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant._id, items })).unwrap().then(() => {
-    dispatch(clearCart());
+    dispatch(order({ customerId: customerData?._id, restaurantId: selectedRestaurant._id, items })).unwrap().then(() => {
+      dispatch(clearCart());
       router.push('/order/success')
     })
   };
 
   const handlePayNow = () => {
-    dispatch(order({ customerId : customerData?._id, restaurantId: selectedRestaurant._id, items })).unwrap().then((data) => {
-    dispatch(takePayment({ orderId: data?._id, "paymentMethod": "Online", "redirectUrl": "https://revamped-gti-website-front-end.vercel.app/order" })).unwrap().then((data) => {
-      router.push(`https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=${data?.paymentId}`)
-    })
+    dispatch(order({ customerId: customerData?._id, restaurantId: selectedRestaurant._id, items })).unwrap().then((data) => {
+      dispatch(takePayment({ orderId: data?._id, "paymentMethod": "Online", "redirectUrl": "https://revamped-gti-website-front-end.vercel.app/order" })).unwrap().then((data) => {
+        router.push(`https://digitalpayments.alrajhibank.com.sa/pg/paymentpage.htm?PaymentID=${data?.paymentId}`)
+      })
     })
   }
 
@@ -202,24 +202,32 @@ const AddCart = () => {
           </div>
         </div>
       </div>
-      <div className="mt-[30px] cartItemsMain">
-        {cart?.items?.map((item: any, index: number) => {
-          return (
-            <CartItem
-              key={index}
-              title={getItemData(item.menuItem.menuItemId)?.name}
-              price={item?.amountBeforeDiscount}
-              cartImg={getItemData(item.menuItem.menuItemId)?.image}
-              incrementCounter={() =>
-                incrementCounter(item.menuItem.menuItemId)
-              }
-              decrementCounter={() =>
-                decrementCounter(item.menuItem.menuItemId)
-              }
-              count={getQuantity(item.menuItem.menuItemId)}
-            />
-          );
-        })}
+      <div className={cart?.items?.length ? `mt-[30px] cartItemsMain` : `mt-[30px] cartItemsMain flex justify-center items-center`}>
+        {cart?.items?.length ? (
+          cart?.items?.map((item: any, index: number) => {
+            return (
+              <CartItem
+                key={index}
+                title={getItemData(item.menuItem.menuItemId)?.name}
+                price={item?.amountBeforeDiscount}
+                cartImg={getItemData(item.menuItem.menuItemId)?.image}
+                incrementCounter={() =>
+                  incrementCounter(item.menuItem.menuItemId)
+                }
+                decrementCounter={() =>
+                  decrementCounter(item.menuItem.menuItemId)
+                }
+                count={getQuantity(item.menuItem.menuItemId)}
+              />
+            );
+          })
+        ) : (
+          <div>
+            <h2>
+              No Item In Cart
+            </h2>
+          </div>
+        )}
       </div>
       <div
         className="h-[191px] w-full bg-[#C02328] rounded-lg pt-5 pb-1 px-2"
@@ -265,8 +273,8 @@ const AddCart = () => {
         <CartBtn
           btnText1={t("page.Confirm-order")}
           onClick={openTermsAndConditionsModal}
-          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]" 
-          />
+          btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
+        />
       </div>
       <Modal
         modalPosition="items-center"
@@ -296,11 +304,11 @@ const AddCart = () => {
             </h4>
             <div className="flex justify-center text-center gap-3 mt-7">
               <button
-              className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]"
-              onClick={() => setTermsAndConditionsModal(false)}
+                className="py-4 text-[12px] rounded-[6px] bg-[#C02328] text-white w-[40%]"
+                onClick={() => setTermsAndConditionsModal(false)}
               >
                 {t("page.Disagree")}
-                </button>
+              </button>
               <button
                 className="py-4 text-[12px] rounded-[6px] bg-gray-200 w-[40%]"
                 onClick={handleConfirmOrder}
