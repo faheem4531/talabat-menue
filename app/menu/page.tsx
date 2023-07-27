@@ -123,7 +123,7 @@ const Menu: FC<Menu> = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                  {selectedRestaurant?.name}
+                  {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant.nameAr}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
@@ -148,7 +148,7 @@ const Menu: FC<Menu> = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                      {selectedRestaurant?.name}
+                    {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant.nameAr}
                     </div>
                     <Image
                       src={locationIcon}
@@ -210,6 +210,7 @@ const Menu: FC<Menu> = () => {
           <LocationModal
             restaurants={restaurants}
             setLocModalOpen={setLocModalOpen}
+            lang= {language.name}
           />
         </div>
       </Modal>

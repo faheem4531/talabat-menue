@@ -31,6 +31,7 @@ export interface InputModal {
 export interface LocationModal {
   restaurants?: any;
   setLocModalOpen?: any;
+  lang?: string
 }
 
 export interface LoginModalProps {
