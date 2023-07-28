@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import { useAppDispatch, useAppSelector } from '../_store/hooks';
 import { getCartItems } from '../_store/thunk/cart.thunk';
-import { getRestaurants } from '../_store/thunk/restaurant.thunk';
+import { getRestaurants, getDefaultRestaurant } from '../_store/thunk/restaurant.thunk';
 import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
 import { updateLanguage } from '../_store/reducers/languageReducer';
 import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
@@ -40,7 +40,6 @@ const Menu: FC<Menu> = () => {
   const selectedRestaurant: any = useAppSelector(
     (state: any) => state.restaurant.selectedRestaurant
   );
-  const defaultRestaurant = restaurants?.find((item: { _id: string; }) => item._id === "63f3021acafc472f2238e4c6")
   const language = useAppSelector((state: any) => state.language);
   
   const [query, setQuery] = useState<string>("")
@@ -52,7 +51,7 @@ const Menu: FC<Menu> = () => {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-    if(!selectedRestaurant){dispatch(setSelectedRestaurant(defaultRestaurant));}
+    dispatch(getDefaultRestaurant())
   }, [dispatch]);
 
   useEffect(() => {
@@ -123,7 +122,7 @@ const Menu: FC<Menu> = () => {
               <div>
                 <div className="flex mt-1">
                   <h4 className="text-xs font-[400]">
-                  {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant.nameAr}
+                  {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant?.nameAr}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
