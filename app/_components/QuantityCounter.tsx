@@ -31,7 +31,7 @@ const QuantityCounter: FC<QuantityCounter> = ({
             : {}
         }
       >
-        <div
+        {/* <div
           className="flex h-[24px] w-[24px] rounded-3xl items-center justify-center bg-[#C84044]"
           onClick={()=>{
             actionType === "increment" ? incrementCounter() : navigate();
@@ -44,14 +44,8 @@ const QuantityCounter: FC<QuantityCounter> = ({
           }
          }
         >
-          {/* <BsPlus className="fill-red" /> */}
           <Image src={plus} alt="plusIcon" />
-        </div>
-        <span
-          className={count === 0 ? "hidden" : `text-[11px] font-bold ${color}`}
-        >
-          {count}
-        </span>
+        </div> */}
         <div className={count === 0 ? "hidden" : ""}>
           <div
             className={`flex h-[24px] w-[24px] cursor-pointer rounded-3xl items-center justify-center text-white`}
@@ -74,6 +68,49 @@ const QuantityCounter: FC<QuantityCounter> = ({
             )}
           </div>
         </div>
+        <span
+          className={count === 0 ? "hidden" : `text-[11px] font-bold ${color}`}
+        >
+          {count}
+        </span>
+        <div
+          className="flex h-[24px] w-[24px] rounded-3xl items-center justify-center bg-[#C84044]"
+          onClick={()=>{
+            actionType === "increment" ? incrementCounter() : navigate();
+            if ('vibrate' in navigator) {
+              navigator.vibrate(200);
+              console.log('Vibration is on.');
+            } else {
+              console.log('Vibration is not supported on this device.');
+            }
+          }
+         }
+        >
+          {/* <BsPlus className="fill-red" /> */}
+          <Image src={plus} alt="plusIcon" />
+        </div>
+        {/* <div className={count === 0 ? "hidden" : ""}>
+          <div
+            className={`flex h-[24px] w-[24px] cursor-pointer rounded-3xl items-center justify-center text-white`}
+            onClick={()=>{
+              decrementCounter()
+              if ('vibrate' in navigator) {
+                navigator.vibrate(200);
+                console.log('Vibration is on.');
+              } else {
+                console.log('Vibration is not supported on this device.');
+              }
+            }}
+          >
+            {delIconflag ? (
+              <Image src={delIcon} alt="delIcon" />
+            ) : (
+              <p className="text-center h-[24px] w-[24px] rounded-3xl  bg-[#C84044] ">
+                -
+              </p>
+            )}
+          </div>
+        </div> */}
       </div>
     </div>
   );

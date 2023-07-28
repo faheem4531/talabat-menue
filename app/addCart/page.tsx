@@ -274,6 +274,7 @@ const AddCart = () => {
           btnText1={t("page.Confirm-order")}
           onClick={openTermsAndConditionsModal}
           btnClasses="justify-center rounded-[6px] bg-[#C02328] w-full text-[14px] font-[400] py-[15px]"
+          disable={cart?.items?.length ? false : true}
         />
       </div>
       <Modal
