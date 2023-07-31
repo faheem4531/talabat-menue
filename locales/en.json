@@ -25,55 +25,56 @@
     "Thursday": "Thursday",
     "Friday": "Friday",
     "Saturday": "Saturday",
-    "Open-24-Hours":"Open 24 hours"
+    "Open-24-Hours": "Open 24 hours"
   },
   "input": {
-    "What-are-you-looking-for":"What are you looking for"
+    "What-are-you-looking-for": "What are you looking for"
   },
-  "login" : {
-    "Your-Password":"Your Password",
-    "Remember-me":"Remember Me",
-    "Submit":"Submit",
-    "About-us":"About us",
-    "Our-Goals":"Our Goals",
-    "name@flowbite.com":"name@flowbite.com",
-    "Enter-your-name":"Enter your name",
-    "Enter-phone-number":"Enter phone number"
-   },
-   "favorites": {
-        "added-to-favorites": "Added to Favorites",
-        "removed-from-favorites": "Removed from Favorites"
-    },
-    "productDetail" : {
-      "write-note": "Write Note",
-      "type-your-comment": "Type Your Comment",
-      "add": "Add"
-    },
-    "cart": {
-      "have-a-coupon": "Have a coupon",
-      "add": "Add",
-      "subtotal": "Subtotal",
-      "tax": "TAX",
-      "total": "Total",
-      "View-Cart" :"View Cart"
-    },
-    "page" : {
-      "Confirm-order" : "Confirm Order",
-      "Terms-And-Condition": "Terms and Condition",
-      "Agree": "Agree",
-      "Disagree" : "Disagree",
-      "Payment-Method" : "Payment Method",
-      "Pay-Now" : "Pay Now",
-      "Cash-On-Delivery": "Cash On Delivery"
-    },
-    "payment" : {
-      "New": "New",
-      "Tip-Amount": "Tip Amount",
-      "Total": "Total",
-      "Total-Amount": "Total Amount",
-      "SAR": "SAR",
-      "Past-Order": "Past Order",
-      "See-The-Menu": "See The Menu",
-      "Powered-By-Talabat-Menu-©-2023": "Powered By Talabat Menu © 2023"
-    }
+  "login": {
+    "Your-Password": "Your Password",
+    "Remember-me": "Remember Me",
+    "Submit": "Submit",
+    "About-us": "About us",
+    "Our-Goals": "Our Goals",
+    "name@flowbite.com": "name@flowbite.com",
+    "Enter-your-name": "Enter your name",
+    "Enter-phone-number": "Enter phone number",
+    "NameLbl": "Name"
+  },
+  "favorites": {
+    "added-to-favorites": "Added to Favorites",
+    "removed-from-favorites": "Removed from Favorites"
+  },
+  "productDetail": {
+    "write-note": "Write Note",
+    "type-your-comment": "Type Your Comment",
+    "add": "Add"
+  },
+  "cart": {
+    "have-a-coupon": "Have a coupon",
+    "add": "Add",
+    "subtotal": "Subtotal",
+    "tax": "TAX",
+    "total": "Total",
+    "View-Cart": "View Cart"
+  },
+  "page": {
+    "Confirm-order": "Confirm Order",
+    "Terms-And-Condition": "Terms and Condition",
+    "Agree": "Agree",
+    "Disagree": "Disagree",
+    "Payment-Method": "Payment Method",
+    "Pay-Now": "Pay Now",
+    "Cash-On-Delivery": "Cash On Delivery"
+  },
+  "payment": {
+    "New": "New",
+    "Tip-Amount": "Tip Amount",
+    "Total": "Total",
+    "Total-Amount": "Total Amount",
+    "SAR": "SAR",
+    "Past-Order": "Past Order",
+    "See-The-Menu": "See The Menu",
+    "Powered-By-Talabat-Menu-©-2023": "Powered By Talabat Menu © 2023"
+  }
 }

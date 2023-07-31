@@ -42,7 +42,8 @@
     "Our-Goals": "أهدافنا",
     "name@flowbite.com": "اسم@فلبيت.كوم",
     "Enter-your-name": "أدخل أسمك",
-    "Enter-phone-number": "أدخل رقم الهاتف"
+    "Enter-phone-number": "أدخل رقم الهاتف",
+    "NameLbl": "اسم"
   },
   "productDetail": {
     "write-note": "اكتب ملا حظة",
