@@ -208,8 +208,9 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                 </span>
               </div>
             </li> */}
-            <li onClick={() => setLocModalOpen(true)}>
-              <div
+            <li>
+              <Link
+                href={"/branches"}
                 className={`flex    ${lang === "ar" ? "flex-row-reverse gap-4" : "items-center"
                   }
                  p-2 py-4 cursor-pointer text-gray-900 rounded-lg text-sm px-5 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group`}
@@ -230,7 +231,7 @@ const SideNavbar: FC<SideNavbar> = ({ hamBurgerIcon }: SideNavbar) => {
                 >
                   {t("sideBar.branches")}
                 </span>
-              </div>
+              </Link>
             </li>
             <li onClick={() => setHourModalOpen(true)}>
               <div
