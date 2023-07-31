@@ -22,7 +22,8 @@ const MenuItem: FC<MenuItem> = ({
   calerioes,
   price,
   additions,
-  updatingFavorites
+  updatingFavorites,
+  soldOut
 }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -35,11 +36,15 @@ const MenuItem: FC<MenuItem> = ({
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
     if (!result) {
-        toast(`${t('favorites.added-to-favorites')}!`, { type: 'success' })
+        toast(`${t('toast.added-to-favorites')}!`, { type: 'success' })
     } else {
-         toast(`${t('favorites.removed-from-favorites')}!`, {type: 'error'})
+         toast(`${t('toast.removed-from-favorites')}!`, {type: 'error'})
     }
   };
+
+  const soldOutToast = () => {
+    toast(`${t('toast.item-sold-out')}!`, { type: 'warning' })
+  }
 
   const handleItem = (event: any) => {
     event.stopPropagation();
@@ -117,7 +122,7 @@ const MenuItem: FC<MenuItem> = ({
                 bgColor="bg-[#C84044]"
                 count={getQuantity(id)}
                 delIconflag={true}
-                incrementCounter={() => incrementCounter(id)}
+                incrementCounter={() => { !soldOut ? incrementCounter(id) : soldOutToast ()}}
                 decrementCounter={() => decrementCounter(id)}
                 actionType="increment"
               />

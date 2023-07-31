@@ -92,6 +92,7 @@ export interface MenuItem {
   price: string;
   additions: Array<any>;
   updatingFavorites: (id: string) => void;  
+  soldOut: boolean;
 }
 
 export interface MenuItemsContainer {

@@ -40,9 +40,10 @@
     "Enter-your-name":"Enter your name",
     "Enter-phone-number":"Enter phone number"
    },
-   "favorites": {
+   "toast": {
         "added-to-favorites": "Added to Favorites",
-        "removed-from-favorites": "Removed from Favorites"
+        "removed-from-favorites": "Removed from Favorites",
+        "item-sold-out": "Item Sold Out"
     },
     "productDetail" : {
       "write-note": "Write Note",
