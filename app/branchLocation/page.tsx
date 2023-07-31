@@ -10,8 +10,13 @@ const BranchLocation = () => {
   const mapContainerStyle = {
     height: '250px',
     width: '100%',
-    marginTop: '30px',
-    borderRadius: '5px',
+
+  };
+  const mapOptions = {
+    mapTypeControl: false,
+    fullscreenControl: false,
+    streetViewControl: false,
+    zoomControl: false,
   };
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: 'AIzaSyC1jv_O7Ixs44xeLFT2oUHoLf3T1ZqwbGo',
@@ -25,6 +30,7 @@ const BranchLocation = () => {
           center={{ lat, lng }}
           mapContainerStyle={mapContainerStyle}
           id='map'
+          options={mapOptions}
         >
           <MarkerF position={{ lat, lng }} key='marker_1' />
         </GoogleMap>
