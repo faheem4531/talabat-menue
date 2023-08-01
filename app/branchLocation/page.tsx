@@ -2,11 +2,13 @@
 import { useLoadScript, GoogleMap, MarkerF } from '@react-google-maps/api';
 
 import { useSearchParams } from 'next/navigation';
+import { useAppSelector } from '../_store/hooks';
 
-const BranchLocation = () => {
-  const searchParams = useSearchParams();
-  const lat: number = Number(searchParams.get('lng')) || 0;
-  const lng: number = Number(searchParams.get('lat')) || 0;
+
+const BranchLocation = ({latitude, longitude}) => {
+  const searchParams = useSearchParams(); 
+  const lat: number = Number(searchParams.get('lat')) || Number(latitude);
+  const lng: number = Number(searchParams.get('lng')) || Number(longitude);
   const mapContainerStyle = {
     height: '250px',
     width: '100%',
