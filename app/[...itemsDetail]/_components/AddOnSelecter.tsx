@@ -7,7 +7,7 @@ import fire from "../../_assets/svgs/fire.svg";
 import { AddOnSelecter } from "../../_lib/types/itemsDetails";
 
 const AddOnSelecter: FC<AddOnSelecter> = ({ title, price, caleries, addOption, checked = false, addOnId, optionId, multiple, isChecked }) => {
-  
+
   return (
     <div>
       <div className="flex items-center justify-between border-b-[1px] border-[#0000000f] mt-[8px]">
@@ -25,11 +25,11 @@ const AddOnSelecter: FC<AddOnSelecter> = ({ title, price, caleries, addOption, c
         </div>
         <div className="text-[#494949 ] text-[8px] w-[60px]">
           <div className="text-right">{price}</div>
-          <div className="flex items-baseline">
+          <div className="flex items-baseline justify-end">
             <div className="mr-[2px]">
               <Image src={fire} alt="fire" className="w-[8px] h-[8px]" />
             </div>
-            <h4>{caleries}</h4>
+            <h4>{caleries} kcal</h4>
           </div>
         </div>
       </div>
