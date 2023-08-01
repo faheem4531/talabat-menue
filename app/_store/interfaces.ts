@@ -6,7 +6,8 @@ export interface RootState {
   item: itemState;
   restaurant: RestaurantState;
   customer: CustomerState;
-  language: LanguageState
+  language: LanguageState;
+  address: AddressState;
 }
 export interface MenuCatageoryState {
   data: any;
@@ -50,4 +51,10 @@ export interface LanguageState {
 export interface OrderState {
   order: any
   loading: boolean
+}
+
+export interface AddressState {
+  lng: number;
+  lat: number;
+  description: string
 }
