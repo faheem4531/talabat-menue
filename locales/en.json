@@ -39,7 +39,8 @@
     "name@flowbite.com": "name@flowbite.com",
     "Enter-your-name": "Enter your name",
     "Enter-phone-number": "Enter phone number",
-    "NameLbl": "Name"
+    "NameLbl": "Name",
+    "phoneNum": "Phone Number"
   },
   "toast": {
     "added-to-favorites": "Added to Favorites",

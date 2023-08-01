@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -21,26 +21,27 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-.mainApp{
+
+.mainApp {
   width: 390px;
 }
 
-.heroImg{
+.heroImg {
   width: 390px;
   height: 241px;
   position: relative;
   z-index: -1;
 }
 
-.heroImgMain::after{
+.heroImgMain::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 241px;
-   background-color: rgba(0, 0, 0, 0.37);
-   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.37);
+  z-index: 1;
 }
 
 /* menu slider css */
@@ -51,7 +52,8 @@
   margin: auto;
 }
 
-.mainCarousal::-webkit-scrollbar, .cartItemsMain::-webkit-scrollbar {
+.mainCarousal::-webkit-scrollbar,
+.cartItemsMain::-webkit-scrollbar {
   display: none;
 }
 
@@ -97,7 +99,7 @@
 /* On mouse-over, add a grey background color */
 
 /* When the checkbox is checked, add a blue background */
-.container .check:checked ~ .checkmark {
+.container .check:checked~.checkmark {
   background-color: #C84044;
 }
 
@@ -109,7 +111,7 @@
 }
 
 /* Show the checkmark when checked */
-.container .check:checked ~ .checkmark:after {
+.container .check:checked~.checkmark:after {
   display: block;
 }
 
@@ -126,29 +128,72 @@
   transform: rotate(45deg);
 }
 
-.cartItemsMain{
+.cartItemsMain {
   height: 400px;
   overflow-y: auto;
   padding: 10px 0px 30px 0px;
 }
 
-.PhoneInputCountry{
+.PhoneInputCountry {
   display: flex;
   flex-direction: row-reverse;
+  align-items: center;
+  font-size: 13px;
 }
 
-.PhoneInputCountrySelect{
-  width: 50px;
+.PhoneInputCountrySelect {
+  width: 18px;
 }
 
-.PhoneInputCountryIcon{
-  width: 35px;
+.PhoneInputCountryIcon {
+  width: 30px;
 }
 
-.PhoneInput{
+.PhoneInput,
+.loginNameInput {
   display: flex;
+  border: 1.3px solid rgba(0, 0, 0, 0.10);
+  border-radius: 6px;
+  height: 40px;
+  font-size: 13px;
+  padding-left: 10px;
 }
 
-.PhoneInputInput{
+
+.loginNameInput:focus {
+  outline: none;
+}
+
+.PhoneInputInput {
   width: 100%;
+  height: 40px;
+  padding-left: 12px;
+  font-size: 13px;
+  background-color: transparent;
+}
+
+.PhoneInputInput:focus {
+  border: 0px;
+  outline: none;
+}
+
+.modalBranches,
+.mapBranches,
+.pickMapBranches {
+  height: 290px;
+  overflow-y: auto;
+}
+
+.pickMapBranches {
+  height: 320px;
+}
+
+.mapBranches {
+  height: 365px;
+}
+
+.modalBranches::-webkit-scrollbar,
+.mapBranches::-webkit-scrollbar,
+.pickMapBranches::-webkit-scrollbar {
+  display: none;
 }

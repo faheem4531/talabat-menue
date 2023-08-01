@@ -22,22 +22,22 @@ const Branches = () => {
       <div className='fixed top-4 left-4 z-50'>
         <SideNavbar hamBurgerIcon={true} />
       </div>
-      <BranchLocation 
-      latitude = {selectedRestaurant?.location?.latitude}
-      longitude = {selectedRestaurant?.location?.longitude}/>
-      <div className='mt-8 px-3'>
-      {restaurants.map((element: any) => {
-        return (
-          <div onClick={()=>{
-            setRestaurant(element)
-            scroll()
-          }}><Branch
-            title={element.name}
-          /></div>
-        
-          
-        );
-      })}
+      <BranchLocation
+        latitude={selectedRestaurant?.location?.latitude}
+        longitude={selectedRestaurant?.location?.longitude} />
+      <div className='mt-8 px-3 mapBranches'>
+        {restaurants.map((element: any) => {
+          return (
+            <div onClick={() => {
+              setRestaurant(element)
+              scroll()
+            }}><Branch
+                title={element.name}
+              /></div>
+
+
+          );
+        })}
       </div>
     </div>
   )

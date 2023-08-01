@@ -11,7 +11,7 @@ import { getRestaurants, getDefaultRestaurant } from '../_store/thunk/restaurant
 import { getMenuCatageorys } from '../_store/thunk/menuCatageory.thunk';
 import { updateLanguage } from '../_store/reducers/languageReducer';
 import { setSelectedRestaurant } from '../_store/reducers/restaurantReducer';
-import { updateFavorites } from '../_store/reducers/favoritesReducer'; 
+import { updateFavorites } from '../_store/reducers/favoritesReducer';
 import { Menu } from '../_lib/types/menu';
 import { Catagories } from "../_lib/types/menu";
 import SideNavbar from '../_components/SideNavbar/SideNavbar';
@@ -50,8 +50,7 @@ const Menu: FC<Menu> = () => {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-    if (Object.entries(selectedRestaurant).length === 0)
-    {dispatch(getDefaultRestaurant())}
+    if (Object.entries(selectedRestaurant).length === 0) { dispatch(getDefaultRestaurant()) }
   }, [dispatch]);
 
   useEffect(() => {
@@ -70,7 +69,7 @@ const Menu: FC<Menu> = () => {
   const handleLanguageChange = () => {
     i18n.changeLanguage(language.name);
   };
-  const updatingFavorites = (id:string) => {
+  const updatingFavorites = (id: string) => {
     dispatch(updateFavorites(id));
   };
 
@@ -82,17 +81,17 @@ const Menu: FC<Menu> = () => {
             <SideNavbar />
           </div>
           <div
-              className="cursor-pointer flex items-center"
-              onClick={() => {
-                language.name === "en"? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
-                handleLanguageChange();
-              }}
-            >
-              <div className="text-white font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
-              <div className="ml-2">
-                <Image src={language.name==="en"? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
-              </div>
+            className="cursor-pointer flex items-center"
+            onClick={() => {
+              language.name === "en" ? dispatch(updateLanguage('ar')) : dispatch(updateLanguage('en'));
+              handleLanguageChange();
+            }}
+          >
+            <div className="text-white font-semibold text-1xl">{language.name === "en" ? "EN" : "AR"}</div>
+            <div className="ml-2">
+              <Image src={language.name === "en" ? USAFlagIcon : FlagIcon} alt="FlagIcon" width={27} />
             </div>
+          </div>
         </div>
         <div className="h-64 absolute top-0 z-[-1] heroImgMain">
           <Image
@@ -121,8 +120,8 @@ const Menu: FC<Menu> = () => {
               />
               <div>
                 <div className="flex mt-1">
-                  <h4 className="text-xs font-[400]">
-                  {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant?.nameAr}
+                  <h4 className="text-xs font-[400] w-20">
+                    {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant?.nameAr}
                   </h4>
                   <div className="ml-[32px] text-[9px] font-[400] ">
                     {t('menu.today-open-24-hours')}
@@ -147,7 +146,7 @@ const Menu: FC<Menu> = () => {
                     onClick={() => setLocModalOpen(true)}
                   >
                     <div className="ml-[32px] text-[9px] font-[400] text-black cursor-pointer">
-                    {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant.nameAr}
+                      {!(language.name === "en") ? selectedRestaurant?.name : selectedRestaurant.nameAr}
                     </div>
                     <Image
                       src={locationIcon}
@@ -205,11 +204,11 @@ const Menu: FC<Menu> = () => {
         isModalOpen={locModalOpen}
         handleModalToggle={() => setLocModalOpen(!locModalOpen)}
       >
-        <div className="mt-[59px]">
+        <div className="mt-[59px] modalBranches">
           <LocationModal
             restaurants={restaurants}
             setLocModalOpen={setLocModalOpen}
-            lang= {language.name}
+            lang={language.name}
           />
         </div>
       </Modal>

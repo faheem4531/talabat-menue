@@ -11,7 +11,7 @@ const CartItem: FC<CartItem> = ({ cartImg, title, price, incrementCounter = () =
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
   return (
-    
+
     <div>
       <div className="px-4 mb-3">
         <div
@@ -57,6 +57,7 @@ const CartItem: FC<CartItem> = ({ cartImg, title, price, incrementCounter = () =
                 incrementCounter={incrementCounter}
                 decrementCounter={decrementCounter}
                 actionType="increment"
+                shadow={true}
               />
             </div>
           </div>

@@ -18,6 +18,7 @@ export interface QuantityCounter {
   color: string;
   bgColor?: string;
   count?: number;
+  shadow?: boolean;
   incrementCounter?: () => void;
   decrementCounter?: () => void;
   navigate?: () => void;
