@@ -11,7 +11,7 @@ const PickUpOrders = () => {
       </div>
       <BranchLocation />
       <div className='mt-[101px]'>
-        <div className='m-auto w-[305px] flex gap-6 justify-start flex-wrap'>
+        <div className='m-auto w-[335px] flex gap-6 justify-start flex-wrap pickMapBranches p-2'>
           <PickUpBranches />
           <PickUpBranches />
           <PickUpBranches />

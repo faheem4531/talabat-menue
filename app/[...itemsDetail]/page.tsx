@@ -233,7 +233,8 @@ const ItemsDetail: FC<ItemsDetail | any> = ({ params }) => {
               incrementCounter={incrementCounter}
               decrementCounter={decrementCounter}
               actionType={'increment'}
-            // delIconflag={true}
+              // delIconflag={true}
+              delIconflag={true}
             />
           </div>
           <div>

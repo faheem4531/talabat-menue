@@ -21,7 +21,6 @@
     "added-to-favorites": "تمت الإضافة إلى المفضلة",
     "removed-from-favorites": "تمت إزالته من المفضلة",
     "item-sold-out": "بيعت السلعة"
-
   },
   "openHours": {
     "Sunday": "الأحد",
@@ -45,7 +44,8 @@
     "name@flowbite.com": "اسم@فلبيت.كوم",
     "Enter-your-name": "أدخل أسمك",
     "Enter-phone-number": "أدخل رقم الهاتف",
-    "NameLbl": "اسم"
+    "NameLbl": "اسم",
+    "phoneNum": "رقم التليفون"
   },
   "productDetail": {
     "write-note": "اكتب ملا حظة",

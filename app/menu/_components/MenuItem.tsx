@@ -36,9 +36,9 @@ const MenuItem: FC<MenuItem> = ({
   const showToastMessage = (id: string) => {
     const result = data.find((item) => item === id);
     if (!result) {
-        toast(`${t('toast.added-to-favorites')}!`, { type: 'success' })
+      toast(`${t('toast.added-to-favorites')}!`, { type: 'success' })
     } else {
-         toast(`${t('toast.removed-from-favorites')}!`, {type: 'error'})
+      toast(`${t('toast.removed-from-favorites')}!`, { type: 'error' })
     }
   };
 
@@ -122,9 +122,10 @@ const MenuItem: FC<MenuItem> = ({
                 bgColor="bg-[#C84044]"
                 count={getQuantity(id)}
                 delIconflag={true}
-                incrementCounter={() => { !soldOut ? incrementCounter(id) : soldOutToast ()}}
+                incrementCounter={() => { !soldOut ? incrementCounter(id) : soldOutToast() }}
                 decrementCounter={() => decrementCounter(id)}
                 actionType="increment"
+                shadow={true}
               />
             ) : (
               <QuantityCounter
@@ -132,12 +133,20 @@ const MenuItem: FC<MenuItem> = ({
                 bgColor="bg-[#C84044]"
                 actionType="navigate"
                 navigate={navigate}
+                shadow={true}
               />
             )}
           </div>
         </div>
       </div>
       <div className="mr-2.5 relative">
+        <div className="relative flex items-center justify-between">
+          {additions.length !== 0 &&
+            <h3 className="text-[9px] font-[700] text-[#494949]">
+              Customizable
+            </h3>
+          }
+        </div>
         <Image
           style={{
             minHeight: "84px",

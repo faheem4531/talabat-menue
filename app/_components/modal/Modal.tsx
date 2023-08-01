@@ -27,10 +27,10 @@ const Modal: FC<Modal> = ({
           tabIndex={-1}
           aria-hidden="true"
           onClick={handleModalToggle}
-          className={`fixed top-0 left-0 right-0 ${modalPosition} right-0 z-50 w-full h-screen p-4 flex justify-center bg-opacity-50 bg-gray-900`}
+          className={`fixed top-0 left-0 right-0 ${modalPosition} right-0 z-50 w-full h-screen pt-12 px-4 flex justify-start bg-opacity-50 bg-gray-900`}
         >
           <div
-            className={`relative bg-white shadow ${modalCSS} w-96`}
+            className={`relative bg-white shadow ${modalCSS} w-[360px]`}
             onClick={handleModalOpen}
           >
             <button

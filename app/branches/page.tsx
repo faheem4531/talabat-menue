@@ -10,7 +10,17 @@ const Branches = () => {
         <SideNavbar hamBurgerIcon={true} />
       </div>
       <BranchLocation />
-      <div className='mt-8 px-3'>
+      <div className='mt-8 px-3 mapBranches'>
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
+        <Branch />
         <Branch />
         <Branch />
         <Branch />
