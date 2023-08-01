@@ -41,7 +41,6 @@ const Menu: FC<Menu> = () => {
     (state: any) => state.restaurant.selectedRestaurant
   );
   const language = useAppSelector((state: any) => state.language);
-  
   const [query, setQuery] = useState<string>("")
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [hourModalOpen, setHourModalOpen] = useState<boolean>(false);
@@ -51,7 +50,8 @@ const Menu: FC<Menu> = () => {
       dispatch(getMenuCatageorys());
     }
     dispatch(getRestaurants());
-    dispatch(getDefaultRestaurant())
+    if (Object.entries(selectedRestaurant).length === 0)
+    {dispatch(getDefaultRestaurant())}
   }, [dispatch]);
 
   useEffect(() => {
