@@ -17,9 +17,11 @@
     "about-us": "معلومات عنا",
     "goals": "أهدافنا"
   },
-  "favorites": {
+  "toast": {
     "added-to-favorites": "تمت الإضافة إلى المفضلة",
-    "removed-from-favorites": "تمت إزالته من المفضلة"
+    "removed-from-favorites": "تمت إزالته من المفضلة",
+    "item-sold-out": "بيعت السلعة"
+
   },
   "openHours": {
     "Sunday": "الأحد",

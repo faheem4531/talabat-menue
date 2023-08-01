@@ -41,9 +41,10 @@
     "Enter-phone-number": "Enter phone number",
     "NameLbl": "Name"
   },
-  "favorites": {
+  "toast": {
     "added-to-favorites": "Added to Favorites",
-    "removed-from-favorites": "Removed from Favorites"
+    "removed-from-favorites": "Removed from Favorites",
+    "item-sold-out": "Item Sold Out"
   },
   "productDetail": {
     "write-note": "Write Note",
