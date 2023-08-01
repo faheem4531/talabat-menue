@@ -19,4 +19,4 @@ const Branches = () => {
   )
 }
 
-export default Branches
+export default Branches;

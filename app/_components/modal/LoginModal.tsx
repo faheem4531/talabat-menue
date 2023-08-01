@@ -20,14 +20,14 @@ const LoginModal: FC<LoginModalProps> = ({ login = () => { }, info }) => {
   return (
     <div>
       <h4 className="text-center mt-6 mb-10 text-lg font-[600] text-[#494949]">
-        {t("sideBar.login")}
+        {info ?
+          "User Information" : t("sideBar.login")
+        }
       </h4>
       <form>
         <div className="mb-6">
-          <label className="block mb-2 text-xs font-medium text-gray-900 dark:text-white">
-            {info ?
-              "User Information" : t("login.login")
-            }
+          <label className="block mb-2 text-xs font-medium text-gray-900">
+            {t("login.NameLbl")}
           </label>
           <input
             type="text"
