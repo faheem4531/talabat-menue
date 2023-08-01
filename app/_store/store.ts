@@ -10,6 +10,7 @@ import restaurantReducer from './reducers/restaurantReducer';
 import customerReducer from './reducers/customer';
 import languageReducer from './reducers/languageReducer';
 import orderReducer from './reducers/orderReducer'
+import addressReducer from './reducers/addressReducer'
 
 const persistConfig = {
   key: 'root',
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   restaurant: restaurantReducer,
   customer: customerReducer,
   language: languageReducer,
-  order: orderReducer
+  order: orderReducer,
+  address:addressReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

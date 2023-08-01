@@ -24,6 +24,7 @@ const MenuItemsContainer: FC<MenuItemsContainer> = ({ title, id, items = [], que
             price={element.price}
             additions={element.additions}
             updatingFavorites={updatingFavorites}
+            soldOut = {element.soldOut}
           />
         );
       })}
